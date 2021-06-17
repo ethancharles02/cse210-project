@@ -1,4 +1,4 @@
-# [PROGRAM NAME] 
+# Lightbike
 [a description of the program]
 
 ## Getting Started
@@ -22,8 +22,13 @@ root                    (project root folder)
 
 ## Required Technologies
 ---
-[list required libraries]
+* Python 3.8.0
+* arcade 2.5.7
 
 ## Authors
 ---
-[list author names and emails]
+* Rich Abbott: rich.abbott3@gmail.com
+* Ethan Charles: ethan.charles02@gmail.com
+* Avery Crowson: crowson.avery@gmail.com
+* Hunter Dunlap: hwd14@rocketmail.com
+* Miguel Marin: mar19013@byui.edu

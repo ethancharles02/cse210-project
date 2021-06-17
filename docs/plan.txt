@@ -1,0 +1,122 @@
+Requirements:
+The program may be any type of game or interactive simulation.
+The program should use classes and objects.
+The program should use the four principles of object-oriented programming.
+The program should use the libraries chosen in the course.
+The program should be delivered through a distributed version control system.
+The program should be able to be run from the command line.
+The program should be entered in the end-of-course contest.
+
+
+
+See README file for technologies required
+
+
+
+Features:
+2D top-down
+Singleplayer (to start)
+As the bike moves, it leaves a trail that can't be crossed
+Movement: Up, down, left, right (WASD)
+
+Optional Features:
+Draw our own sprites? (Alternative of turtle)
+Maps with obstacles?
+Two-player?
+Powerups?
+    Slow down
+    Speed up
+    Temporary invincibility
+    Score multiplier?
+
+
+
+Classes:
+player
+draw_trail
+game
+director
+handle_collisions
+score/timer
+actor
+input_service
+output_service
+constants
+point
+action
+
+Optional Feature Classes:
+map
+powerup
+
+
+
+Four Principles:
+Polymorphism
+Inheritance
+Abstraction
+Classes and Objects
+
+
+
+Timeline: 4 weeks of coding
+
+Week 1 (Alpha): Meet on the 23rd, Wednesday 7 PM MST (Backup: 1 PM MST)
+No sprites yet
+Learn arcade module
+Singleplayer (square sprite)
+Movement works
+Dies from hitting wall
+
+Week 2 (Beta):
+General improvements
+Implement trails
+Trail can be collided with
+ai
+
+Week 3 (Release):
+General improvements
+Draw Sprites
+Two Player
+Maps?
+
+Week 4 (Stable):
+General improvements
+Bugtesting
+Powerups?
+
+
+
+Responsibilities:
+
+Submissions:
+Rich Abbott
+Ethan Charles
+Avery Crowson
+Hunter Dunlap
+Miguel Marin
+
+Classes:
+Ethan:
+draw_trail (Week 2)
+director
+input_service
+output_service
+
+Miguel:
+sprites (wall, player, ai(basically just player))
+handle_collisions
+score/timer
+
+Avery:
+player
+constants
+
+Rich:
+game
+maps?
+
+Hunter:
+actor
+point
+ai (Week 2)
