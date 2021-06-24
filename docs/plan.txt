@@ -101,7 +101,6 @@ sound? (Week 3)
 
 Ethan:
 director
-input_service
 output_service
 draw_actors_action
 draw_trail (Week 2)
@@ -118,6 +117,7 @@ player
 constants
 
 Rich:
+input_service
 game
 move_actors_action
 maps? (Week 3)

@@ -1,4 +1,3 @@
-# Remove guess and methods related to it
 # Week 2: trail class
 
 from data.actor import Actor
@@ -25,7 +24,6 @@ class Player(Actor):
         """
         super().__init__()
         self.__name = ""
-        self.__guess = "----"
     
     def get_name(self):
         """
@@ -41,18 +39,3 @@ class Player(Actor):
         name(str): The name to be set to the private attribute
         """
         self.__name = str(name)
-    
-    def get_guess(self):
-        """
-        Returns the player's guess
-        """
-        return self.__guess
-
-    def set_guess(self, guess):
-        """
-        Sets the players guess as a string
-
-        Parameters:
-        guess(str): The guess to be set to the private attribute
-        """
-        self.__guess = str(guess)

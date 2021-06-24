@@ -1,3 +1,6 @@
+# Add w and s key for the points
+# Change asciimatics module to arcade
+
 import sys
 from game.point import Point
 from asciimatics.event import KeyboardEvent
