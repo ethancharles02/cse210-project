@@ -1,4 +1,3 @@
-# Remove guess and methods related to it
 # Week 2: trail class
 
 from data.actor import Actor
