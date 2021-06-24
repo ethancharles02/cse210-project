@@ -22,7 +22,7 @@ class DrawActorsAction(Action):
         """
         self._output_service = output_service
 
-    def execute(self, cast):
+    def execute(self, game, cast):
         """
         The execute method takes a cast dictionary and draws each of the objects inside it
 
@@ -30,9 +30,9 @@ class DrawActorsAction(Action):
         self (DrawActorsAction): An instance of DrawActorsAction
         cast (dict): The dictionary of actors and tags assigned to those actors
         """
-        self._output_service.clear_screen()
+        # self._output_service.clear_screen()
 
         for group in cast:
-            self._output_service.draw_actors(cast[group])
+            self._output_service.draw_actors(game, cast[group])
         
-        self._output_service.flush_buffer()
+        # self._output_service.flush_buffer()

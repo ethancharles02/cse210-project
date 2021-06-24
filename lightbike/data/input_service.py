@@ -29,6 +29,14 @@ class InputService:
         Returns:
             Point: The selected direction.
         """
+        # if key == arcade.key.UP:
+        #     self.player_sprite.change_y = MOVEMENT_SPEED
+        # elif key == arcade.key.DOWN:
+        #     self.player_sprite.change_y = -MOVEMENT_SPEED
+        # elif key == arcade.key.LEFT:
+        #     self.player_sprite.change_x = -MOVEMENT_SPEED
+        # elif key == arcade.key.RIGHT:
+        #     self.player_sprite.change_x = MOVEMENT_SPEED
         direction = Point(0, 0)
         event = self._screen.get_event()
         if isinstance(event, KeyboardEvent):
