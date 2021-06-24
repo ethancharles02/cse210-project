@@ -19,7 +19,7 @@ class HandleCollisionsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        player = cast["player"][0] # there's only one
+        player = cast["players"][0] # there's only one
 
         playerx = player.get_position().get_x()
         playery = player.get_position().get_y()
