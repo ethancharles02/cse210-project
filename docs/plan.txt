@@ -97,24 +97,30 @@ Hunter Dunlap
 Miguel Marin
 
 Classes:
+sound? (Week 3)
+
 Ethan:
-draw_trail (Week 2)
 director
 input_service
 output_service
+draw_actors_action
+draw_trail (Week 2)
 
 Miguel:
 sprites (wall, player, ai(basically just player))
-handle_collisions
-score/timer
+handle_collisions_action
+score/timer (Week 2)
+trail (Week 2)
 
 Avery:
+control_actors_action
 player
 constants
 
 Rich:
 game
-maps?
+move_actors_action
+maps? (Week 3)
 
 Hunter:
 actor
