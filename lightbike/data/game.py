@@ -43,7 +43,7 @@ class Game(arcade.Window):
         self.cast["players"] = []
         self.cast["players"].append(Player())
 
-        self.cast["players"][0].set_sprite(arcade.Sprite(":resources:images/animated_characters/female_person/femalePerson_idle.png",
+        self.cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player.png",
             constants.SPRITE_SCALING))
 
         self.cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
