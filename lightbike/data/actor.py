@@ -57,6 +57,8 @@ class Actor:
         Args:
             position (Point): The given position.
         """
+        # self.cast["players"][0].sprite.center_x = constants.SCREEN_WIDTH / 2
+        # self.cast["players"][0].sprite.center_y = constants.SCREEN_HEIGHT / 2
         self._position = position
     
     def set_text(self, text):
