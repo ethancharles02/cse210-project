@@ -1,6 +1,3 @@
-# get direction from input service, turn player within the cast variable based on the direction
-# restrict direction from moving directly back the way the player is moving (ie. velocity (1, 0) can't suddenly become velocity(-1, 0))
-
 from data import constants
 from data.action import Action
 from data.point import Point
