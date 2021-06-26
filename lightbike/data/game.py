@@ -10,9 +10,6 @@ from data.input_service import InputService
 from data.output_service import OutputService
 from data.player import Player
 
-# Modules that need methods or changes to method parameters:
-# 
-
 
 class Game(arcade.Window):
     """ Main application class. """
