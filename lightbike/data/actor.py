@@ -26,10 +26,10 @@ class Actor:
         """
         return self._sprite
 
-    def set_sprite(self, file_path) :
+    def set_sprite(self, sprite) :
         """Updates the sprite.
         """
-        self._sprite = Sprite(file_path, constants.SPRITE_SCALING)
+        self._sprite = sprite
 
     def get_position(self):
         """Gets the sprites position.

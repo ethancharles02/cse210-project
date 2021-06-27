@@ -25,27 +25,28 @@ class OutputService:
     #     self._screen.print_at("-" * constants.MAX_X, 0, 0, 7)
     #     self._screen.print_at("-" * constants.MAX_X, 0, constants.MAX_Y, 7)
         
-    def draw_actor(self, game, actor):
+    def draw_actor(self, actor):
         """Renders the given actor's text on the screen.
 
         Args:
             actor (Actor): The actor to render.
         """
-        game.draw(actor)
+        # self.coin_list.draw()
+        actor.get_sprite().draw()
         # text = actor.get_text()
         # position = actor.get_position()
         # x = position.get_x()
         # y = position.get_y()
         # self._screen.print_at(text, x, y, 7) # WHITE
 
-    def draw_actors(self, game, actors):
+    def draw_actors(self, actors):
         """Renders the given list of actors on the screen.
 
         Args:
             actors (list): The actors to render.
         """ 
         for actor in actors:
-            game.draw(actor)
+            actor.get_sprite().draw()
     
     # def flush_buffer(self):
     #     """Renders the screen.""" 

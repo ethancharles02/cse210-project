@@ -1,10 +1,10 @@
 # Add w and s key for the points
 # Change asciimatics module to arcade
 
-import sys
-from arcade import keys
+# import sys
+from arcade import key
 from data.point import Point
-from asciimatics.event import KeyboardEvent
+from data import constants
 
 class InputService:
     """Detects player input. The responsibility of the class of objects is to detect and communicate player keypresses.
@@ -18,13 +18,14 @@ class InputService:
 
     def __init__(self):
         """The class constructor."""
+        self._movement_speed = constants.MOVEMENT_SPEED
         self._keys = {}
-        self._keys[keys.A] = Point(-1, 0) # a
-        self._keys[keys.D] = Point(1, 0) # d
-        self._keys[keys.W] = Point(0, -1) # w
-        self._keys[keys.S] = Point(0, 1) # s
+        self._keys[key.A] = Point(-self._movement_speed, 0) # a
+        self._keys[key.D] = Point(self._movement_speed, 0) # d
+        self._keys[key.W] = Point(0, self._movement_speed) # w
+        self._keys[key.S] = Point(0, -self._movement_speed) # s
         
-    def get_direction(self, key):
+    def get_direction(self, game, key):
         """Gets the selected direction for the given player.
 
         Returns:
@@ -40,7 +41,7 @@ class InputService:
         #     self.player_sprite.change_x = MOVEMENT_SPEED
         direction = Point(0, 0)
         if key == 65307:
-            sys.exit()
+            game.close()
         direction = self._keys.get(key, Point(0, 0))
         return direction
 

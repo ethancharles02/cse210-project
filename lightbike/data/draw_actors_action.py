@@ -1,4 +1,4 @@
-from game.action import Action
+from data.action import Action
 
 class DrawActorsAction(Action):
     """
@@ -22,7 +22,7 @@ class DrawActorsAction(Action):
         """
         self._output_service = output_service
 
-    def execute(self, game, cast):
+    def execute(self, cast):
         """
         The execute method takes a cast dictionary and draws each of the objects inside it
 
@@ -33,6 +33,6 @@ class DrawActorsAction(Action):
         # self._output_service.clear_screen()
 
         for group in cast:
-            self._output_service.draw_actors(game, cast[group])
+            self._output_service.draw_actors(cast[group])
         
         # self._output_service.flush_buffer()

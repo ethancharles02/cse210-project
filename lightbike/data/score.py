@@ -1,6 +1,6 @@
 import random
-from game.actor import Actor
-from game.point import Point
+from data.actor import Actor
+from data.point import Point
 
 class Score(Actor):
     """Points earned. The responsibility of Score is to keep track of the player's points.

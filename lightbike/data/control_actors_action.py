@@ -21,13 +21,13 @@ class ControlActorsAction(Action):
         """
         self._input_service = input_service
 
-    def execute(self, cast):
+    def execute(self, game, cast, key):
         """Executes the action using the given actors.
 
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        direction = self._input_service.get_direction()
+        direction = self._input_service.get_direction(game, key)
         player1 = cast["players"][0]
 
         player1_velocity = player1.get_velocity()
