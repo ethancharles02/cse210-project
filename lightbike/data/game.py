@@ -63,5 +63,5 @@ class Game(arcade.Window):
     def on_update(self, delta_time):
         """ Movement and game logic """
 
-        self.move_actors_action.execute(self.cast)
+        self.move_actors_action.execute(self.cast, delta_time)
         self.handle_collisions_action.execute(self.cast)
