@@ -1,8 +1,8 @@
 # nothing for now
 
-from game import constants
-from game.action import Action
-from game.point import Point
+from data import constants
+from data.action import Action
+from data.point import Point
 
 class MoveActorsAction(Action):
     """A code template for moving actors. The responsibility of this class of
@@ -15,7 +15,7 @@ class MoveActorsAction(Action):
         _input_service (InputService): An instance of InputService.
     """
 
-    def execute(self, cast):
+    def execute(self, cast, delta_time):
         """Executes the action using the given actors.
 
         Args:
@@ -24,9 +24,9 @@ class MoveActorsAction(Action):
         for group in cast:
             for actor in cast[group]:
                 if not actor.get_velocity().is_zero():
-                    self._move_actor(actor)
+                    self._move_actor(actor,  delta_time)
 
-    def _move_actor(self, actor):
+    def _move_actor(self, actor, delta_time):
         """Moves the given actor to its next position according to its 
         velocity. Will wrap the position from one side of the screen to the 
         other when it reaches the edge in either direction.
@@ -40,7 +40,7 @@ class MoveActorsAction(Action):
         y1 = position.get_y()
         x2 = velocity.get_x()
         y2 = velocity.get_y()
-        x = 1 + (x1 + x2 - 1)
-        y = 1 + (y1 + y2 - 1)
+        x = x1 + (x2 * delta_time)
+        y = y1 + (y2 * delta_time)
         position = Point(x, y)
         actor.set_position(position)
