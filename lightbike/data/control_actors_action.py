@@ -1,6 +1,7 @@
-from data import constants
+import math
+# from data import constants
 from data.action import Action
-from data.point import Point
+# from data.point import Point
 
 class ControlActorsAction(Action):
     """A code template for controlling actors. The responsibility of this
@@ -36,3 +37,4 @@ class ControlActorsAction(Action):
         
         if not (player1_velocity.reverse().equals(direction) or player1_velocity.equals(direction)):
             player1.set_velocity(direction)
+            player1.get_sprite().angle = math.degrees(math.atan2(direction.get_y(), direction.get_x()))

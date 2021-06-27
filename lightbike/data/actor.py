@@ -1,6 +1,6 @@
-from data import constants
+# from data import constants
 from data.point import Point
-from arcade import Sprite
+# from arcade import Sprite
 
 class Actor:
     """A visible, moveable thing that participates in the game. The responsibility of Actor is to keep track of its appearance, position 

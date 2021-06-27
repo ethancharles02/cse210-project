@@ -1,3 +1,17 @@
+# from time import *
+# import math
+
+# def updateTime():
+#     global old_time
+#     old_time = time()
+
+# def displayTime():
+#     global old_time
+#     print(time() - old_time)
+
+# updateTime()
+# displayTime()
+
 import arcade
 # import os
 from data import constants
@@ -36,35 +50,35 @@ class Game(arcade.Window):
 
     def setup(self):
         """ Set up the game and initialize the variables. """
-        # print("test")
+        
         self.cast["players"] = []
         self.cast["players"].append(Player())
 
-        self.cast["players"][0].set_sprite(arcade.Sprite("assets/orange_player.png", constants.SPRITE_SCALING))
-        # self.cast["players"][0].get_sprite()
+        
+        self.cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
+        # self.cast["players"][0].get_sprite().angle = 180
+        # self.cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
 
         self.cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
         
         arcade.set_background_color(arcade.color.BLACK)
+        
         
 
     def on_draw(self):
         """
         Render the screen.
         """
-        # print("test1")
-
+        
         arcade.start_render()
 
         self.draw_actors_action.execute(self.cast)
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. """
-        # print("test2")
         self.control_actors_action.execute(self, self.cast, key)
 
     def on_update(self, delta_time):
         """ Movement and game logic """
-        # print("test3")
         self.move_actors_action.execute(self.cast, delta_time)
-        self.handle_collisions_action.execute(self.cast)
+        self.handle_collisions_action.execute(self, self.cast)

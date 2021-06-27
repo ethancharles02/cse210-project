@@ -1,6 +1,4 @@
-# nothing for now
-
-from data import constants
+# from data import constants
 from data.action import Action
 from data.point import Point
 
@@ -10,9 +8,6 @@ class MoveActorsAction(Action):
     
     Stereotype:
         Controller
-
-    Attributes:
-        _input_service (InputService): An instance of InputService.
     """
 
     def execute(self, cast, delta_time):

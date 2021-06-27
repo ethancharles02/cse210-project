@@ -1,10 +1,6 @@
-# for now, we'll exit the program if the player collides with any of the borders
-# for week 1, we are just checking for player collisions with the walls (from constants.py)
-
-import sys
 from data import constants
 from data.action import Action
-from data.point import Point
+# from data.point import Point
 
 class HandleCollisionsAction(Action):
     """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
@@ -13,32 +9,26 @@ class HandleCollisionsAction(Action):
         Controller
     """
 
-    def execute(self, cast):
+    def execute(self, game, cast):
         """Executes the action using the given actors.
 
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        player = cast["players"][0] # there's only one
+        player = cast["players"][0]
 
         playerx = player.get_position().get_x()
         playery = player.get_position().get_y()
-        player_pos = player.get_position()
+        # player_pos = player.get_position()
 
-        playervx = player.get_velocity().get_x()
-        playervy = player.get_velocity().get_y()
+        # playervx = player.get_velocity().get_x()
+        # playervy = player.get_velocity().get_y()
 
-        if playery + playervy >= constants.SCREEN_HEIGHT - 1 or playery + playervy <= 0:
-            # playervy *= -1
-            # player.set_velocity(Point(playervx, playervy))
-            # sys.exit()
-            print("left border y")
+        if playery >= constants.SCREEN_HEIGHT - 1 or playery <= 0:
+            game.close()
 
-        if playerx + playervx >= constants.SCREEN_WIDTH - 1 or playerx + playervx <= 0:
-            # playervx *= -1
-            # player.set_velocity(Point(playervx, playervy))
-            # sys.exit()
-            print("left border x")
+        if playerx >= constants.SCREEN_WIDTH - 1 or playerx <= 0:
+            game.close()
 
         # collision = True
         # while collision:
