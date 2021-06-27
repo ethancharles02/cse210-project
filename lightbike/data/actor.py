@@ -40,6 +40,9 @@ class Actor:
         return Point(self._sprite.center_x, self._sprite.center_y)
 
     def set_position(self, position: Point):
+        """
+        Sets the position of the sprite
+        """
         self._sprite.center_x = position.get_x()
         self._sprite.center_y = position.get_y()
 

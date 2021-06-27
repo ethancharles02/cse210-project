@@ -32,13 +32,25 @@ class InputService:
         return direction
 
     def set_movement_speed(self, speed):
+        """
+        Sets the movement speed to be used for the velocity
+        """
         self._movement_speed = speed
         self._update_keys()
 
     def get_movement_speed(self):
+        """
+        Gets the movement speed
+
+        Returns:
+            Int: The movement speed
+        """
         return self._movement_speed
 
     def _update_keys(self):
+        """
+        Updates the key dictionary based on the movement speed
+        """
         self._keys[key.A] = Point(-self._movement_speed, 0) # a
         self._keys[key.D] = Point(self._movement_speed, 0) # d
         self._keys[key.W] = Point(0, self._movement_speed) # w

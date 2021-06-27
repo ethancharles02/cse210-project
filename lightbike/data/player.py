@@ -4,18 +4,15 @@ from data.actor import Actor
 
 class Player(Actor):
     """
-    The Player class generates a code
+    The Player class is used to create the players in the lightbike game
     
     Stereotype:
         Information Holder
 
     Methods:
-        __init__(): generates the name and guess variables
+        __init__(): generates the name and initializes the parent class
         get_name(): returns the name
         set_name(name): sets the name
-
-        get_guess(): returns the guess
-        set_guess(guess): sets the guess
     """
     
     def __init__(self):

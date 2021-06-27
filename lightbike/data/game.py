@@ -25,35 +25,51 @@ from data.player import Player
 
 
 class Game(arcade.Window):
-    """ Main application class. """
+    """
+    The game is in charge of bringing everything together and putting it into the arcade window
+
+    Stereotype: 
+        Service Provider
+
+    Attributes:
+        _cast (dictionary): Holds all the objects that will be displayed on the screen
+        _output_service (OutputService): In charge of displaying objects
+        _draw_actors_action (DrawActorsAction): Draws actors
+        _input_service (InputService): Takes inputs from the player
+        _control_actors_action (ControlActorsAction): Controls the player's character based on their inputs
+        _move_actors_action (MoveActorsAction): Moves each object based on their velocity
+        _handle_collisions_action (HandleCollisionsAction): Handles collisions between objects
+    """
 
     def __init__(self, width, height, title):
         """
-        Initializer
+        The class constructor
         """
         super().__init__(width, height, title)
 
 
-        self.cast = {}
-        self.output_service = OutputService()
-        self.draw_actors_action = DrawActorsAction(self.output_service)
+        self._cast = {}
+        self._output_service = OutputService()
+        self._draw_actors_action = DrawActorsAction(self._output_service)
 
-        self.input_service = InputService()
-        self.control_actors_action = ControlActorsAction(self.input_service)
+        self._input_service = InputService()
+        self._control_actors_action = ControlActorsAction(self._input_service)
 
-        self.move_actors_action = MoveActorsAction()
+        self._move_actors_action = MoveActorsAction()
 
-        self.handle_collisions_action = HandleCollisionsAction()
+        self._handle_collisions_action = HandleCollisionsAction()
 
     def setup(self):
-        """ Set up the game and initialize the variables. """
+        """
+        Set up the game and initialize the variables.
+        """
         
-        self.cast["players"] = []
-        self.cast["players"].append(Player())
+        self._cast["players"] = []
+        self._cast["players"].append(Player())
 
         
-        self.cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
-        self.cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
+        self._cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
+        self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
         
         arcade.set_background_color(arcade.color.BLACK)
         
@@ -66,13 +82,19 @@ class Game(arcade.Window):
         
         arcade.start_render()
 
-        self.draw_actors_action.execute(self.cast)
+        self._draw_actors_action.execute(self._cast)
 
     def on_key_press(self, key, modifiers):
-        """Called whenever a key is pressed. """
-        self.control_actors_action.execute(self, self.cast, key)
+        """
+        Called whenever a key is pressed
+        """
+
+        self._control_actors_action.execute(self, self._cast, key)
 
     def on_update(self, delta_time):
-        """ Movement and game logic """
-        self.move_actors_action.execute(self.cast, delta_time)
-        self.handle_collisions_action.execute(self, self.cast)
+        """
+        Movement and game logic
+        """
+
+        self._move_actors_action.execute(self._cast, delta_time)
+        self._handle_collisions_action.execute(self, self._cast)
