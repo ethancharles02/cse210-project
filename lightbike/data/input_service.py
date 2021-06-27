@@ -2,7 +2,8 @@
 # Change asciimatics module to arcade
 
 import sys
-from game.point import Point
+from arcade import keys
+from data.point import Point
 from asciimatics.event import KeyboardEvent
 
 class InputService:
@@ -12,27 +13,35 @@ class InputService:
         Service Provider
 
     Attributes:
-        _screen (Screen): An Asciimatics screen.
         _keys (list): Points for up, dn, lt, rt.
     """
 
-    def __init__(self, screen):
+    def __init__(self):
         """The class constructor."""
-        self._screen = screen
         self._keys = {}
-        self._keys[97] = Point(-1, 0) # a
-        self._keys[100] = Point(1, 0) # d
+        self._keys[keys.A] = Point(-1, 0) # a
+        self._keys[keys.D] = Point(1, 0) # d
+        self._keys[keys.W] = Point(0, -1) # w
+        self._keys[keys.S] = Point(0, 1) # s
         
-    def get_direction(self):
+    def get_direction(self, key):
         """Gets the selected direction for the given player.
 
         Returns:
             Point: The selected direction.
         """
+        # if key == arcade.key.UP:
+        #     self.player_sprite.change_y = MOVEMENT_SPEED
+        # elif key == arcade.key.DOWN:
+        #     self.player_sprite.change_y = -MOVEMENT_SPEED
+        # elif key == arcade.key.LEFT:
+        #     self.player_sprite.change_x = -MOVEMENT_SPEED
+        # elif key == arcade.key.RIGHT:
+        #     self.player_sprite.change_x = MOVEMENT_SPEED
         direction = Point(0, 0)
-        event = self._screen.get_event()
-        if isinstance(event, KeyboardEvent):
-            if event.key_code == 27 or event.key_code == -1:
-                sys.exit()
-            direction = self._keys.get(event.key_code, Point(0, 0))
+        if key == 65307:
+            sys.exit()
+        direction = self._keys.get(key, Point(0, 0))
         return direction
+
+    
