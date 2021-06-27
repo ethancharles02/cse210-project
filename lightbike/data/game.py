@@ -13,7 +13,6 @@
 # displayTime()
 
 import arcade
-# import os
 from data import constants
 from data.point import Point
 from data.control_actors_action import ControlActorsAction
@@ -34,8 +33,6 @@ class Game(arcade.Window):
         """
         super().__init__(width, height, title)
 
-        # file_path = os.path.dirname(os.path.abspath(__file__))
-        # os.chdir(file_path)
 
         self.cast = {}
         self.output_service = OutputService()
@@ -56,9 +53,6 @@ class Game(arcade.Window):
 
         
         self.cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
-        # self.cast["players"][0].get_sprite().angle = 180
-        # self.cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
-
         self.cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
         
         arcade.set_background_color(arcade.color.BLACK)
