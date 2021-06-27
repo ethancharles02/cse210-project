@@ -19,19 +19,24 @@ class HandleCollisionsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        # paddle = cast["paddle"][0] # there's only one
-        # ball = cast["ball"][0] # there's only one
-        # bricks = cast["brick"]
+        player = cast["players"][0] # there's only one
 
-        # paddlex = paddle.get_position().get_x()
-        # paddley = paddle.get_position().get_y()
+        playerx = player.get_position().get_x()
+        playery = player.get_position().get_y()
+        player_pos = player.get_position()
 
-        # ballx = ball.get_position().get_x()
-        # bally = ball.get_position().get_y()
-        # ballpos = ball.get_position()
+        playervx = player.get_velocity().get_x()
+        playervy = player.get_velocity().get_y()
 
-        # balldx = ball.get_velocity().get_x()
-        # balldy = ball.get_velocity().get_y()
+        if playery + playervy >= constants.MAX_Y - 1 or playery + playervy <= 0:
+            playervy *= -1
+            player.set_velocity(Point(playervx, playervy))
+            sys.exit()
+
+        if playerx + playervx >= constants.MAX_X - 1 or playerx + playervx <= 0:
+            playervx *= -1
+            player.set_velocity(Point(playervx, playervy))
+            sys.exit()
 
         # collision = True
         # while collision:
@@ -74,19 +79,3 @@ class HandleCollisionsAction(Action):
         #             balldy *= -1
         #             ball.set_velocity(Point(balldx, balldy))
         #             collision = True
-
-        #     if ballx + balldx >= constants.MAX_X - 1 or ballx + balldx <= 0:
-        #         balldx *= -1
-        #         ball.set_velocity(Point(balldx, balldy))
-        #         collision = True
-            
-        #     if bally + balldy <= 0:
-        #         balldy *= -1
-        #         ball.set_velocity(Point(balldx, balldy))
-        #         collision = True
-
-        #     elif bally + balldy >= constants.MAX_Y:
-        #         # balldy *= -1
-        #         # ball.set_velocity(Point(balldx, balldy))
-        #         sys.exit()
-        pass
