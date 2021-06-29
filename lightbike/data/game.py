@@ -72,8 +72,6 @@ class Game(arcade.Window):
         self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
         
         arcade.set_background_color(arcade.color.BLACK)
-        
-        
 
     def on_draw(self):
         """

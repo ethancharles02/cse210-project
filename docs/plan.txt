@@ -83,6 +83,7 @@ Maps?
 Week 4 (Stable):
 General improvements
 Bugtesting
+Main menu
 Powerups?
 
 
@@ -101,14 +102,18 @@ sound? (Week 3)
 
 Ethan:
 director
+game
 output_service
 draw_actors_action
 draw_trail (Week 2)
+update control_actors_action for 2 players(week 2)
+score/timer (Week 2)
 
 Miguel:
 sprites (wall, player, ai(basically just player))
 handle_collisions_action
-score/timer (Week 2)
+Update sprites to smaller file sizes (Week 2)
+Make new wall sprites?
 trail (Week 2)
 
 Avery:
@@ -117,10 +122,10 @@ player
 constants
 
 Rich:
-input_service
-game
 move_actors_action
-maps? (Week 3)
+plan out some maps (Week 2)
+input_service (update week 3 for two players)
+implement maps (Week 3)
 
 Hunter:
 actor

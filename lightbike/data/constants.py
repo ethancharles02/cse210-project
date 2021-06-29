@@ -1,4 +1,4 @@
-# Week 2? background color?
+# Week 2: background color: Black arcade.color.BLACK
 
 SCREEN_TITLE = "Lightbike"
 SCREEN_WIDTH = 800

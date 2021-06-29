@@ -1,6 +1,10 @@
-# Week 2: trail class
+# Week 2: add trail class
+# Methods to add:
+#   set_trail()
+#   get_trail()
 
 from data.actor import Actor
+from data.trail import Trail
 
 class Player(Actor):
     """
@@ -21,6 +25,7 @@ class Player(Actor):
         """
         super().__init__()
         self.__name = ""
+        self._trail = Trail()
     
     def get_name(self):
         """
