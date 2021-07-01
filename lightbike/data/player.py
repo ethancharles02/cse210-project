@@ -1,12 +1,10 @@
-# Week 2: add trail class
-
 # Player attributes
 # _trail
 # dead
 
 # Player methods:
 # is_dead()
-# 
+# hide_sprite
 
 from data.actor import Actor
 from data.trail import Trail
@@ -51,11 +49,12 @@ class Player(Actor):
         self.__name = str(name)
 
     def get_trail(self):
-      """
-        gets the Trail
-        """
+         """
+         gets the Trail
+         """
+         return self._trail 
         
     def set_trail(self, trail):
-      """
-        Sets the players trail
-        """
+         """
+         Sets the variable to trail
+         """
