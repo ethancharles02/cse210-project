@@ -5,22 +5,28 @@ class OutputService:
     
     Stereotype: 
         Service Provider
-
     """
         
-    def draw_actor(self, actor):
+    def draw_actor(self, actor, group=""):
         """Renders the given actor's text on the screen.
 
         Args:
             actor (Actor): The actor to render.
         """
         actor.get_sprite().draw()
+        
+        # if group == "players" or group == "ai":
+        #     self._draw_trail(actor)
 
-    def draw_actors(self, actors):
+    # def _draw_trail(self, actor):
+    #     actor.get_trail().get_sprite_list().draw()
+
+    def draw_actors(self, actors, group=""):
         """Renders the given list of actors on the screen.
 
         Args:
             actors (list): The actors to render.
         """ 
         for actor in actors:
-            actor.get_sprite().draw() 
+            self.draw_actor(actor, group)
+            # actor.get_sprite().draw() 

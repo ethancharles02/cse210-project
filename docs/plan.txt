@@ -101,22 +101,22 @@ Classes:
 sound? (Week 3)
 
 Ethan:
-director
+director (removed)
 game
 output_service
 draw_actors_action
-draw_trail (Week 2)
-update control_actors_action for 2 players(week 2)
+draw_trail (Week 2, turned into a method for output_service)
+update control_actors_action for 2 players(week 2, merge input_service with control_actors_action)
 score/timer (Week 2)
 
 Miguel:
 sprites (wall, player, ai(basically just player))
-handle_collisions_action
 Update sprites to smaller file sizes (Week 2)
 Rotate to face right (0 degrees)
 Center Sprites, remove excess area
 Make new wall sprites?
 trail (Week 2 together with Ethan)
+handle_collisions_action (Week 2, add collisions with walls)
 
 Avery:
 control_actors_action

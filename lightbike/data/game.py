@@ -20,7 +20,6 @@ from data.control_actors_action import ControlActorsAction
 from data.draw_actors_action import DrawActorsAction
 from data.handle_collisions_action import HandleCollisionsAction
 from data.move_actors_action import MoveActorsAction
-from data.input_service import InputService
 from data.output_service import OutputService
 from data.player import Player
 
@@ -55,12 +54,13 @@ class Game(arcade.Window):
         self._output_service = OutputService()
         self._draw_actors_action = DrawActorsAction(self._output_service)
 
-        self._input_service = InputService()
-        self._control_actors_action = ControlActorsAction(self._input_service)
+        # self._input_service = InputService()
+        self._control_actors_action = ControlActorsAction()
 
         self._move_actors_action = MoveActorsAction()
 
         self._handle_collisions_action = HandleCollisionsAction()
+        self._time_elapsed = 0
 
     def setup(self):
         """
@@ -70,9 +70,19 @@ class Game(arcade.Window):
         self._cast["players"] = []
         self._cast["players"].append(Player())
 
+        # player2_keys = {
+        #     arcade.key.LEFT: Point(-1, 0),
+        #     arcade.key.RIGHT: Point(1, 0),
+        #     arcade.key.UP: Point(0, 1),
+        #     arcade.key.DOWN: Point(0, -1)
+        # }
+        # self._cast["players"].append(Player(keys=player2_keys))
         
         self._cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
         self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
+
+        # self._cast["players"][1].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
+        # self._cast["players"][1].set_position(Point(constants.SCREEN_WIDTH / 2 + 20, constants.SCREEN_HEIGHT / 2 + 20))
         
         arcade.set_background_color(arcade.color.BLACK)
 
@@ -84,6 +94,7 @@ class Game(arcade.Window):
         arcade.start_render()
 
         self._draw_actors_action.execute(self._cast)
+        arcade.draw_text(f"Time: {self._time_elapsed:.2f}", 0, constants.SCREEN_HEIGHT, arcade.color.WHITE, anchor_x="left", anchor_y="top")
 
     def on_key_press(self, key, modifiers):
         """
@@ -99,3 +110,5 @@ class Game(arcade.Window):
 
         self._move_actors_action.execute(self._cast, delta_time)
         self._handle_collisions_action.execute(self, self._cast)
+
+        self._time_elapsed += delta_time
