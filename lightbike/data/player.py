@@ -1,7 +1,12 @@
 # Week 2: add trail class
-# Methods to add:
-#   set_trail()
-#   get_trail()
+
+# Player attributes
+# _trail
+# dead
+
+# Player methods:
+# is_dead()
+# 
 
 from data.actor import Actor
 from data.trail import Trail
@@ -17,6 +22,9 @@ class Player(Actor):
         __init__(): generates the name and initializes the parent class
         get_name(): returns the name
         set_name(name): sets the name
+        set_trail():sets the trail
+        get_trail():gets trail
+        is_dead(): check if player is dead
     """
     
     def __init__(self):
@@ -41,3 +49,13 @@ class Player(Actor):
         name(str): The name to be set to the private attribute
         """
         self.__name = str(name)
+
+    def get_trail(self):
+      """
+        gets the Trail
+        """
+        
+    def set_trail(self, trail):
+      """
+        Sets the players trail
+        """
