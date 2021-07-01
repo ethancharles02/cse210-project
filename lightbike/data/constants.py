@@ -1,4 +1,6 @@
 # Week 2: background color: Black arcade.color.BLACK
+# add AI_RANGE
+# add AI_BLINDSPOT_RANGE
 
 SCREEN_TITLE = "Lightbike"
 SCREEN_WIDTH = 800

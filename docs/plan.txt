@@ -113,8 +113,10 @@ Miguel:
 sprites (wall, player, ai(basically just player))
 handle_collisions_action
 Update sprites to smaller file sizes (Week 2)
+Rotate to face right (0 degrees)
+Center Sprites, remove excess area
 Make new wall sprites?
-trail (Week 2)
+trail (Week 2 together with Ethan)
 
 Avery:
 control_actors_action

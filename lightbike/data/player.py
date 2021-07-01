@@ -1,7 +1,13 @@
 # Week 2: add trail class
-# Methods to add:
-#   set_trail()
-#   get_trail()
+
+# Player attributes
+# _trail
+# dead
+
+# Player methods:
+# is_dead()
+# set_trail()
+# get_trail()
 
 from data.actor import Actor
 from data.trail import Trail
