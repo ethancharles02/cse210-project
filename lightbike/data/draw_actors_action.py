@@ -31,4 +31,4 @@ class DrawActorsAction(Action):
         cast (dict): The dictionary of actors and tags assigned to those actors
         """
         for group in cast:
-            self._output_service.draw_actors(cast[group])
+            self._output_service.draw_actors(cast[group], group)

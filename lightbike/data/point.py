@@ -1,3 +1,4 @@
+from math import degrees, atan2
 class Point:
     """Represents distance from an origin (0, 0).
 
@@ -76,3 +77,21 @@ class Point:
         x = self._x * -1
         y = self._y * -1
         return Point(x, y)
+
+    def multiply(self, multiplier):
+        """
+        Multiplies both parts of the point by a multiplier
+
+        Returns:
+            Point: The point with the multiplier applied
+        """
+        return Point(self._x * multiplier, self._y * multiplier)
+
+    def get_angle(self):
+        """
+        Gets the angle of the point from (0, 0)
+
+        Returns:
+            Float: angle from (0, 0) to the point in degrees
+        """
+        return degrees(atan2(self._y, self._x)) % 360
