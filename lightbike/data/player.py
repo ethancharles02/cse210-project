@@ -1,5 +1,5 @@
-from typing import KeysView
-from arcade import key
+# from typing import KeysView
+# from arcade import key
 from data.actor import Actor
 from data.trail import Trail
 from data import constants
