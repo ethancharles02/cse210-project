@@ -1,11 +1,3 @@
-# Player attributes
-# _trail
-# dead
-
-# Player methods:
-# is_dead()
-# hide_sprite
-
 from data.actor import Actor
 from data.trail import Trail
 from data.point import Point

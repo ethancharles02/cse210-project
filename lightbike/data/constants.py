@@ -1,4 +1,3 @@
-
 from arcade import color
 
 SCREEN_TITLE = "Lightbike"

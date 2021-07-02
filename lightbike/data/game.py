@@ -13,6 +13,7 @@
 # displayTime()
 
 import arcade
+import os
 from data import constants
 from data.point import Point
 from data.control_actors_action import ControlActorsAction
@@ -47,6 +48,8 @@ class Game(arcade.Window):
         """
         super().__init__(width, height, title)
 
+        # file_path = os.path.dirname(os.path.abspath(__file__))
+        # os.chdir(file_path)
 
         self._cast = {}
         self._output_service = OutputService()
