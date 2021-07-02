@@ -6,6 +6,7 @@
 # is_dead()
 # hide_sprite
 
+from typing import DefaultDict
 from data.actor import Actor
 from data.trail import Trail
 
@@ -49,12 +50,23 @@ class Player(Actor):
         self.__name = str(name)
 
     def get_trail(self):
-         """
-         gets the Trail
-         """
-         return self._trail 
+        """
+        gets the Trail
+        """
+        return self._trail 
         
     def set_trail(self, trail):
-         """
-         Sets the variable to trail
-         """
+        """
+        Sets the variable to trail
+        """
+
+	if player.Health >= 0 
+		Players = true -- Means the player is alive
+	else
+		Players = false -- Means the player is dead
+
+    def hide_sprite(self):
+        """
+        hide the player temporarily
+        """
+    self.hidden = True
