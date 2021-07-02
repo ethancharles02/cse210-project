@@ -58,6 +58,6 @@ class Actor:
         """Updates the actor's velocity to the given one.
         
         Args:
-            position (Point): The given velocity.
+            velocity (Point): The given velocity.
         """
         self._velocity = velocity

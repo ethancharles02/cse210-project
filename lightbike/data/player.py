@@ -1,22 +1,9 @@
-# Week 2: add trail class
-
-# Player attributes
-# _trail
-# dead
-# movement_speed
-
-# Player methods:
-# is_dead()
-# set_trail()
-# get_trail()
-# get_movement_speed()
-# set_movement_speed()
-
 from typing import KeysView
 from arcade import key
 from data.actor import Actor
 from data.trail import Trail
 from data import constants
+from data.point import Point
 
 class Player(Actor):
     """
@@ -29,6 +16,9 @@ class Player(Actor):
         __init__(): generates the name and initializes the parent class
         get_name(): returns the name
         set_name(name): sets the name
+        set_trail():sets the trail
+        get_trail():gets trail
+        dead_sprite(): hides sprite when dead and stops velocity
     """
     
     def __init__(
@@ -101,3 +91,22 @@ class Player(Actor):
         """
         for key in self._keys:
             self._keys[key] = self._orig_keys[key].multiply(self._movement_speed)
+
+    def get_trail(self):
+        """
+        gets the Trail
+        """
+        return self._trail 
+        
+    def set_trail(self, trail):
+        """
+        Sets the variable to trail
+        """
+        self._trail = trail
+
+    def dead_sprite(self):
+        """
+        hide and stop the player temporarily
+        """
+        self.get_sprite().scale = 0
+        self.set_velocity(Point(0, 0))

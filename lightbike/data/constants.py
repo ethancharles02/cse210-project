@@ -1,6 +1,4 @@
-# Week 2: background color: Black arcade.color.BLACK
-# add AI_RANGE
-# add AI_BLINDSPOT_RANGE
+from arcade import color
 
 from arcade import key
 from data.point import Point
@@ -16,3 +14,6 @@ DEFAULT_KEYS = {
     key.W: Point(0, 1),  # w
     key.S: Point(0, -1)  # s
 }
+AI_RANGE = 5
+AI_BLINDSPOT_RANGE = 3 
+BACKGROUND_COLOR = color.BLACK

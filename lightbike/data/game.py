@@ -84,7 +84,7 @@ class Game(arcade.Window):
         # self._cast["players"][1].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
         # self._cast["players"][1].set_position(Point(constants.SCREEN_WIDTH / 2 + 20, constants.SCREEN_HEIGHT / 2 + 20))
         
-        arcade.set_background_color(arcade.color.BLACK)
+        arcade.set_background_color(constants.BACKGROUND_COLOR)
 
     def on_draw(self):
         """
