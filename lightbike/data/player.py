@@ -110,3 +110,6 @@ class Player(Actor):
         """
         self.get_sprite().scale = 0
         self.set_velocity(Point(0, 0))
+
+    def update_trail(self):
+        self.get_trail().update((self.get_trail().get_point_list()[-1], self.get_position()))

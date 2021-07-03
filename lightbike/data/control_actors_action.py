@@ -43,6 +43,8 @@ class ControlActorsAction(Action):
 
                 if not ((player_velocity.get_x() != 0 and direction.get_x() != 0) or (player_velocity.get_y() != 0 and direction.get_y() != 0)):
                     player.set_velocity(direction)
+                    player.set_position(player.get_velocity().multiply(player.get_sprite().width / 2))
+                    player.get_trail().add_point(player.get_position())
                     player.get_sprite().angle = direction_angle
         
     def _get_direction(self, game, player, key):
