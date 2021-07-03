@@ -81,6 +81,12 @@ class Game(arcade.Window):
         self._cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
         self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
 
+        # test_sprite_list = arcade.SpriteList()
+        # test_sprite_list.append(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
+        # test_sprite_list.append(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
+        # if test_sprite_list:
+        #     print("has sprites")
+
         # self._cast["players"][1].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
         # self._cast["players"][1].set_position(Point(constants.SCREEN_WIDTH / 2 + 20, constants.SCREEN_HEIGHT / 2 + 20))
         
