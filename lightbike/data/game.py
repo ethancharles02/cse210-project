@@ -78,7 +78,9 @@ class Game(arcade.Window):
         # self._cast["players"].append(Player(keys=player2_keys))
         
         self._cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
-        # self._cast["players"][0].get_sprite().texture.width = 
+        # texture = self._cast["players"][0].get_sprite().texture
+        # self._cast["players"][0].get_sprite().texture.image.crop((0, 0, texture.width - 25, texture.height))
+        # self._cast["players"][0].get_sprite().texture.image = texture.image.crop((0, 0, texture.width - 100, texture.height))
         self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
 
         self._cast["ai"] = []
