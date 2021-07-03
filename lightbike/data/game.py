@@ -82,15 +82,17 @@ class Game(arcade.Window):
         # self._cast["players"][0].get_sprite().texture.image.crop((0, 0, texture.width - 25, texture.height))
         # self._cast["players"][0].get_sprite().texture.image = texture.image.crop((0, 0, texture.width - 100, texture.height))
         self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
+        self._cast["players"][0].set_velocity(Point(1 * self._cast["players"][0].get_movement_speed(), 0))
         self._cast["players"][0].get_trail().add_point(self._cast["players"][0].get_position())
 
         self._cast["ai"] = []
 
-        for i in range(20):
+        for i in range(1):
             self._cast["ai"].append(Ai())
             self._cast["ai"][i].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
             self._cast["ai"][i].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
             self._cast["ai"][i].set_velocity(Point(1, 0))
+            self._cast["ai"][i].get_trail().add_point(self._cast["ai"][i].get_position())
 
         # test_sprite_list = arcade.SpriteList()
         # test_sprite_list.append(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))

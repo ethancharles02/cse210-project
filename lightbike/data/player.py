@@ -112,4 +112,5 @@ class Player(Actor):
         self.set_velocity(Point(0, 0))
 
     def update_trail(self):
-        self.get_trail().update((self.get_trail().get_point_list()[-1], self.get_position()))
+        if self.get_trail().get_point_list():
+            self.get_trail().update([self.get_trail().get_point_list()[-1], self.get_position()])

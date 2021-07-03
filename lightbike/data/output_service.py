@@ -14,13 +14,10 @@ class OutputService:
             actor (Actor): The actor to render.
         """
         # if group == "players" or group == "ai":
-        if group == "players":
+        if group == "players" or group == "ai":
             actor.update_trail()
             for sprite_list in actor.get_trail().get_sprite_list():
-                if type(sprite_list) == list:
-                    sprite_list[0].draw()
-                else:
-                    sprite_list.draw()
+                sprite_list.draw()
         actor.get_sprite().draw()
         
         # if group == "players" or group == "ai":

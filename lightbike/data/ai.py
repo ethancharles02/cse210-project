@@ -40,23 +40,28 @@ class Ai(Actor):
 
         if aix + aidx >= constants.SCREEN_WIDTH or aix + aidx < 0:
             self.turn()
-        #elif aix <= 10 and aix > 5:
-            #turn
         elif aiy + aidy >= constants.SCREEN_HEIGHT or aiy + aidy < 0:
             self.turn()
-        #elif aiy <= 10 and aiy > 5:
-            #turn
         self._sprite.center_x += aidx
         self._sprite.center_y += aidy
+
+        found_collision = False
         for trail_sprite_list in trail_sprite_lists:
             # print(self._sprite.collides_with_list(trail_sprite_list))
             if self._sprite.collides_with_list(trail_sprite_list):
+                found_collision = True
+                self._sprite.center_x -= aidx
+                self._sprite.center_y -= aidy
                 self.turn()
                 break
-        self._sprite.center_x -= aidx
-        self._sprite.center_y -= aidy
+        
+        if not found_collision:
+            self._sprite.center_x -= aidx
+            self._sprite.center_y -= aidy
 
     def turn(self):
+        self.get_trail().add_point(self.get_position())
+        
         aidx = self.get_velocity().get_x()
         aidy = self.get_velocity().get_y()
         # print(aidx, aidy)
@@ -64,6 +69,7 @@ class Ai(Actor):
             self.set_velocity(Point(random.choice([-1, 1]), 0))
         if aidy == 0:
             self.set_velocity(Point(0, random.choice([-1, 1])))
+        
 
     def get_trail(self):
         return self._trail 
@@ -112,3 +118,7 @@ class Ai(Actor):
     def set_velocity(self, velocity):
         self._sprite.angle = velocity.get_angle()
         self._velocity = velocity.multiply(self._movement_speed)
+    
+    def update_trail(self):
+        if self.get_trail().get_point_list():
+            self.get_trail().update([self.get_trail().get_point_list()[-1], self.get_position()])
