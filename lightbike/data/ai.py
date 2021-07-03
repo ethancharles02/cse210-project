@@ -1,3 +1,5 @@
+"""
+"""
 # checks in front of it to see if it will collide (using the list of trail points checking between a range maybe of the sprite size)
 # also checks if it will collide with boundary
 # turns random direction
@@ -21,6 +23,8 @@ from data import constants
 from data.point import Point
 
 class Ai(Actor):
+    """
+    """
     def __init__(self, movement_speed = constants.MOVEMENT_SPEED):
         super().__init__()
         self._trail = Trail()
@@ -32,18 +36,21 @@ class Ai(Actor):
         aiy = self.get_position().get_y()
         aidx = self.get_velocity().get_x()
         aidy = self.get_velocity().get_y()
-        if aix + aidx >= constants.SCREEN_WIDTH and aix + aidx < 0:
+
+
+        if aix + aidx >= constants.SCREEN_WIDTH or aix + aidx < 0:
             self.turn()
         #elif aix <= 10 and aix > 5:
             #turn
-        elif aiy + aidy >= constants.SCREEN_HEIGHT and aiy + aidy < 0:
+        elif aiy + aidy >= constants.SCREEN_HEIGHT or aiy + aidy < 0:
             self.turn()
         #elif aiy <= 10 and aiy > 5:
             #turn
         self._sprite.center_x += aidx
         self._sprite.center_y += aidy
         for trail_sprite_list in trail_sprite_lists:
-            if self._sprite.check_for_collision_with_list(trail_sprite_list):
+            # print(self._sprite.collides_with_list(trail_sprite_list))
+            if self._sprite.collides_with_list(trail_sprite_list):
                 self.turn()
                 break
         self._sprite.center_x -= aidx
@@ -52,10 +59,11 @@ class Ai(Actor):
     def turn(self):
         aidx = self.get_velocity().get_x()
         aidy = self.get_velocity().get_y()
+        # print(aidx, aidy)
         if aidx == 0:
-            self.set_velocity(Point(self._movement_speed * random.choice([-1, 1]), 0))
+            self.set_velocity(Point(random.choice([-1, 1]), 0))
         if aidy == 0:
-            self.set_velocity(0, Point(self._movement_speed * random.choice([-1, 1])))
+            self.set_velocity(Point(0, random.choice([-1, 1])))
 
     def get_trail(self):
         return self._trail 
@@ -100,3 +108,7 @@ class Ai(Actor):
         """
         self.get_sprite().scale = 0
         self.set_velocity(Point(0, 0))
+    
+    def set_velocity(self, velocity):
+        self._sprite.angle = velocity.get_angle()
+        self._velocity = velocity.multiply(self._movement_speed)

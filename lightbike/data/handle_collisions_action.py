@@ -15,8 +15,19 @@ class HandleCollisionsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        player = cast["players"][0]
+        ai_characters = cast["ai"]
+        players = cast["players"]
 
+        trail_sprite_lists = []
+        # for ai in ai_characters:
+        #     trail_sprite_lists.append(ai.get_trail().get_sprite_list())
+        # for player in players:
+        #     trail_sprite_lists.append(player.get_trail().get_sprite_list())
+
+        for ai in ai_characters:
+            ai.check_collision(trail_sprite_lists)
+
+        player = players[0]
         playerx = player.get_position().get_x()
         playery = player.get_position().get_y()
         # player_pos = player.get_position()

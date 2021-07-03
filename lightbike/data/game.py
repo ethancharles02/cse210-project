@@ -14,6 +14,7 @@
 
 import arcade
 import os
+from random import randint
 from data import constants
 from data.point import Point
 from data.control_actors_action import ControlActorsAction
@@ -22,6 +23,7 @@ from data.handle_collisions_action import HandleCollisionsAction
 from data.move_actors_action import MoveActorsAction
 from data.output_service import OutputService
 from data.player import Player
+from data.ai import Ai
 
 
 class Game(arcade.Window):
@@ -81,6 +83,14 @@ class Game(arcade.Window):
         self._cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
         self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
 
+        self._cast["ai"] = []
+
+        for i in range(10):
+            self._cast["ai"].append(Ai())
+            self._cast["ai"][i].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
+            self._cast["ai"][i].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
+            self._cast["ai"][i].set_velocity(Point(1, 0))
+
         # test_sprite_list = arcade.SpriteList()
         # test_sprite_list.append(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
         # test_sprite_list.append(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
@@ -117,4 +127,8 @@ class Game(arcade.Window):
         self._move_actors_action.execute(self._cast, delta_time)
         self._handle_collisions_action.execute(self, self._cast)
 
-        self._time_elapsed += delta_time
+        for ai in self._cast["ai"]:
+            if randint(1, 100) == 1:
+                ai.turn()
+
+        self._time_elapsed += 1
