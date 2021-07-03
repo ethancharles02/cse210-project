@@ -73,6 +73,7 @@ General improvements
 Implement trails
 Trail can be collided with
 ai
+module docstrings
 
 Week 3 (Release):
 General improvements
