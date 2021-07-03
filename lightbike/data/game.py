@@ -48,9 +48,6 @@ class Game(arcade.Window):
         """
         super().__init__(width, height, title)
 
-        file_path = os.path.dirname(os.path.abspath(__file__))
-        os.chdir(file_path)
-
         self._cast = {}
         self._output_service = OutputService()
         self._draw_actors_action = DrawActorsAction(self._output_service)
