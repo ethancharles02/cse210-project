@@ -6,7 +6,7 @@ from data.point import Point
 SCREEN_TITLE = "Lightbike"
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SPRITE_SCALING = 1
+SPRITE_SCALING = 0.3
 MOVEMENT_SPEED = 100
 DEFAULT_KEYS = {
     key.A: Point(-1, 0), # a

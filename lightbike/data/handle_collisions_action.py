@@ -21,8 +21,9 @@ class HandleCollisionsAction(Action):
         trail_sprite_lists = []
         # for ai in ai_characters:
         #     trail_sprite_lists.append(ai.get_trail().get_sprite_list())
-        # for player in players:
-        #     trail_sprite_lists.append(player.get_trail().get_sprite_list())
+        for player in players:
+            for sprite_list in player.get_trail().get_sprite_list():
+                trail_sprite_lists.append(sprite_list)
 
         for ai in ai_characters:
             ai.check_collision(trail_sprite_lists)
@@ -35,10 +36,10 @@ class HandleCollisionsAction(Action):
         # playervx = player.get_velocity().get_x()
         # playervy = player.get_velocity().get_y()
 
-        if playery >= constants.SCREEN_HEIGHT - 1 or playery <= 0:
+        if playery >= constants.SCREEN_HEIGHT - player.get_sprite().width / 2 or playery <= 0 + player.get_sprite().width / 2:
             game.close()
 
-        if playerx >= constants.SCREEN_WIDTH - 1 or playerx <= 0:
+        if playerx >= constants.SCREEN_WIDTH - player.get_sprite().width / 2 or playerx <= 0 + player.get_sprite().width / 2:
             game.close()
 
         # collision = True

@@ -34,6 +34,7 @@ class Trail:
         self._sprite_image = "assets/blue_wall.png"
         self._sprite_width = Sprite(self._sprite_image, constants.SPRITE_SCALING).width
         self._sprite_height = Sprite(self._sprite_image, constants.SPRITE_SCALING).height
+        self._temp_list = False
 
     def get_point_list(self):
         return self._point_list
@@ -66,15 +67,16 @@ class Trail:
 
     def _points_to_sprites(self, point_list):
         # point_list = [Point(0, 300), Point(400, 300)]
-        if self._sprite_list:
-            if type(self._sprite_list[-1]) == list:
-                del self._sprite_list[-1]
-                
+        if self._temp_list:
+            del self._sprite_list[-1]
+            self._temp_list = False
+
         point_x = point_list[0].get_x()
         point_y = point_list[0].get_y()
         point_x2 = point_list[1].get_x()
         point_y2 = point_list[1].get_y()
 
+        directionx = True
         if point_x == point_x2:
             directionx = False
         if point_y == point_y2:
@@ -128,6 +130,7 @@ class Trail:
         return sprite_list
 
     def update(self, points_list):
-        self.add_sprite_list([self._points_to_sprites(points_list)])
+        self.add_sprite_list(self._points_to_sprites(points_list))
+        self._temp_list = True
         # else:
         #     for i in range(point_y2 - point_y % sprite.width):

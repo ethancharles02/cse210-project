@@ -36,15 +36,28 @@ class ControlActorsAction(Action):
             # checks if a direction was returned since it will return None if invalid key
             if direction:
                 player_velocity = player.get_velocity()
-                # player1_velocity_x = player1_velocity.get_x()
-                # player1_velocity_y = player1_velocity.get_y()
                 
                 direction_angle = direction.get_angle()
 
                 if not ((player_velocity.get_x() != 0 and direction.get_x() != 0) or (player_velocity.get_y() != 0 and direction.get_y() != 0)):
                     player.set_velocity(direction)
-                    player.set_position(player.get_velocity().multiply(player.get_sprite().width / 2))
                     player.get_trail().add_point(player.get_position())
+                    # x = player.get_position().get_x()
+                    # y = player.get_position().get_y()
+
+                    # dx = player.get_velocity().get_x()
+                    # dy = player.get_velocity().get_y()
+
+                    # if dx != 0:
+                    #     if dx > 0:
+                    #         player.set_position(Point(x - (player.get_sprite().width / 2), y))
+                    #     else:
+                    #         player.set_position(Point(x - (player.get_sprite().width / 2) * -1, y))
+                    # else:
+                    #     if dy > 0:
+                    #         player.set_position(Point(x, y - (player.get_sprite().width / 2)))
+                    #     else:
+                    #         player.set_position(Point(x, y - (player.get_sprite().width / 2) * -1))
                     player.get_sprite().angle = direction_angle
         
     def _get_direction(self, game, player, key):

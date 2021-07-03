@@ -86,7 +86,7 @@ class Game(arcade.Window):
 
         self._cast["ai"] = []
 
-        for i in range(1):
+        for i in range(20):
             self._cast["ai"].append(Ai())
             self._cast["ai"][i].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
             self._cast["ai"][i].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
@@ -128,8 +128,8 @@ class Game(arcade.Window):
         self._move_actors_action.execute(self._cast, delta_time)
         self._handle_collisions_action.execute(self, self._cast)
 
-        for ai in self._cast["ai"]:
-            if randint(1, 100) == 1:
-                ai.turn()
+        # for ai in self._cast["ai"]:
+        #     if randint(1, 100) == 1:
+        #         ai.turn()
 
         self._time_elapsed += delta_time
