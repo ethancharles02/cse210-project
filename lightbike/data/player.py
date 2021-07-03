@@ -10,7 +10,7 @@ class Player(Actor):
     The Player class is used to create the players in the lightbike game
     
     Stereotype:
-        Information Holder
+        Information Holder, Service Provider
 
     Methods:
         __init__(): generates the name and initializes the parent class

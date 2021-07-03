@@ -22,27 +22,40 @@
 
 # points_to_sprites
 
-import arcade.SpriteList
+from arcade import SpriteList
 from data.point import Point
 
 class Trail:
     def __init__(self):
         self.point_list = []
-        self.sprite_list = arcade.SpriteList
+        self.sprite_list = SpriteList
 
     def get_point_list(self):
         return self.point_list
+
     def set_point_list(self, point_list):
-        pass
-    def add_new_point(self):
-        pass
+        self.point_list = point_list
+
+    def add_point(self, point):
+        self.point_list.append(point)
+    
+    def add_point_list(self, point_list):
+        for point in point_list:
+            self.add_point(point)
+
 
     def get_sprite_list(self):
         return self.sprite_list
-    def set_sprite_list(self):
-        pass
-    def add_sprite_list(self):
-        pass
+
+    def set_sprite_list(self, sprite_list):
+        self.sprite_list = sprite_list
+
+    def add_sprite(self, sprite):
+        self.sprite_list.append(sprite)
+
+    def add_sprite_list(self, sprite_list):
+        for sprite in sprite_list:
+            self.add_sprite(sprite)
 
     def points_to_sprites(self, point_list):
         pass
