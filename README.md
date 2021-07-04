@@ -28,7 +28,37 @@ root                    (project root folder)
 +-- docs                (project documentation)
 +-- lightbike           (src code files - lightbike)
   +-- assets            (program asset files)
+    +-- __init__.py
+    +-- blue_player.png
+    +-- blue_power.png
+    +-- blue_wall.png
+    +-- floor_mosaic.png
+    +-- orange_player.png
+    +-- orange_power.png
+    +-- orange_wall.png
+    +-- wall.png
   +-- data              (program data files)
+    +-- __init__.py
+    +-- action.py
+    +-- actor.py
+    +-- ai.py
+    +-- constants.py
+    +-- control_actors_action.py
+    +-- draw_actors_action.py
+    +-- game.py
+    +-- handle_collisions_action.py
+    +-- lightbike.py
+    +-- map.py
+    +-- move_actors_action.py
+    +-- output_service.py
+    +-- player.py
+    +-- point.py
+    +-- score.py
+    +-- trail.py
+  +-- tests             (program test files)
+    +-- test_actor.py
+    +-- test_player.py
+    +-- test_point.py
   +-- __init__.py       (python package file)
   +-- __main__.py       (entry point for program)
 +-- LICENSE             (license file)
