@@ -75,8 +75,8 @@ class ControlActorsAction(Action):
             # print(player.get_trail().get_sprite_list())
             game.close()
         
-        if key == arcade_key.X:
-            player.set_movement_speed(player.get_movement_speed() * 2)
+        # if key == arcade_key.X:
+        #     player.set_movement_speed(player.get_movement_speed() * 2)
         
         player_keys = player.get_keys()
         if key in player_keys:
