@@ -1,3 +1,6 @@
+"""
+The score module that will be used to display a score, it hasn't been implemented yet
+"""
 # import random
 # from data.actor import Actor
 # from data.point import Point

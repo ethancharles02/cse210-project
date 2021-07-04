@@ -10,6 +10,7 @@ class Actor:
         Information Holder
 
     Attributes:
+        _sprite (Sprite): The sprite that the actor holds
         _velocity (Point): The actor's speed and direction.
     """
 

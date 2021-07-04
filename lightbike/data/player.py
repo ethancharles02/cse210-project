@@ -15,12 +15,11 @@ class Player(Lightbike):
         Information Holder, Service Provider
 
     Methods:
-        __init__(): generates the name and initializes the parent class
-        get_name(): returns the name
-        set_name(name): sets the name
-        set_trail():sets the trail
-        get_trail():gets trail
-        dead_sprite(): hides sprite when dead and stops velocity
+        __init__(): initializes the parent class, assigns attributes
+        set_movement_speed(): Overriden method from the Lightbike class, it runs the _update_keys method in addition
+        get_keys(): Returns the keys dictionary
+        set_keys(): Sets the keys dictionary
+        _update_keys(): Updates the keys dictionary with new velocities based on the movement speed
     """
     
     def __init__(
@@ -29,7 +28,7 @@ class Player(Lightbike):
         keys = constants.DEFAULT_KEYS, 
         ):
         """
-        Class constructor, initializes private attributes for name and guess
+        Class constructor, initializes private attributes
         """
         super().__init__(movement_speed)
         self._orig_keys = keys.copy()
@@ -39,6 +38,7 @@ class Player(Lightbike):
     def set_movement_speed(self, movement_speed):
         """
         Sets the movement speed to be used for the velocity
+        Updates the keys
         """
         super().set_movement_speed(movement_speed)
         self._update_keys()
@@ -48,7 +48,7 @@ class Player(Lightbike):
         Gets the keys dictionary, it follows the format {arcade.key: Point()}
 
         Returns:
-            Dict: The keys dictionary
+            dict: The keys dictionary
         """
         return self._keys
 

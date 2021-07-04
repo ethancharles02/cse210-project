@@ -10,12 +10,35 @@ from data.point import Point
 
 class Ai(Lightbike):
     """
+    The Ai class is used to create the ai in the lightbike game
+    
+    Stereotype:
+        Information Holder, Service Provider
+
+    Methods:
+        __init__(): initializes the parent class, assigns attributes
+        check_ai_collisions(): Checks ahead of time between the ai and possible collisions, turning if they are found
+        turn(): Turns the ai in a random direction, left or right
+        set_velocity(): Sets the velocity of the ai, updating the angle of the sprite as well
     """
     def __init__(self, movement_speed = constants.MOVEMENT_SPEED, turn_cooldown = constants.AI_TURN_COOLDOWN):
+        """
+        initializes the parent class, assigns attributes
+
+        Args:
+            movement_speed (float): How fast the ai moves in pixels/second 
+            turn_cooldown (float): The amount of time it takes before the ai can turn after turning (not implemented yet)
+        """
         super().__init__(movement_speed)
         self._turn_cooldown = turn_cooldown
 
     def check_ai_collisions(self, trail_sprite_list):
+        """
+        Checks ahead of time between the ai and possible collisions, turning if they are found
+
+        Args:
+            trail_sprite_list (dict): Dictionary of sprites to check for collisions against
+        """
         aix = self.get_position().get_x()
         aiy = self.get_position().get_y()
 
@@ -47,6 +70,9 @@ class Ai(Lightbike):
             self.turn()
 
     def turn(self):
+        """
+        Turns the ai in a random direction, left or right
+        """
         self.get_trail().add_point(self.get_position())
         
         aidx = self.get_velocity().get_x()
@@ -58,5 +84,12 @@ class Ai(Lightbike):
             self.set_velocity(Point(0, random.choice([-1, 1])))
     
     def set_velocity(self, velocity):
+        """
+        Overridden from Actor parent class
+        Sets the velocity of the ai, updating the angle of the sprite as well
+
+        Args:
+            velocity (Point): The velocity of type Point
+        """
         self._sprite.angle = velocity.get_angle()
         self._velocity = velocity.multiply(self._movement_speed)

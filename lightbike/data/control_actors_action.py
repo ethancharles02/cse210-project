@@ -13,16 +13,10 @@ class ControlActorsAction(Action):
     
     Stereotype:
         Controller
-
-    Attributes:
-        _input_service (InputService): An instance of InputService.
     """
 
     def __init__(self):
         """The class constructor.
-        
-        Args:
-            input_service (InputService): An instance of InputService.
         """
         pass
 
@@ -30,7 +24,9 @@ class ControlActorsAction(Action):
         """Executes the action using the given actors.
 
         Args:
+            game (arcade.Window): The game (only used to close if the escape key is pressed)
             cast (dict): The game actors {key: tag, value: list}.
+            key (arcade.key): The current key that has been pressed
         """
 
         for player in cast["players"]:

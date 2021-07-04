@@ -13,7 +13,29 @@ from data.point import Point
 from data import constants
 
 class Lightbike(Actor):
+    """
+    The Lightbike class is used as a parent class for player and ai
+    
+    Stereotype:
+        Information Holder, Service Provider
+
+    Methods:
+        __init__(): Assigns base attributes
+        get_trail(): Returns the trail class of type Trail
+        set_trail(): Sets the trail class
+        update_trail(): Updates the trail, this is used for the actively changing trail right behind the lightbike
+        get_name(): Returns the name of the player/ai
+        set_name(): Sets the name
+        get_movement_speed(): Returns the movement speed of the bike
+        set_movement_speed(): Sets the movement speed
+        is_dead(): Returns a bool value for if the lightbike is dead
+        dead_sprite(): Sets the lightbike to dead, stopping its velocity and returning true on the is_dead method
+        check_collision(): Checks for collisions between the lightbike and a list of sprites
+    """
     def __init__(self, movement_speed = constants.MOVEMENT_SPEED):
+        """
+        The class constructor
+        """
         super().__init__()
         self._trail = Trail()
         self._name = ""
@@ -33,6 +55,9 @@ class Lightbike(Actor):
         self._trail = trail
     
     def update_trail(self):
+        """
+        Updates the trail, this is used for the actively changing trail right behind the lightbike
+        """
         if self.get_trail().get_point_list():
             self.get_trail().update_temp_list([self.get_trail().get_point_list()[-1], self.get_position()])
 
@@ -74,6 +99,12 @@ class Lightbike(Actor):
         self._movement_speed = movement_speed
     
     def is_dead(self):
+        """
+        Returns a bool value for if the lightbike is dead
+
+        Returns:
+            bool: Value for if the lightbike is dead or not
+        """
         return self._dead
 
     def dead_sprite(self):
@@ -84,6 +115,12 @@ class Lightbike(Actor):
         self.set_velocity(Point(0, 0))
 
     def check_collision(self, trail_sprite_list):
+        """
+        Checks for collisions between the lightbike and a list of sprites
+
+        Args:
+            trail_sprite_list (dict): Dictionary of sprites to check for collisions with
+        """
         for key in trail_sprite_list:
             if self._dead:
                 break

@@ -21,6 +21,7 @@ class DrawActorsAction(Action):
 
         Args:
         self (DrawActorsAction): An instance of DrawActorsAction
+        output_service (OutputService): An instance of OutputService
         """
         self._output_service = output_service
 

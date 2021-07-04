@@ -1,4 +1,6 @@
-# program entry point
+"""
+The entry point to run the lightbike game
+"""
 import arcade
 
 from data.game import Game

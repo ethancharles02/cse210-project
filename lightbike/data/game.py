@@ -42,10 +42,10 @@ class Game(arcade.Window):
         _cast (dictionary): Holds all the objects that will be displayed on the screen
         _output_service (OutputService): In charge of displaying objects
         _draw_actors_action (DrawActorsAction): Draws actors
-        _input_service (InputService): Takes inputs from the player
         _control_actors_action (ControlActorsAction): Controls the player's character based on their inputs
         _move_actors_action (MoveActorsAction): Moves each object based on their velocity
         _handle_collisions_action (HandleCollisionsAction): Handles collisions between objects
+        _time_elapsed (float): Value for how much time has passed since the start of the program in seconds
     """
 
     def __init__(self, width, height, title):
