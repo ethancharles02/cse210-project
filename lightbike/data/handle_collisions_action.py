@@ -18,16 +18,23 @@ class HandleCollisionsAction(Action):
         ai_characters = cast["ai"]
         players = cast["players"]
 
-        trail_sprite_lists = []
-        # for ai in ai_characters:
-        #     trail_sprite_lists.append(ai.get_trail().get_sprite_list())
+        trail_sprite_lists = {}
+        for ai in ai_characters:
+            trail_sprite_lists[ai] = ai.get_trail().get_sprite_list()
+            # for sprite_list in ai.get_trail().get_sprite_list():
+            #     trail_sprite_lists.append(sprite_list)
         for player in players:
-            for sprite_list in player.get_trail().get_sprite_list():
-                trail_sprite_lists.append(sprite_list)
+            trail_sprite_lists[player] = player.get_trail().get_sprite_list()
+            # for sprite_list in player.get_trail().get_sprite_list():
+            #     trail_sprite_lists.append(sprite_list)
 
+        for player in players:
+            if not player.is_dead():
+                player.check_collision(trail_sprite_lists)
         for ai in ai_characters:
             if not ai.is_dead():
                 ai.check_collision(trail_sprite_lists)
+                ai.check_ai_collisions(trail_sprite_lists)
 
         player = players[0]
         playerx = player.get_position().get_x()
@@ -38,10 +45,10 @@ class HandleCollisionsAction(Action):
         # playervy = player.get_velocity().get_y()
 
         if playery >= constants.SCREEN_HEIGHT - player.get_sprite().width / 2 or playery <= 0 + player.get_sprite().width / 2:
-            game.close()
+            player.dead_sprite()
 
         if playerx >= constants.SCREEN_WIDTH - player.get_sprite().width / 2 or playerx <= 0 + player.get_sprite().width / 2:
-            game.close()
+            player.dead_sprite()
 
         # collision = True
         # while collision:

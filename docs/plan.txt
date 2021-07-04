@@ -106,9 +106,12 @@ director (removed)
 game
 output_service
 draw_actors_action
+
 draw_trail (Week 2, turned into a method for output_service)
 update control_actors_action for 2 players(week 2, merge input_service with control_actors_action)
 score/timer (Week 2)
+Update ai set_movement_speed to update the current velocity when set
+
 
 Miguel:
 sprites (wall, player, ai(basically just player))

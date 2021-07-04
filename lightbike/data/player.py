@@ -1,11 +1,12 @@
 # from typing import KeysView
 # from arcade import key
-from data.actor import Actor
-from data.trail import Trail
+# from data.actor import Actor
+from data.lightbike import Lightbike
+# from data.trail import Trail
 from data import constants
-from data.point import Point
+# from data.point import Point
 
-class Player(Actor):
+class Player(Lightbike):
     """
     The Player class is used to create the players in the lightbike game
     
@@ -29,44 +30,48 @@ class Player(Actor):
         """
         Class constructor, initializes private attributes for name and guess
         """
-        super().__init__()
-        self._name = ""
-        self._trail = Trail()
-        self._movement_speed = movement_speed
+        super().__init__(movement_speed)
+        # self._name = ""
+        # self._trail = Trail()
+        # self._movement_speed = movement_speed
         self._orig_keys = keys.copy()
         self._keys = keys
         self._update_keys()
-        self._dead = False
+        # self._dead = False
     
-    def get_name(self):
-        """
-        Returns the player's name
-        """
-        return self._name
+    # def get_name(self):
+    #     """
+    #     Returns the player's name
+    #     """
+    #     return self._name
     
-    def set_name(self, name):
-        """
-        Sets the players name as a string
+    # def set_name(self, name):
+    #     """
+    #     Sets the players name as a string
 
-        Parameters:
-        name(str): The name to be set to the private attribute
-        """
-        self._name = str(name)
+    #     Parameters:
+    #     name(str): The name to be set to the private attribute
+    #     """
+    #     self._name = str(name)
     
-    def get_movement_speed(self):
-        """
-        Gets the movement speed
+    # def get_movement_speed(self):
+    #     """
+    #     Gets the movement speed
 
-        Returns:
-            Int: The movement speed
-        """
-        return self._movement_speed
+    #     Returns:
+    #         Int: The movement speed
+    #     """
+    #     return self._movement_speed
 
     def set_movement_speed(self, movement_speed):
         """
         Sets the movement speed to be used for the velocity
         """
-        self._movement_speed = movement_speed
+        # speed_change = movement_speed / self._movement_speed
+        # self.set_velocity(self.get_velocity().multiply(speed_change))
+
+        # self._movement_speed = movement_speed
+        super().set_movement_speed(movement_speed)
         self._update_keys()
 
     def get_keys(self):
@@ -93,28 +98,28 @@ class Player(Actor):
         for key in self._keys:
             self._keys[key] = self._orig_keys[key].multiply(self._movement_speed)
 
-    def get_trail(self):
-        """
-        gets the Trail
-        """
-        return self._trail 
+    # def get_trail(self):
+    #     """
+    #     gets the Trail
+    #     """
+    #     return self._trail 
         
-    def set_trail(self, trail):
-        """
-        Sets the variable to trail
-        """
-        self._trail = trail
+    # def set_trail(self, trail):
+    #     """
+    #     Sets the variable to trail
+    #     """
+    #     self._trail = trail
 
-    def dead_sprite(self):
-        """
-        hide and stop the player temporarily
-        """
-        self.get_sprite().scale = 0
-        self.set_velocity(Point(0, 0))
+    # def dead_sprite(self):
+    #     """
+    #     hide and stop the player temporarily
+    #     """
+    #     self.get_sprite().scale = 0
+    #     self.set_velocity(Point(0, 0))
 
-    def update_trail(self):
-        if self.get_trail().get_point_list():
-            self.get_trail().update_temp_list([self.get_trail().get_point_list()[-1], self.get_position()])
+    # def update_trail(self):
+    #     if self.get_trail().get_point_list():
+    #         self.get_trail().update_temp_list([self.get_trail().get_point_list()[-1], self.get_position()])
     
-    def is_dead(self):
-        return self._dead
+    # def is_dead(self):
+    #     return self._dead

@@ -1,4 +1,5 @@
 # from data import constants
+from arcade import color
 
 class OutputService:
     """Outputs the game state. The responsibility of the class of objects is to draw the game state on the terminal. 
@@ -19,6 +20,7 @@ class OutputService:
             for sprite_list in actor.get_trail().get_sprite_list():
                 sprite_list.draw()
         actor.get_sprite().draw()
+        # actor.get_sprite().draw_hit_box(color.WHITE)
         
         # if group == "players" or group == "ai":
         #     self._draw_trail(actor)

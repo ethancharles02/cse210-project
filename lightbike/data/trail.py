@@ -22,9 +22,9 @@
 
 # points_to_sprites
 
-from arcade import SpriteList, sprite_list
+# from arcade import SpriteList, sprite_list
 from arcade import Sprite
-from data.point import Point
+# from data.point import Point
 from data import constants
 
 class Trail:

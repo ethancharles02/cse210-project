@@ -81,18 +81,28 @@ class Game(arcade.Window):
         # texture = self._cast["players"][0].get_sprite().texture
         # self._cast["players"][0].get_sprite().texture.image.crop((0, 0, texture.width - 25, texture.height))
         # self._cast["players"][0].get_sprite().texture.image = texture.image.crop((0, 0, texture.width - 100, texture.height))
-        self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
+        self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.25))
         self._cast["players"][0].set_velocity(Point(1 * self._cast["players"][0].get_movement_speed(), 0))
         self._cast["players"][0].get_trail().add_point(self._cast["players"][0].get_position())
+
+        # Hitbox adjustment to half of the players sprite
+        orig_width = self._cast["players"][0].get_sprite().width * constants.SPRITE_SCALING**-1
+        hitbox = self._cast["players"][0].get_sprite().get_hit_box()
+        self._cast["players"][0].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 5 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
 
         self._cast["ai"] = []
 
         for i in range(1):
             self._cast["ai"].append(Ai())
             self._cast["ai"][i].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
-            self._cast["ai"][i].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
+            self._cast["ai"][i].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.75))
             self._cast["ai"][i].set_velocity(Point(1, 0))
             self._cast["ai"][i].get_trail().add_point(self._cast["ai"][i].get_position())
+
+            # Hitbox adjustment
+            orig_width = self._cast["ai"][i].get_sprite().width * constants.SPRITE_SCALING**-1
+            hitbox = self._cast["ai"][i].get_sprite().get_hit_box()
+            self._cast["ai"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 5 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
 
         # test_sprite_list = arcade.SpriteList()
         # test_sprite_list.append(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))

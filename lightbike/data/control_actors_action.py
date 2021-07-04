@@ -1,5 +1,6 @@
 import math
-from arcade import key
+from arcade import key as arcade_key
+import arcade
 from data import constants
 from data.action import Action
 from data.point import Point
@@ -32,16 +33,17 @@ class ControlActorsAction(Action):
 
         for player in cast["players"]:
             direction = self._get_direction(game, player, key)
+            if not player.is_dead():
 
-            # checks if a direction was returned since it will return None if invalid key
-            if direction:
-                player_velocity = player.get_velocity()
-                
-                direction_angle = direction.get_angle()
+                # checks if a direction was returned since it will return None if invalid key
+                if direction:
+                    player_velocity = player.get_velocity()
+                    
+                    direction_angle = direction.get_angle()
 
-                if not ((player_velocity.get_x() != 0 and direction.get_x() != 0) or (player_velocity.get_y() != 0 and direction.get_y() != 0)):
-                    player.set_velocity(direction)
-                    player.get_trail().add_point(player.get_position())
+                    if not ((player_velocity.get_x() != 0 and direction.get_x() != 0) or (player_velocity.get_y() != 0 and direction.get_y() != 0)):
+                        player.set_velocity(direction)
+                        player.get_trail().add_point(player.get_position())
                     # x = player.get_position().get_x()
                     # y = player.get_position().get_y()
 
@@ -58,7 +60,7 @@ class ControlActorsAction(Action):
                     #         player.set_position(Point(x, y - (player.get_sprite().width / 2)))
                     #     else:
                     #         player.set_position(Point(x, y - (player.get_sprite().width / 2) * -1))
-                    player.get_sprite().angle = direction_angle
+                        player.get_sprite().angle = direction_angle
         
     def _get_direction(self, game, player, key):
         """Gets the selected direction for the given player.
@@ -70,8 +72,11 @@ class ControlActorsAction(Action):
 
         # direction = Point(0, 0)
         if key == 65307:
-            print(player.get_trail().get_sprite_list())
+            # print(player.get_trail().get_sprite_list())
             game.close()
+        
+        if key == arcade_key.X:
+            player.set_movement_speed(player.get_movement_speed() * 2)
         
         player_keys = player.get_keys()
         if key in player_keys:
