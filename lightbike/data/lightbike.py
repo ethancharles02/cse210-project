@@ -1,3 +1,5 @@
+"""
+"""
 from math import sin, cos, radians
 from arcade import sprite
 from data.actor import Actor
@@ -9,19 +11,9 @@ class Lightbike(Actor):
     def __init__(self, movement_speed = constants.MOVEMENT_SPEED):
         super().__init__()
         self._trail = Trail()
-        # self._trail = Trail()
         self._name = ""
-        # self._name = ""
         self._movement_speed = movement_speed
-        # self._movement_speed = movement_speed
         self._dead = False
-        
-        # self._dead = False
-
-        # self._turn_cooldown = turn_cooldown
-        # self._orig_keys = keys.copy()
-        # self._keys = keys
-        # self._update_keys()
 
     def get_trail(self):
         """
@@ -87,29 +79,6 @@ class Lightbike(Actor):
         self.set_velocity(Point(0, 0))
 
     def check_collision(self, trail_sprite_list):
-        hitbox = self._sprite.get_hit_box()
-        # print(self._sprite.width)
-        # print((hitbox[0], *hitbox[1:]))
-
-        # self._sprite.set_hit_box()
-        # self._sprite.set_hit_box()
-        # orig_position = self.get_position()
-
-        # x = self.get_position().get_x()
-        # y = self.get_position().get_y()
-        # dx = self.get_velocity().get_x()
-        # dy = self.get_velocity().get_y()
-
-        # # Moves the hitbox of the bike up to the front half
-        # if dx > 0:
-        #     self.set_position(Point(x + self._sprite.width / 2, y))
-        # elif dx < 0:
-        #     self.set_position()
-        # elif dy > 0:
-        #     self.set_position()
-        # else:
-        #     self.set_position()
-
         for key in trail_sprite_list:
             if self._dead:
                 break

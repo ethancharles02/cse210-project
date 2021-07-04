@@ -1,3 +1,5 @@
+"""
+"""
 from data.action import Action
 
 class DrawActorsAction(Action):

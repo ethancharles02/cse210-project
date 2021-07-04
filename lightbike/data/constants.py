@@ -1,3 +1,5 @@
+"""
+"""
 from arcade import color
 
 from arcade import key

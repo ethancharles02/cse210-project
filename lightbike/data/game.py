@@ -1,3 +1,5 @@
+"""
+"""
 # from time import *
 # import math
 
@@ -53,7 +55,6 @@ class Game(arcade.Window):
         self._output_service = OutputService()
         self._draw_actors_action = DrawActorsAction(self._output_service)
 
-        # self._input_service = InputService()
         self._control_actors_action = ControlActorsAction()
 
         self._move_actors_action = MoveActorsAction()
@@ -68,19 +69,7 @@ class Game(arcade.Window):
         
         self._cast["players"] = []
         self._cast["players"].append(Player())
-
-        # player2_keys = {
-        #     arcade.key.LEFT: Point(-1, 0),
-        #     arcade.key.RIGHT: Point(1, 0),
-        #     arcade.key.UP: Point(0, 1),
-        #     arcade.key.DOWN: Point(0, -1)
-        # }
-        # self._cast["players"].append(Player(keys=player2_keys))
-        
         self._cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
-        # texture = self._cast["players"][0].get_sprite().texture
-        # self._cast["players"][0].get_sprite().texture.image.crop((0, 0, texture.width - 25, texture.height))
-        # self._cast["players"][0].get_sprite().texture.image = texture.image.crop((0, 0, texture.width - 100, texture.height))
         self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.25))
         self._cast["players"][0].set_velocity(Point(1 * self._cast["players"][0].get_movement_speed(), 0))
         self._cast["players"][0].get_trail().add_point(self._cast["players"][0].get_position())
@@ -90,6 +79,14 @@ class Game(arcade.Window):
         hitbox = self._cast["players"][0].get_sprite().get_hit_box()
         self._cast["players"][0].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 5 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
 
+        # player2_keys = {
+        #     arcade.key.LEFT: Point(-1, 0),
+        #     arcade.key.RIGHT: Point(1, 0),
+        #     arcade.key.UP: Point(0, 1),
+        #     arcade.key.DOWN: Point(0, -1)
+        # }
+        # self._cast["players"].append(Player(keys=player2_keys))
+        
         self._cast["ai"] = []
 
         for i in range(1):
@@ -103,15 +100,6 @@ class Game(arcade.Window):
             orig_width = self._cast["ai"][i].get_sprite().width * constants.SPRITE_SCALING**-1
             hitbox = self._cast["ai"][i].get_sprite().get_hit_box()
             self._cast["ai"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 5 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
-
-        # test_sprite_list = arcade.SpriteList()
-        # test_sprite_list.append(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
-        # test_sprite_list.append(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
-        # if test_sprite_list:
-        #     print("has sprites")
-
-        # self._cast["players"][1].set_sprite(arcade.Sprite("assets/blue_player_resized.png", constants.SPRITE_SCALING))
-        # self._cast["players"][1].set_position(Point(constants.SCREEN_WIDTH / 2 + 20, constants.SCREEN_HEIGHT / 2 + 20))
         
         arcade.set_background_color(constants.BACKGROUND_COLOR)
 
