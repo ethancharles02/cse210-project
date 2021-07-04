@@ -1,4 +1,6 @@
 """
+The player modules contains the Player class that creates the players in the game and functions 
+that help set the movement speed and sets the key dicitonary
 """
 # from arcade import key
 # from data.actor import Actor

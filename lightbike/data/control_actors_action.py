@@ -1,4 +1,6 @@
 """
+The control actions action contains the class and functions that get the direction of 
+the actor and also will close the game if the escape key is pressed
 """
 import math
 from arcade import key as arcade_key

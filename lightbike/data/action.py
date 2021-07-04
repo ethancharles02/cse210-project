@@ -1,4 +1,5 @@
 """
+The Action module contains the action class and the execute funciton
 """
 class Action:
     """A code template for a thing done in a game. The responsibility of 

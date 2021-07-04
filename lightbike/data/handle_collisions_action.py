@@ -1,3 +1,6 @@
+"""
+The handle collisions action module contains the class and functions that detects when the actos collide with the walls or the trail
+"""
 from data import constants
 from data.action import Action
 # from data.point import Point

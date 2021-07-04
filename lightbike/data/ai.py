@@ -1,4 +1,6 @@
 """
+The AI module contains the class and functions used to simulate a player with artificial intelligence
+so that a player only chosing to play by themselves has an opponent
 """
 
 import random

@@ -1,4 +1,5 @@
 """
+The draw actors action module contains the class and function to draw the actors on the screen.
 """
 from data.action import Action
 

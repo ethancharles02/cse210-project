@@ -1,3 +1,7 @@
+"""
+The point module helps with rotating the light bike when the appropriate key is pressed.
+"""
+
 from math import degrees, atan2
 class Point:
     """Represents distance from an origin (0, 0).

@@ -1,3 +1,7 @@
+"""
+The move actors action module contains the class and functions that move the actor
+"""
+
 # from data import constants
 from data.action import Action
 from data.point import Point

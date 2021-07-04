@@ -1,3 +1,7 @@
+"""
+The actor module contains the Actor class which help display the sprite and help it move
+"""
+
 # from data import constants
 from data.point import Point
 # from arcade import Sprite
