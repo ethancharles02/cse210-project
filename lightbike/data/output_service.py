@@ -1,4 +1,5 @@
 """
+The output_service module draws all of the objects on the screen
 """
 # from data import constants
 from arcade import color

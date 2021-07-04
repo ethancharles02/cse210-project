@@ -1,4 +1,9 @@
 """
+The lightbike module is a parent module to player and ai. It
+holds the methods that are the same between them, most important of which,
+is the trail. 
+
+It is also in charge of checking collisions between the bike and other objects
 """
 from math import sin, cos, radians
 from arcade import sprite

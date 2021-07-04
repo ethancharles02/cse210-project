@@ -1,4 +1,6 @@
 """
+The trail module holds the information for trails (points and sprites).
+It also provides methods for converting points into sprites.
 """
 # from arcade import SpriteList, sprite_list
 from arcade import Sprite

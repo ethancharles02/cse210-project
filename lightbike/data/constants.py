@@ -1,4 +1,5 @@
 """
+The constants module holds global variables for the lightbike game
 """
 from arcade import color
 

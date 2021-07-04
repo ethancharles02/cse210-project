@@ -1,4 +1,7 @@
 """
+The game module combines all of the modules to create the 
+frame of the game, deciding where everything goes. It comes 
+from arcade.Window and overrides methods to draw the game, update it, etc.
 """
 # from time import *
 # import math
