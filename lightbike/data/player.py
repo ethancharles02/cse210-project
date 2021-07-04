@@ -36,6 +36,7 @@ class Player(Actor):
         self._orig_keys = keys.copy()
         self._keys = keys
         self._update_keys()
+        self._dead = False
     
     def get_name(self):
         """
@@ -113,4 +114,7 @@ class Player(Actor):
 
     def update_trail(self):
         if self.get_trail().get_point_list():
-            self.get_trail().update([self.get_trail().get_point_list()[-1], self.get_position()])
+            self.get_trail().update_temp_list([self.get_trail().get_point_list()[-1], self.get_position()])
+    
+    def is_dead(self):
+        return self._dead

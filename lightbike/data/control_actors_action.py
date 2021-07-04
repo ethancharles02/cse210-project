@@ -70,6 +70,7 @@ class ControlActorsAction(Action):
 
         # direction = Point(0, 0)
         if key == 65307:
+            print(player.get_trail().get_sprite_list())
             game.close()
         
         player_keys = player.get_keys()

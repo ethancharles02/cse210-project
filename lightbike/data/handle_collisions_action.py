@@ -26,7 +26,8 @@ class HandleCollisionsAction(Action):
                 trail_sprite_lists.append(sprite_list)
 
         for ai in ai_characters:
-            ai.check_collision(trail_sprite_lists)
+            if not ai.is_dead():
+                ai.check_collision(trail_sprite_lists)
 
         player = players[0]
         playerx = player.get_position().get_x()

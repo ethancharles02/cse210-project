@@ -130,8 +130,9 @@ class Game(arcade.Window):
         self._move_actors_action.execute(self._cast, delta_time)
         self._handle_collisions_action.execute(self, self._cast)
 
-        # for ai in self._cast["ai"]:
-        #     if randint(1, 100) == 1:
-        #         ai.turn()
+        for ai in self._cast["ai"]:
+            if not ai.is_dead():
+                if randint(1, 100) == 1:
+                    ai.turn()
 
         self._time_elapsed += delta_time

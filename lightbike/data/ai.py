@@ -25,39 +25,52 @@ from data.point import Point
 class Ai(Actor):
     """
     """
-    def __init__(self, movement_speed = constants.MOVEMENT_SPEED):
+    def __init__(self, movement_speed = constants.MOVEMENT_SPEED, turn_cooldown = constants.AI_TURN_COOLDOWN):
         super().__init__()
         self._trail = Trail()
         self._name = ""
         self._movement_speed = movement_speed
+        self._turn_cooldown = turn_cooldown
+        self._dead = False
 
-    def check_collision(self, trail_sprite_lists):
+    def check_collision(self, trail_sprite_list):
         aix = self.get_position().get_x()
         aiy = self.get_position().get_y()
-        aidx = self.get_velocity().get_x()
-        aidy = self.get_velocity().get_y()
+
+        aidx = self.get_velocity().get_x() * 0.3
+        aidy = self.get_velocity().get_y() * 0.3
 
 
         if aix + aidx >= constants.SCREEN_WIDTH or aix + aidx < 0:
             self.turn()
         elif aiy + aidy >= constants.SCREEN_HEIGHT or aiy + aidy < 0:
             self.turn()
-        self._sprite.center_x += aidx
-        self._sprite.center_y += aidy
 
-        found_collision = False
-        for trail_sprite_list in trail_sprite_lists:
-            # print(self._sprite.collides_with_list(trail_sprite_list))
-            if self._sprite.collides_with_list(trail_sprite_list):
-                found_collision = True
-                self._sprite.center_x -= aidx
-                self._sprite.center_y -= aidy
-                self.turn()
+        collision = False
+        for sprite in trail_sprite_list:
+            if self._sprite.collides_with_sprite(sprite):
+                collision = True
+                self._dead = True
+                self.dead_sprite()
                 break
         
-        if not found_collision:
-            self._sprite.center_x -= aidx
-            self._sprite.center_y -= aidy
+        if not collision:
+            self._sprite.center_x += aidx
+            self._sprite.center_y += aidy
+
+            on_collision_course = False
+            for sprite in trail_sprite_list:
+                # print(self._sprite.collides_with_list(trail_sprite_list))
+                if self._sprite.collides_with_sprite(sprite):
+                    on_collision_course = True
+                    self._sprite.center_x -= aidx
+                    self._sprite.center_y -= aidy
+                    self.turn()
+                    break
+            
+            if not on_collision_course:
+                self._sprite.center_x -= aidx
+                self._sprite.center_y -= aidy
 
     def turn(self):
         self.get_trail().add_point(self.get_position())
@@ -121,4 +134,7 @@ class Ai(Actor):
     
     def update_trail(self):
         if self.get_trail().get_point_list():
-            self.get_trail().update([self.get_trail().get_point_list()[-1], self.get_position()])
+            self.get_trail().update_temp_list([self.get_trail().get_point_list()[-1], self.get_position()])
+    
+    def is_dead(self):
+        return self._dead
