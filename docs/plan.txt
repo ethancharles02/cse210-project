@@ -77,9 +77,10 @@ module docstrings
 
 Week 3 (Release):
 General improvements
-Draw Sprites
+Resize sprites to actual size? (they are currently 3 times too large)
 Two Player
-Maps?
+Maps
+Sounds
 
 Week 4 (Stable):
 General improvements
