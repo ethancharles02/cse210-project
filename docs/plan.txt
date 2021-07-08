@@ -90,7 +90,6 @@ Sounds (Hunter and Avery)
     General background (music)
 Tests:
     trail (Miguel)
-    point (get_angle, multiply) (Hunter)
     player (Avery)
     lightbike (Rich)
     ai (Ethan)
