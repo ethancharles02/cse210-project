@@ -32,8 +32,8 @@ class Ai(Lightbike):
             turn_cooldown (float): The amount of time it takes before the ai can turn after turning (not implemented yet)
         """
         super().__init__(movement_speed)
-        self._turn_cooldown = turn_cooldown
-        self._cur_turn_cooldown = 0
+        self.turn_cooldown = turn_cooldown
+        self.cur_turn_cooldown = 0
 
     def check_ai_collisions(self, trail_sprite_list):
         """
@@ -78,7 +78,7 @@ class Ai(Lightbike):
         """
         Turns the ai in a random direction, left or right
         """
-        if self._cur_turn_cooldown <= 0:
+        if self.cur_turn_cooldown <= 0:
             self.get_trail().add_point(self.get_position())
             
             aidx = self.get_velocity()[0]
@@ -89,7 +89,7 @@ class Ai(Lightbike):
             elif aidy == 0:
                 self.set_velocity((0, random.choice([-1, 1])))
 
-            self._cur_turn_cooldown = self._turn_cooldown
+            self.cur_turn_cooldown = self.turn_cooldown
     
     def set_velocity(self, velocity):
         """
@@ -106,4 +106,4 @@ class Ai(Lightbike):
         """
         Updates the ai turn cooldown. This will countdown until it becomes 0 or less than zero which will then allow the ai to turn
         """
-        self._cur_turn_cooldown -= delta_time
+        self.cur_turn_cooldown -= delta_time
