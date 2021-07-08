@@ -124,8 +124,12 @@ class Lightbike(Actor):
         for key in trail_sprite_list:
             if self._dead:
                 break
-            for sprite in trail_sprite_list[key]:
-                if self._sprite.collides_with_sprite(sprite):
-                    self._dead = True
-                    self.dead_sprite()
-                    break
+            if self._sprite.collides_with_list(trail_sprite_list[key]):
+                self._dead = True
+                self.dead_sprite()
+                break
+            # for sprite in trail_sprite_list[key]:
+            #     if self._sprite.collides_with_sprite(sprite):
+            #         self._dead = True
+            #         self.dead_sprite()
+            #         break

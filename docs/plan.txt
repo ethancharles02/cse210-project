@@ -83,6 +83,7 @@ Miguel Sprites:
     Create 6 total version (full border, one side missing, two corner sides missing, 3 sides missing, all sides missing, 2 opposite sides missing)
 Convert wall lists into spritelists, (use_spatial_hash and is_static for non-moving objects) (Ethan)
 Two Player (Ethan)
+Fix ai collision (Ethan)
 Maps (Rich and Ethan)
 Sounds (Hunter and Avery)
     Collision with walls

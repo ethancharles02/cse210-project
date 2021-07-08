@@ -2,7 +2,7 @@
 The trail module holds the information for trails (points and sprites).
 It also provides methods for converting points into sprites.
 """
-# from arcade import SpriteList, sprite_list
+from arcade import SpriteList
 from arcade import Sprite
 # from data.point import Point
 from data import constants
@@ -31,7 +31,7 @@ class Trail:
         """The class constructor
         """
         self._point_list = []
-        self._sprite_list = []
+        self._sprite_list = SpriteList(use_spatial_hash=True, is_static=True)
         self._sprite_image = "assets/blue_wall.png"
         self._sprite_width = Sprite(self._sprite_image, constants.SPRITE_SCALING).width
         self._sprite_height = Sprite(self._sprite_image, constants.SPRITE_SCALING).height
@@ -81,7 +81,7 @@ class Trail:
         Returns the sprite list
 
         Returns:
-            list: A list of sprites of type Sprite from the arcade module
+            SpriteList: A list of sprites of type Sprite from the arcade module
         """
         return self._sprite_list
 
@@ -90,7 +90,7 @@ class Trail:
         Sets the sprite list
 
         Args:
-            sprite_list (list): A list of sprites of type Sprite from the arcade module
+            sprite_list (SpriteList): A list of sprites of type Sprite from the arcade module
         """
         self._sprite_list = sprite_list
 
