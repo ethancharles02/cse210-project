@@ -29,7 +29,7 @@ class Lightbike(Actor):
         get_movement_speed(): Returns the movement speed of the bike
         set_movement_speed(): Sets the movement speed
         is_dead(): Returns a bool value for if the lightbike is dead
-        dead_sprite(): Sets the lightbike to dead, stopping its velocity and returning true on the is_dead method
+        kill(): Sets the lightbike to dead, stopping its velocity and returning true on the is_dead method
         check_collision(): Checks for collisions between the lightbike and a list of sprites
     """
     def __init__(self, movement_speed = constants.MOVEMENT_SPEED):
