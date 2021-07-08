@@ -40,4 +40,4 @@ def test_set_velocity():
     assert actor.get_velocity().get_x() == 5
     assert actor.get_velocity().get_y() == 5
 
-# pytest.main(["-v", "--tb=no", "test_actor.py"])
+pytest.main(["-v", "--tb=no", "test_actor.py"])

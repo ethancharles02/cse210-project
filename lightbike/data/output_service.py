@@ -22,7 +22,7 @@ class OutputService:
             for sprite_list in actor.get_trail().get_sprite_list():
                 sprite_list.draw()
         actor.get_sprite().draw()
-        # actor.get_sprite().draw_hit_box(color.WHITE)
+        actor.get_sprite().draw_hit_box(color.WHITE)
 
     def draw_actors(self, actors, group=""):
         """Renders the given list of actors on the screen.

@@ -13,4 +13,4 @@ def test_set_name():
 
     assert player.get_name() == "Player2"
 
-# pytest.main(["-v", "--tb=no", "test_lightbike.py"])
+pytest.main(["-v", "--tb=no", "test_lightbike.py"])

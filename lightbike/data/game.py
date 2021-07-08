@@ -80,6 +80,7 @@ class Game(arcade.Window):
         # Hitbox adjustment to half of the players sprite
         orig_width = self._cast["players"][0].get_sprite().width * constants.SPRITE_SCALING**-1
         hitbox = self._cast["players"][0].get_sprite().get_hit_box()
+        # print(hitbox)
         self._cast["players"][0].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 5 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
 
         # player2_keys = {

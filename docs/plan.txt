@@ -77,16 +77,28 @@ module docstrings
 
 Week 3 (Release):
 General improvements
-Resize sprites to actual size? (they are currently 3 times too large)
-Convert wall lists into spritelists, (use_spatial_hash and is_static for non-moving objects)
-Two Player
-Maps
-Sounds
+Miguel Sprites:
+    Resize sprites to actual size? (they are currently 3 times too large)
+    Resize wall.png to a square (40px sides)
+    Create 6 total version (full border, one side missing, two corner sides missing, 3 sides missing, all sides missing, 2 opposite sides missing)
+Convert wall lists into spritelists, (use_spatial_hash and is_static for non-moving objects) (Ethan)
+Two Player (Ethan)
+Maps (Rich and Ethan)
+Sounds (Hunter and Avery)
+    Collision with walls
+    General background (music)
+Tests:
+    trail (Miguel)
+    point (get_angle, multiply) (Hunter)
+    player (Avery)
+    lightbike (Rich)
+    ai (Ethan)
 
 Week 4 (Stable):
 General improvements
 Bugtesting
 Main menu
+Particle effects on collision?
 Powerups?
 
 

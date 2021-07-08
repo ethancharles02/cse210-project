@@ -29,4 +29,4 @@ def test_add_xy():
     assert add_xy.add(Point(1, 1)).get_y() == 2
     
 
-# pytest.main(["-v", "--tb=no", "test_point.py"])
+pytest.main(["-v", "--tb=no", "test_point.py"])
