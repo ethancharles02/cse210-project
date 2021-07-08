@@ -111,7 +111,7 @@ class Trail:
             point_list (list): The list of points to convert (restricted to two points)
         """
         if self._temp_list:
-            del self._sprite_list[-1]
+            self._sprite_list.pop()
             self._temp_list = False
 
         point_x = point_list[0].get_x()

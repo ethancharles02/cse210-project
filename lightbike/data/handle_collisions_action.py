@@ -32,10 +32,12 @@ class HandleCollisionsAction(Action):
 
         for player in players:
             if not player.is_dead():
-                player.check_collision(trail_sprite_lists)
+                if player.check_collision(trail_sprite_lists):
+                    player.kill()
         for ai in ai_characters:
             if not ai.is_dead():
-                ai.check_collision(trail_sprite_lists)
+                if ai.check_collision(trail_sprite_lists):
+                    ai.kill()
                 ai.check_ai_collisions(trail_sprite_lists)
 
         player = players[0]

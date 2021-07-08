@@ -107,10 +107,11 @@ class Lightbike(Actor):
         """
         return self._dead
 
-    def dead_sprite(self):
+    def kill(self):
         """
         hide and stop the player temporarily
         """
+        self._dead = True
         self.get_sprite().scale = 0
         self.set_velocity(Point(0, 0))
 
@@ -122,12 +123,12 @@ class Lightbike(Actor):
             trail_sprite_list (dict): Dictionary of sprites to check for collisions with
         """
         for key in trail_sprite_list:
-            if self._dead:
-                break
+            # if self._dead:
+            #     break
             if self._sprite.collides_with_list(trail_sprite_list[key]):
-                self._dead = True
-                self.dead_sprite()
-                break
+                # self._dead = True
+                # self.dead_sprite()
+                return True
             # for sprite in trail_sprite_list[key]:
             #     if self._sprite.collides_with_sprite(sprite):
             #         self._dead = True
