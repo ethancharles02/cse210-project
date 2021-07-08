@@ -6,10 +6,8 @@ is the trail.
 It is also in charge of checking collisions between the bike and other objects
 """
 from math import sin, cos, radians
-from arcade import sprite
 from data.actor import Actor
 from data.trail import Trail
-from data.point import Point
 from data import constants
 
 class Lightbike(Actor):
@@ -91,10 +89,10 @@ class Lightbike(Actor):
         """
         if self._movement_speed != 0:
             speed_change = movement_speed / self._movement_speed
-            self.set_velocity(self.get_velocity().multiply(speed_change))
+            self.set_velocity((self.get_velocity()[0] * speed_change, self.get_velocity()[1] * speed_change))
         else:
             angle = radians(self._sprite.angle)
-            self.set_velocity(Point(cos(angle), sin(angle)).multiply(movement_speed))
+            self.set_velocity((cos(angle) * movement_speed, sin(angle) * movement_speed))
 
         self._movement_speed = movement_speed
     
@@ -113,24 +111,42 @@ class Lightbike(Actor):
         """
         self._dead = True
         self.get_sprite().scale = 0
-        self.set_velocity(Point(0, 0))
+        self.get_sprite().width = 0
+        self.set_velocity((0, 0))
 
-    def check_collision(self, trail_sprite_list):
+    def check_collision(self, trail_sprite_list={}):
         """
         Checks for collisions between the lightbike and a list of sprites
 
         Args:
             trail_sprite_list (dict): Dictionary of sprites to check for collisions with
         """
-        for key in trail_sprite_list:
-            # if self._dead:
-            #     break
-            if self._sprite.collides_with_list(trail_sprite_list[key]):
-                # self._dead = True
-                # self.dead_sprite()
-                return True
-            # for sprite in trail_sprite_list[key]:
-            #     if self._sprite.collides_with_sprite(sprite):
-            #         self._dead = True
-            #         self.dead_sprite()
-            #         break
+        x = self.get_position()[0]
+        y = self.get_position()[1]
+
+        if y >= constants.SCREEN_HEIGHT - self._sprite.width / 2 or y <= 0 + self._sprite.width / 2:
+            return True
+
+        elif x >= constants.SCREEN_WIDTH - self._sprite.width / 2 or x <= 0 + self._sprite.width / 2:
+            return True
+
+        else:
+            for key in trail_sprite_list:
+                # if self._dead:
+                #     break
+                # collision_list = self._sprite.collides_with_list(trail_sprite_list[key])
+                # if self._name == "player":
+                #     if collision_list != []:
+                #         print(collision_list[0].width)
+                if self._sprite.collides_with_list(trail_sprite_list[key]):
+                    # self._dead = True
+                    # self.dead_sprite()
+                    # if self._name == "player":
+                    #     print("test")
+                    return True
+
+                # for sprite in trail_sprite_list[key]:
+                #     if self._sprite.collides_with_sprite(sprite):
+                #         self._dead = True
+                #         self.dead_sprite()
+                #         break

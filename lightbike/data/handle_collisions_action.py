@@ -3,7 +3,6 @@ The handle collisions action module contains the class and functions that detect
 """
 from data import constants
 from data.action import Action
-# from data.point import Point
 
 class HandleCollisionsAction(Action):
     """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
@@ -12,7 +11,7 @@ class HandleCollisionsAction(Action):
         Controller
     """
 
-    def execute(self, game, cast):
+    def execute(self, cast):
         """Executes the action using the given actors.
 
         Args:
@@ -29,6 +28,7 @@ class HandleCollisionsAction(Action):
         for ai in ai_characters:
             trail_sprite_lists[ai] = ai.get_trail().get_sprite_list()
 
+        # print(trail_sprite_lists)
 
         for player in players:
             if not player.is_dead():
@@ -38,14 +38,5 @@ class HandleCollisionsAction(Action):
             if not ai.is_dead():
                 if ai.check_collision(trail_sprite_lists):
                     ai.kill()
-                ai.check_ai_collisions(trail_sprite_lists)
-
-        player = players[0]
-        playerx = player.get_position().get_x()
-        playery = player.get_position().get_y()
-
-        if playery >= constants.SCREEN_HEIGHT - player.get_sprite().width / 2 or playery <= 0 + player.get_sprite().width / 2:
-            player.dead_sprite()
-
-        if playerx >= constants.SCREEN_WIDTH - player.get_sprite().width / 2 or playerx <= 0 + player.get_sprite().width / 2:
-            player.dead_sprite()
+                else:
+                    ai.check_ai_collisions(trail_sprite_lists)

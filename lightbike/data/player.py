@@ -7,7 +7,6 @@ that help set the movement speed and sets the key dicitonary
 from data.lightbike import Lightbike
 # from data.trail import Trail
 from data import constants
-# from data.point import Point
 
 class Player(Lightbike):
     """
@@ -33,8 +32,8 @@ class Player(Lightbike):
         Class constructor, initializes private attributes
         """
         super().__init__(movement_speed)
-        self._orig_keys = keys.copy()
-        self._keys = keys
+        self._orig_keys = keys
+        self._keys = keys.copy()
         self._update_keys()
 
     def set_movement_speed(self, movement_speed):
@@ -67,4 +66,4 @@ class Player(Lightbike):
         Updates the corresponding velocities within each key point for the movement speed
         """
         for key in self._keys:
-            self._keys[key] = self._orig_keys[key].multiply(self._movement_speed)
+            self._keys[key] = (self._orig_keys[key][0] * self._movement_speed, self._orig_keys[key][1] * self._movement_speed)

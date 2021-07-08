@@ -21,7 +21,6 @@ import arcade
 import os
 from random import randint
 from data import constants
-from data.point import Point
 from data.control_actors_action import ControlActorsAction
 from data.draw_actors_action import DrawActorsAction
 from data.handle_collisions_action import HandleCollisionsAction
@@ -70,41 +69,60 @@ class Game(arcade.Window):
         Set up the game and initialize the variables.
         """
         
-        self._cast["players"] = []
-        self._cast["players"].append(Player())
-        self._cast["players"][0].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
-        self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.25))
-        self._cast["players"][0].set_velocity(Point(1 * self._cast["players"][0].get_movement_speed(), 0))
-        self._cast["players"][0].get_trail().add_point(self._cast["players"][0].get_position())
-
-        # Hitbox adjustment to half of the players sprite
-        orig_width = self._cast["players"][0].get_sprite().width * constants.SPRITE_SCALING**-1
-        hitbox = self._cast["players"][0].get_sprite().get_hit_box()
-        # print(hitbox)
-        self._cast["players"][0].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 5 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
-
         # player2_keys = {
-        #     arcade.key.LEFT: Point(-1, 0),
-        #     arcade.key.RIGHT: Point(1, 0),
-        #     arcade.key.UP: Point(0, 1),
-        #     arcade.key.DOWN: Point(0, -1)
+        #     arcade.key.LEFT: (-1, 0),
+        #     arcade.key.RIGHT: (1, 0),
+        #     arcade.key.UP: (0, 1),
+        #     arcade.key.DOWN: (0, -1)
         # }
+
+        self._cast["players"] = []
+        for i in range(1):
+            # if i == 1:
+            #     self._cast["players"].append(Player(keys=player2_keys))
+            # else:
+            self._cast["players"].append(Player())
+            self._cast["players"][i].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
+            # self._cast["players"][i].set_name("player")
+            # self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.25))
+            self._cast["players"][i].set_velocity((0, 1 * self._cast["players"][i].get_movement_speed()))
+
+            # Hitbox adjustment to half of the players sprite
+            orig_width = self._cast["players"][i].get_sprite().width * constants.SPRITE_SCALING**-1
+            hitbox = self._cast["players"][i].get_sprite().get_hit_box()
+            # print(hitbox)
+            self._cast["players"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 2 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
+
         # self._cast["players"].append(Player(keys=player2_keys))
         
+        screen_dx = constants.SCREEN_WIDTH / (len(self._cast["players"]) + 1)
+        i = 0
+        for player in self._cast["players"]:
+            player.set_position((screen_dx * (i + 1), constants.SCREEN_HEIGHT * 0.05))
+            player.get_trail().add_point(player.get_position())
+            i += 1
+
         self._cast["ai"] = []
 
-        for i in range(1):
+        for i in range(10):
             self._cast["ai"].append(Ai())
             self._cast["ai"][i].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
-            self._cast["ai"][i].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.75))
-            self._cast["ai"][i].set_velocity(Point(1, 0))
-            self._cast["ai"][i].get_trail().add_point(self._cast["ai"][i].get_position())
+            # self._cast["ai"][i].set_position((constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.75))
+            self._cast["ai"][i].set_velocity((0, -1))
+            # self._cast["ai"][i].get_trail().add_point(self._cast["ai"][i].get_position())
 
             # Hitbox adjustment
             orig_width = self._cast["ai"][i].get_sprite().width * constants.SPRITE_SCALING**-1
             hitbox = self._cast["ai"][i].get_sprite().get_hit_box()
-            self._cast["ai"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 5 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
+            self._cast["ai"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 2 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
         
+        screen_dx = constants.SCREEN_WIDTH / (len(self._cast["ai"]) + 1)
+        i = 0
+        for ai in self._cast["ai"]:
+            ai.set_position((screen_dx * (i + 1), constants.SCREEN_HEIGHT * 0.95))
+            ai.get_trail().add_point(ai.get_position())
+            i += 1
+
         arcade.set_background_color(constants.BACKGROUND_COLOR)
 
     def on_draw(self):
@@ -130,11 +148,14 @@ class Game(arcade.Window):
         """
 
         self._move_actors_action.execute(self._cast, delta_time)
-        self._handle_collisions_action.execute(self, self._cast)
 
         for ai in self._cast["ai"]:
             if not ai.is_dead():
+                ai.update_cooldown(delta_time)
                 if randint(1, 100) == 1:
                     ai.turn()
+                    
+        self._handle_collisions_action.execute(self._cast)
 
+        # self._time_elapsed = delta_time ** -1
         self._time_elapsed += delta_time

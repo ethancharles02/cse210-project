@@ -96,7 +96,7 @@ Tests:
     ai (Ethan)
 
 Week 4 (Stable):
-General improvements
+General improvements (optimizations)
 Bugtesting
 Main menu
 Particle effects on collision?

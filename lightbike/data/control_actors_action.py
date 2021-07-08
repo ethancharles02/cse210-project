@@ -7,7 +7,6 @@ from arcade import key as arcade_key
 import arcade
 from data import constants
 from data.action import Action
-from data.point import Point
 
 class ControlActorsAction(Action):
     """A code template for controlling actors. The responsibility of this
@@ -39,12 +38,12 @@ class ControlActorsAction(Action):
                 if direction:
                     player_velocity = player.get_velocity()
                     
-                    direction_angle = direction.get_angle()
+                    # direction_angle = direction.get_angle()
 
-                    if not ((player_velocity.get_x() != 0 and direction.get_x() != 0) or (player_velocity.get_y() != 0 and direction.get_y() != 0)):
+                    if not ((player_velocity[0] != 0 and direction[0] != 0) or (player_velocity[1] != 0 and direction[1] != 0)):
                         player.set_velocity(direction)
                         player.get_trail().add_point(player.get_position())
-                        player.get_sprite().angle = direction_angle
+                        # player.get_sprite().angle = direction_angle
         
     def _get_direction(self, game, player, key):
         """Gets the selected direction for the given player.
@@ -61,6 +60,7 @@ class ControlActorsAction(Action):
         #     player.set_movement_speed(player.get_movement_speed() * 2)
         
         player_keys = player.get_keys()
+        # print(player_keys)
         if key in player_keys:
             direction = player_keys[key]
             return direction

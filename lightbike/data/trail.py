@@ -4,7 +4,6 @@ It also provides methods for converting points into sprites.
 """
 from arcade import SpriteList
 from arcade import Sprite
-# from data.point import Point
 from data import constants
 
 class Trail:
@@ -114,10 +113,10 @@ class Trail:
             self._sprite_list.pop()
             self._temp_list = False
 
-        point_x = point_list[0].get_x()
-        point_y = point_list[0].get_y()
-        point_x2 = point_list[1].get_x()
-        point_y2 = point_list[1].get_y()
+        point_x = point_list[0][0]
+        point_y = point_list[0][1]
+        point_x2 = point_list[1][0]
+        point_y2 = point_list[1][1]
 
         is_directionx = True
         if point_x == point_x2:
@@ -128,15 +127,15 @@ class Trail:
         sprite_list = Sprite(self._sprite_image, constants.SPRITE_SCALING)
 
         if is_directionx:
-            sprite_list.width = (point_x2 - point_x)
+            sprite_list.width = abs(point_x2 - point_x)
             sprite_list.center_x = (point_x2 - point_x) / 2 + point_x
-            sprite_list.center_y = point_list[0].get_y()
+            sprite_list.center_y = point_y
 
         else:
             sprite_list.angle = 90
-            sprite_list.width = (point_y2 - point_y)
+            sprite_list.width = abs(point_y2 - point_y)
             sprite_list.center_y = (point_y2 - point_y) / 2 + point_y
-            sprite_list.center_x = point_list[0].get_x()
+            sprite_list.center_x = point_x
 
         return sprite_list
 

@@ -3,8 +3,8 @@ The actor module contains the Actor class which help display the sprite and help
 """
 
 # from data import constants
-from data.point import Point
 # from arcade import Sprite
+from math import degrees, atan2
 
 class Actor:
     """A visible, moveable thing that participates in the game. The responsibility of Actor is to keep track of its appearance, position 
@@ -21,7 +21,7 @@ class Actor:
     def __init__(self):
         """The class constructor."""
         self._sprite = None
-        self._velocity = Point(0, 0)
+        self._velocity = (0, 0)
 
     def get_sprite(self):
         """Gets the sprites.
@@ -42,14 +42,14 @@ class Actor:
         Returns:
             Position: The sprites position.
         """
-        return Point(self._sprite.center_x, self._sprite.center_y)
+        return (self._sprite.center_x, self._sprite.center_y)
 
-    def set_position(self, position: Point):
+    def set_position(self, position):
         """
         Sets the position of the sprite
         """
-        self._sprite.center_x = position.get_x()
-        self._sprite.center_y = position.get_y()
+        self._sprite.center_x = position[0]
+        self._sprite.center_y = position[1]
 
     def get_velocity(self):
         """Gets the actor's speed and direction.
@@ -66,3 +66,4 @@ class Actor:
             velocity (Point): The given velocity.
         """
         self._velocity = velocity
+        self._sprite.angle = degrees(atan2(velocity[1], velocity[0])) % 360

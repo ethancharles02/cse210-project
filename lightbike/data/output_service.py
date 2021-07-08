@@ -19,10 +19,12 @@ class OutputService:
         """
         if group == "players" or group == "ai":
             actor.update_trail()
-            for sprite_list in actor.get_trail().get_sprite_list():
-                sprite_list.draw()
+            actor.get_trail().get_sprite_list().draw()
+            # for sprite_list in actor.get_trail().get_sprite_list():
+            #     sprite_list.draw()
+                # sprite_list.draw_hit_box(color.WHITE)
         actor.get_sprite().draw()
-        actor.get_sprite().draw_hit_box(color.WHITE)
+        # actor.get_sprite().draw_hit_box(color.WHITE)
 
     def draw_actors(self, actors, group=""):
         """Renders the given list of actors on the screen.

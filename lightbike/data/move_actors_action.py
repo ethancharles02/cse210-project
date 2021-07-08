@@ -4,7 +4,6 @@ The move actors action module contains the class and functions that move the act
 
 # from data import constants
 from data.action import Action
-from data.point import Point
 
 class MoveActorsAction(Action):
     """A code template for moving actors. The responsibility of this class of
@@ -22,7 +21,7 @@ class MoveActorsAction(Action):
         """
         for group in cast:
             for actor in cast[group]:
-                if not actor.get_velocity().is_zero():
+                if not (actor.get_velocity()[0] == 0 and actor.get_velocity()[1] == 0):
                     self._move_actor(actor,  delta_time)
 
     def _move_actor(self, actor, delta_time):
@@ -34,11 +33,11 @@ class MoveActorsAction(Action):
         """
         position = actor.get_position()
         velocity = actor.get_velocity()
-        x1 = position.get_x()
-        y1 = position.get_y()
-        x2 = velocity.get_x()
-        y2 = velocity.get_y()
+        x1 = position[0]
+        y1 = position[1]
+        x2 = velocity[0]
+        y2 = velocity[1]
         x = x1 + (x2 * delta_time)
         y = y1 + (y2 * delta_time)
-        position = Point(x, y)
+        position = (x, y)
         actor.set_position(position)

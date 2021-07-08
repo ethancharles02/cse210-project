@@ -8,7 +8,7 @@ import random
 from data.lightbike import Lightbike
 # from data.trail import Trail
 from data import constants
-from data.point import Point
+from math import atan2, degrees
 
 class Ai(Lightbike):
     """
@@ -33,6 +33,7 @@ class Ai(Lightbike):
         """
         super().__init__(movement_speed)
         self._turn_cooldown = turn_cooldown
+        self._cur_turn_cooldown = 0
 
     def check_ai_collisions(self, trail_sprite_list):
         """
@@ -41,11 +42,11 @@ class Ai(Lightbike):
         Args:
             trail_sprite_list (dict): Dictionary of sprites to check for collisions against
         """
-        aix = self.get_position().get_x()
-        aiy = self.get_position().get_y()
+        aix = self.get_position()[0]
+        aiy = self.get_position()[1]
 
-        aidx = self.get_velocity().get_x() * 0.3
-        aidy = self.get_velocity().get_y() * 0.3
+        aidx = self.get_velocity()[0] * 0.3
+        aidy = self.get_velocity()[1] * 0.3
 
 
         if aix + aidx >= constants.SCREEN_WIDTH or aix + aidx < 0:
@@ -77,15 +78,18 @@ class Ai(Lightbike):
         """
         Turns the ai in a random direction, left or right
         """
-        self.get_trail().add_point(self.get_position())
-        
-        aidx = self.get_velocity().get_x()
-        aidy = self.get_velocity().get_y()
+        if self._cur_turn_cooldown <= 0:
+            self.get_trail().add_point(self.get_position())
+            
+            aidx = self.get_velocity()[0]
+            aidy = self.get_velocity()[1]
 
-        if aidx == 0:
-            self.set_velocity(Point(random.choice([-1, 1]), 0))
-        if aidy == 0:
-            self.set_velocity(Point(0, random.choice([-1, 1])))
+            if aidx == 0:
+                self.set_velocity((random.choice([-1, 1]), 0))
+            elif aidy == 0:
+                self.set_velocity((0, random.choice([-1, 1])))
+
+            self._cur_turn_cooldown = self._turn_cooldown
     
     def set_velocity(self, velocity):
         """
@@ -95,5 +99,11 @@ class Ai(Lightbike):
         Args:
             velocity (Point): The velocity of type Point
         """
-        self._sprite.angle = velocity.get_angle()
-        self._velocity = velocity.multiply(self._movement_speed)
+        self._sprite.angle = degrees(atan2(velocity[1], velocity[0])) % 360
+        self._velocity = (velocity[0] * self._movement_speed, velocity[1] * self._movement_speed)
+    
+    def update_cooldown(self, delta_time):
+        """
+        Updates the ai turn cooldown. This will countdown until it becomes 0 or less than zero which will then allow the ai to turn
+        """
+        self._cur_turn_cooldown -= delta_time
