@@ -28,6 +28,7 @@ from data.move_actors_action import MoveActorsAction
 from data.output_service import OutputService
 from data.player import Player
 from data.ai import Ai
+from data.map import Map
 
 
 class Game(arcade.Window):
@@ -77,7 +78,7 @@ class Game(arcade.Window):
         # }
 
         self._cast["players"] = []
-        for i in range(1):
+        for i in range(constants.NUM_PLAYERS):
             # if i == 1:
             #     self._cast["players"].append(Player(keys=player2_keys))
             # else:
@@ -104,7 +105,7 @@ class Game(arcade.Window):
 
         self._cast["ai"] = []
 
-        for i in range(10):
+        for i in range(constants.NUM_AI):
             self._cast["ai"].append(Ai())
             self._cast["ai"][i].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
             # self._cast["ai"][i].set_position((constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.75))
@@ -122,6 +123,9 @@ class Game(arcade.Window):
             ai.set_position((screen_dx * (i + 1), constants.SCREEN_HEIGHT * 0.95))
             ai.get_trail().add_point(ai.get_position())
             i += 1
+
+        self._cast["map"] = []
+        self._cast["map"].append(Map(constants.MAP0))
 
         constants.SOUND_BACKGROUND.play(volume=0.2, loop=True)
         arcade.set_background_color(constants.BACKGROUND_COLOR)

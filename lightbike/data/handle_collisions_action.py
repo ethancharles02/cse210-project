@@ -23,7 +23,8 @@ class HandleCollisionsAction(Action):
         players = cast["players"]
 
         trail_sprite_lists = {}
-        
+        map_sprite_list = {cast["map"][0]: cast["map"][0].get_sprite()}
+
         for player in players:
             trail_sprite_lists[player] = player.get_trail().get_sprite_list()
 
@@ -33,14 +34,15 @@ class HandleCollisionsAction(Action):
 
         for player in players:
             if not player.is_dead():
-                if player.check_collision(trail_sprite_lists):
+                if player.check_collision(trail_sprite_lists) or player.check_collision(map_sprite_list):
                     constants.SOUND_COLLISION.play(0.2)
                     player.kill()
 
         for ai in ai_characters:
             if not ai.is_dead():
-                if ai.check_collision(trail_sprite_lists):
+                if ai.check_collision(trail_sprite_lists) or ai.check_collision(map_sprite_list):
                     constants.SOUND_COLLISION.play(0.2)
                     ai.kill()
                 else:
                     ai.check_ai_collisions(trail_sprite_lists)
+                    ai.check_ai_collisions(map_sprite_list)

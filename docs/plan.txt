@@ -85,6 +85,7 @@ Convert wall lists into spritelists, (use_spatial_hash and is_static for non-mov
 Two Player (Ethan)
 Fix ai collision (Ethan)
 Maps (Rich and Ethan)
+Add map collision checking (Rich and Ethan)
 Sounds (Hunter and Avery)
     Collision with walls
     General background (music)
