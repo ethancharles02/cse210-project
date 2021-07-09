@@ -123,6 +123,7 @@ class Game(arcade.Window):
             ai.get_trail().add_point(ai.get_position())
             i += 1
 
+        constants.SOUND_BACKGROUND.play(volume=0.2, loop=True)
         arcade.set_background_color(constants.BACKGROUND_COLOR)
 
     def on_draw(self):
