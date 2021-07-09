@@ -1,6 +1,8 @@
 """
 The handle collisions action module contains the class and functions that detects when the actos collide with the walls or the trail
 """
+import arcade
+
 from data import constants
 from data.action import Action
 
@@ -34,9 +36,13 @@ class HandleCollisionsAction(Action):
             if not player.is_dead():
                 if player.check_collision(trail_sprite_lists):
                     player.kill()
+                    collision_sound = arcade.load_sound("assets/mi_explosion_03_hpx.mp3")
+                    arcade.play_sound(collision_sound)
         for ai in ai_characters:
             if not ai.is_dead():
                 if ai.check_collision(trail_sprite_lists):
                     ai.kill()
+                    collision_sound = arcade.load_sound("assets/mi_explosion_03_hpx.mp3")
+                    arcade.play_sound(collision_sound)
                 else:
                     ai.check_ai_collisions(trail_sprite_lists)
