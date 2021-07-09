@@ -74,7 +74,7 @@ class Map(Actor):
         Returns:
             int: Map width
         """
-        return self._map
+        return self._mapx
 
     def set_mapy(self, mapy):
         """
@@ -93,7 +93,7 @@ class Map(Actor):
         Returns:
             list: The map list which holds specifications for each wall with the format: [(x, y), filepath, angle]
         """
-        return self._map
+        return self._mapy
 
     def _return_sprite_map(self):
         """
