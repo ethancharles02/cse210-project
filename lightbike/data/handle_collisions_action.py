@@ -30,17 +30,17 @@ class HandleCollisionsAction(Action):
         for ai in ai_characters:
             trail_sprite_lists[ai] = ai.get_trail().get_sprite_list()
 
-        # print(trail_sprite_lists)
 
         for player in players:
             if not player.is_dead():
                 if player.check_collision(trail_sprite_lists):
-                    player.kill()
                     constants.SOUND_COLLISION.play(0.2)
+                    player.kill()
+
         for ai in ai_characters:
             if not ai.is_dead():
                 if ai.check_collision(trail_sprite_lists):
-                    ai.kill()
                     constants.SOUND_COLLISION.play(0.2)
+                    ai.kill()
                 else:
                     ai.check_ai_collisions(trail_sprite_lists)
