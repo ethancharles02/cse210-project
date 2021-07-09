@@ -18,7 +18,7 @@ from arcade.Window and overrides methods to draw the game, update it, etc.
 # displayTime()
 
 import arcade
-import os
+# import os
 from random import randint
 from data import constants
 from data.control_actors_action import ControlActorsAction
@@ -125,7 +125,7 @@ class Game(arcade.Window):
             i += 1
 
         self._cast["map"] = []
-        self._cast["map"].append(Map(constants.MAP0))
+        self._cast["map"].append(Map(constants.MAP1))
 
         constants.SOUND_BACKGROUND.play(volume=0.2, loop=True)
         arcade.set_background_color(constants.BACKGROUND_COLOR)

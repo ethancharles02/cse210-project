@@ -1,8 +1,8 @@
 """
 The output_service module draws all of the objects on the screen
 """
-# from data import constants
-from arcade import color
+
+# from arcade import color
 
 class OutputService:
     """Outputs the game state. The responsibility of the class of objects is to draw the game state on the terminal. 

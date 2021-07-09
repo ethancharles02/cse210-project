@@ -41,7 +41,7 @@ class Trail:
         Returns the point list
 
         Returns:
-            list: List of points of type Point
+            list: List of points of type tuple
         """
         return self._point_list
 
@@ -50,7 +50,7 @@ class Trail:
         Sets the point list
 
         Args:
-            point_list (list): List of points of type Point
+            point_list (list): List of points of type tuple
         """
         self._point_list = point_list
 
@@ -59,7 +59,7 @@ class Trail:
         Adds a point to the point list but also updates the sprite list based on this new point
 
         Args:
-            point (Point): The Point to add.
+            point (tuple): The Point to add.
         """
         self._point_list.append(point)
         if len(self._point_list) > 1:
@@ -70,7 +70,7 @@ class Trail:
         Adds points from an iterable object using the add_point method for each one
 
         Args:
-            point_list (list): List of points of type Point
+            point_list (list): List of points of type tuple
         """
         for point in point_list:
             self.add_point(point)
@@ -145,7 +145,7 @@ class Trail:
             that will be reset on the next update of the trail (this is to create the trails that are actively being created by the lightbike)
 
         Args:
-            points_list (list): List of points of type Point
+            points_list (list): List of points of type tuple
         """
         self.add_sprite(self._points_to_sprites(points_list))
         self._temp_list = True

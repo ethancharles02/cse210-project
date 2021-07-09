@@ -7,9 +7,6 @@ class Action:
     
     Stereotype:
         Controller
-
-    Attributes:
-        _tag (string): The action tag (input, update or output).
     """
 
     def execute(self, cast):

@@ -2,10 +2,7 @@
 The control actions action contains the class and functions that get the direction of 
 the actor and also will close the game if the escape key is pressed
 """
-import math
 from arcade import key as arcade_key
-import arcade
-from data import constants
 from data.action import Action
 
 class ControlActorsAction(Action):
@@ -49,7 +46,7 @@ class ControlActorsAction(Action):
         """Gets the selected direction for the given player.
 
         Returns:
-            Point: The selected direction.
+            tuple: The selected direction.
             None: If there was an invalid key inputted
         """
 
@@ -60,7 +57,6 @@ class ControlActorsAction(Action):
         #     player.set_movement_speed(player.get_movement_speed() * 2)
         
         player_keys = player.get_keys()
-        # print(player_keys)
         if key in player_keys:
             direction = player_keys[key]
             return direction

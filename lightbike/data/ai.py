@@ -4,9 +4,7 @@ so that a player only chosing to play by themselves has an opponent
 """
 
 import random
-# from data.actor import Actor
 from data.lightbike import Lightbike
-# from data.trail import Trail
 from data import constants
 from math import atan2, degrees
 
@@ -97,7 +95,7 @@ class Ai(Lightbike):
         Sets the velocity of the ai, updating the angle of the sprite as well
 
         Args:
-            velocity (Point): The velocity of type Point
+            velocity (tuple): The velocity of type tuple, ie. (1, 0)
         """
         self._sprite.angle = degrees(atan2(velocity[1], velocity[0])) % 360
         self._velocity = (velocity[0] * self._movement_speed, velocity[1] * self._movement_speed)

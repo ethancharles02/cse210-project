@@ -114,12 +114,12 @@ class Lightbike(Actor):
         self.get_sprite().width = 0
         self.set_velocity((0, 0))
 
-    def check_collision(self, trail_sprite_list={}):
+    def check_collision(self, *sprite_lists):
         """
-        Checks for collisions between the lightbike and a list of sprites
+        Checks for collisions between the lightbike and a list of sprites, multiple sprite lists can be specified as arguments
 
         Args:
-            trail_sprite_list (dict): Dictionary of sprites to check for collisions with
+            *sprite_lists (dict): Dictionary of sprites to check for collisions with
         """
         x = self.get_position()[0]
         y = self.get_position()[1]
@@ -131,19 +131,20 @@ class Lightbike(Actor):
             return True
 
         else:
-            for key in trail_sprite_list:
-                # if self._dead:
-                #     break
-                # collision_list = self._sprite.collides_with_list(trail_sprite_list[key])
-                # if self._name == "player":
-                #     if collision_list != []:
-                #         print(collision_list[0].width)
-                if self._sprite.collides_with_list(trail_sprite_list[key]):
-                    # self._dead = True
-                    # self.dead_sprite()
+            for sprite_list in sprite_lists:
+                for sprite in sprite_list:
+                    # if self._dead:
+                    #     break
+                    # collision_list = self._sprite.collides_with_list(trail_sprite_list[key])
                     # if self._name == "player":
-                    #     print("test")
-                    return True
+                    #     if collision_list != []:
+                    #         print(collision_list[0].width)
+                    if self._sprite.collides_with_list(sprite_list[sprite]):
+                        # self._dead = True
+                        # self.dead_sprite()
+                        # if self._name == "player":
+                        #     print("test")
+                        return True
 
                 # for sprite in trail_sprite_list[key]:
                 #     if self._sprite.collides_with_sprite(sprite):

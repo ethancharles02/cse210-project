@@ -14,7 +14,7 @@ class HandleCollisionsAction(Action):
     """
 
     def execute(self, cast):
-        """Executes the action using the given actors.
+        """Executes the action using the given actors. Checks for collisions between walls and trails
 
         Args:
             cast (dict): The game actors {key: tag, value: list}.
@@ -34,13 +34,13 @@ class HandleCollisionsAction(Action):
 
         for player in players:
             if not player.is_dead():
-                if player.check_collision(trail_sprite_lists) or player.check_collision(map_sprite_list):
+                if player.check_collision(trail_sprite_lists, map_sprite_list):
                     constants.SOUND_COLLISION.play(0.2)
                     player.kill()
 
         for ai in ai_characters:
             if not ai.is_dead():
-                if ai.check_collision(trail_sprite_lists) or ai.check_collision(map_sprite_list):
+                if ai.check_collision(trail_sprite_lists, map_sprite_list):
                     constants.SOUND_COLLISION.play(0.2)
                     ai.kill()
                 else:

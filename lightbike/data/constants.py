@@ -39,7 +39,7 @@ DEFAULT_WALL = "assets/blue_wall.png"
 MAPX = 20
 MAPY = 15
 
-# Default
+# Default map
 MAP0 = [
 
 ]
