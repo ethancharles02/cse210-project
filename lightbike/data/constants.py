@@ -4,6 +4,7 @@ The constants module holds global variables for the lightbike game
 from arcade import color
 from arcade import key
 from arcade import Sound
+import pyglet
 
 SCREEN_TITLE = "Lightbike"
 SCREEN_WIDTH = 800
@@ -26,6 +27,7 @@ AI_RANGE = 5
 AI_BLINDSPOT_RANGE = 3
 AI_TURN_COOLDOWN = 0.5
 
+pyglet.options['audio'] = ('openal', 'pulse', 'directsound', 'silent')
 SOUND_BACKGROUND = Sound("assets/Sci-Fi-Dramatic-Theme.mp3")
 SOUND_COLLISION = Sound("assets/mi_explosion_03_hpx.mp3")
 
