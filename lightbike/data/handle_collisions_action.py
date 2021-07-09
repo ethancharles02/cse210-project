@@ -34,17 +34,13 @@ class HandleCollisionsAction(Action):
         for player in players:
             if not player.is_dead():
                 if player.check_collision(trail_sprite_lists):
-                    # constants.SOUND_COLLISION.play(0.2)
-                    collision_sound = arcade.load_sound("assets/mi_explosion_03_hpx.mp3")
-                    arcade.play_sound(collision_sound, .1)
+                    constants.SOUND_COLLISION.play(0.2)
                     player.kill()
 
         for ai in ai_characters:
             if not ai.is_dead():
                 if ai.check_collision(trail_sprite_lists):
-                    # constants.SOUND_COLLISION.play(0.2)
-                    collision_sound = arcade.load_sound("assets/mi_explosion_03_hpx.mp3")
-                    arcade.play_sound(collision_sound, .1)
+                    constants.SOUND_COLLISION.play(0.2)
                     ai.kill()
                 else:
                     ai.check_ai_collisions(trail_sprite_lists)
