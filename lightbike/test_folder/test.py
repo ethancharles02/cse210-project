@@ -5,7 +5,7 @@
 
 
 import pyglet
-source = pyglet.media.load('test.mp3', streaming=False)
+source = pyglet.media.load('test.wav', streaming=False)
 source.play()
 pyglet.app.run()
 # cancel_input = input()
