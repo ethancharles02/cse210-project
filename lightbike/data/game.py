@@ -125,7 +125,7 @@ class Game(arcade.Window):
             i += 1
 
         self._cast["map"] = []
-        self._cast["map"].append(Map(constants.MAP1))
+        self._cast["map"].append(Map(constants.MAP3))
 
         constants.SOUND_BACKGROUND.play(volume=0.2, loop=True)
         arcade.set_background_color(constants.BACKGROUND_COLOR)
