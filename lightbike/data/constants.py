@@ -20,7 +20,7 @@ DEFAULT_KEYS = {
 }
 
 NUM_PLAYERS = 1
-NUM_AI = 10
+NUM_AI = 1
 
 AI_RANGE = 5
 AI_BLINDSPOT_RANGE = 3
@@ -29,11 +29,11 @@ AI_TURN_COOLDOWN = 0.5
 SOUND_BACKGROUND = Sound("assets/Sci-Fi-Dramatic-Theme.wav")
 SOUND_COLLISION = Sound("assets/mi_explosion_03_hpx.wav")
 
-__corner = "assets/corner"
-__parallel = "assets/parallel"
-__one = "assets/one"
-__three = "assets/three"
-__wall = "assets/blue_wall.png"
+__corner = "assets/wall_3.png"
+__parallel = "assets/wall_4.png"
+__one = "assets/wall_5.png"
+__three = "assets/wall_2.png"
+__wall = "assets/wall_6.png"
 
 DEFAULT_WALL = "assets/blue_wall.png"
 MAPX = 20
@@ -45,13 +45,120 @@ MAP0 = [
 ]
 
 MAP1 = [
-    [(4, 3), __wall, 0],
-    [(4, 4), __wall, 90],
-    [(4, 11), __wall, 180],
+    [(4, 3), __three, 270],
+    [(4, 4), __parallel, 90],
+    [(4, 5), __parallel, 90],
+    [(4, 6), __parallel, 90],
+    [(4, 7), __parallel, 90],
+    [(4, 8), __parallel, 90],
+    [(4, 9), __parallel, 90],
+    [(4, 10), __parallel, 90],
+    [(4, 11), __three, 90],
+    [(15, 3), __three, 270],
+    [(15, 4), __parallel, 90],
+    [(15, 4), __parallel, 90],
+    [(15, 5), __parallel, 90],
+    [(15, 6), __parallel, 90],
+    [(15, 7), __parallel, 90],
+    [(15, 8), __parallel, 90],
+    [(15, 9), __parallel, 90],
+    [(15, 10), __parallel, 90],
+    [(15, 11), __three, 90],
 ]
 
 # MAP2
+MAP2 = [
+    [(4, 3), __corner, 180], # Bottom Left Square
+    [(4, 4), __one, 90],
+    [(4, 5), __corner, 90],
+    [(5, 3), __one, 180],
+    [(5, 4), __wall, 90],
+    [(5, 5), __one, 0],
+    [(6, 3), __corner, 270],
+    [(6, 4), __one, 270],
+    [(6, 5), __corner, 0],
+    [(4, 9), __corner, 180], # Top Left Square
+    [(4, 10), __one, 90],
+    [(4, 11), __corner, 90],
+    [(5, 9), __one, 180],
+    [(5, 10), __wall, 90],
+    [(5, 11), __one, 0],
+    [(6, 9), __corner, 270],
+    [(6, 10), __one, 270],
+    [(6, 11), __corner, 0],
+    [(14, 3), __corner, 180], # Bottom Right Square
+    [(14, 4), __one, 90],
+    [(14, 5), __corner, 90],
+    [(15, 3), __one, 180],
+    [(15, 4), __wall, 90],
+    [(15, 5), __one, 0],
+    [(16, 3), __corner, 270],
+    [(16, 4), __one, 270],
+    [(16, 5), __corner, 0],
+    [(14, 9), __corner, 180], # Top Right Square
+    [(14, 10), __one, 90],
+    [(14, 11), __corner, 90],
+    [(15, 9), __one, 180],
+    [(15, 10), __wall, 90],
+    [(15, 11), __one, 0],
+    [(16, 9), __corner, 270],
+    [(16, 10), __one, 270],
+    [(16, 11), __corner, 0],
 
+]
 # MAP3
-
+MAP3 = [
+    [(2, 2), __corner, 180], # Bottom Left Square
+    [(2, 3), __one, 90],
+    [(2, 4), __corner, 90],
+    [(3, 2), __one, 180],
+    [(3, 3), __wall, 90],
+    [(3, 4), __one, 0],
+    [(4, 2), __corner, 270],
+    [(4, 3), __one, 270],
+    [(4, 4), __corner, 0],
+    [(2, 10), __corner, 180], # Top Left Square
+    [(2, 11), __one, 90],
+    [(2, 12), __corner, 90],
+    [(3, 10), __one, 180],
+    [(3, 11), __wall, 90],
+    [(3, 12), __one, 0],
+    [(4, 10), __corner, 270],
+    [(4, 11), __one, 270],
+    [(4, 12), __corner, 0],
+    [(15, 2), __corner, 180], # Bottom Right Square
+    [(15, 3), __one, 90],
+    [(15, 4), __corner, 90],
+    [(16, 2), __one, 180],
+    [(16, 3), __wall, 90],
+    [(16, 4), __one, 0],
+    [(17, 2), __corner, 270],
+    [(17, 3), __one, 270],
+    [(17, 4), __corner, 0],
+    [(15, 10), __corner, 180], # Top Right Square
+    [(15, 11), __one, 90],
+    [(15, 12), __corner, 90],
+    [(16, 10), __one, 180],
+    [(16, 11), __wall, 90],
+    [(16, 12), __one, 0],
+    [(17, 10), __corner, 270],
+    [(17, 11), __one, 270],
+    [(17, 12), __corner, 0],
+    [(6, 7), __three, 180], # Left Cross Arm
+    [(7, 7), __parallel, 0],
+    [(8, 7), __parallel, 0],
+    [(9, 7), __wall, 180], # Center Cross
+    [(10, 7), __wall, 180],
+    [(11, 7), __parallel, 0], # Right Cross Arm
+    [(12, 7), __parallel, 0], 
+    [(13, 7), __three, 0],
+    [(9, 8), __one, 90], #Left Side of Top Cross Arm
+    [(9, 9), __corner, 90],
+    [(10, 8), __one, 270], #Right Side of Top Cross Arm
+    [(10, 9), __corner, 0],
+    [(9, 6), __one, 90], #Left Side of Bottom Cross Arm
+    [(9, 5), __corner, 180],
+    [(10, 6), __one, 270], #Right Side of Bottom Cross Arm
+    [(10, 5), __corner, 270],    
+]
 BACKGROUND_COLOR = color.BLACK
