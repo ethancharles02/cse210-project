@@ -21,7 +21,7 @@ class Ai(Lightbike):
         turn(): Turns the ai in a random direction, left or right
         set_velocity(): Sets the velocity of the ai, updating the angle of the sprite as well
     """
-    def __init__(self, movement_speed = constants.MOVEMENT_SPEED, turn_cooldown = constants.AI_TURN_COOLDOWN):
+    def __init__(self, movement_speed = constants.MOVEMENT_SPEED, turn_cooldown = constants.AI_TURN_COOLDOWN, wall_sprite=constants.PLAYER_WALL_SPRITE):
         """
         initializes the parent class, assigns attributes
 
@@ -29,7 +29,7 @@ class Ai(Lightbike):
             movement_speed (float): How fast the ai moves in pixels/second 
             turn_cooldown (float): The amount of time it takes before the ai can turn after turning (not implemented yet)
         """
-        super().__init__(movement_speed)
+        super().__init__(movement_speed, wall_sprite)
         self.turn_cooldown = turn_cooldown
         self.cur_turn_cooldown = 0
 

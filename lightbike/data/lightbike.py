@@ -30,12 +30,12 @@ class Lightbike(Actor):
         kill(): Sets the lightbike to dead, stopping its velocity and returning true on the is_dead method
         check_collision(): Checks for collisions between the lightbike and a list of sprites
     """
-    def __init__(self, movement_speed = constants.MOVEMENT_SPEED):
+    def __init__(self, movement_speed = constants.MOVEMENT_SPEED, wall_sprite=constants.PLAYER_WALL_SPRITE):
         """
         The class constructor
         """
         super().__init__()
-        self._trail = Trail()
+        self._trail = Trail(wall_sprite)
         self._name = ""
         self._movement_speed = movement_speed
         self._dead = False

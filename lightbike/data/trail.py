@@ -26,12 +26,12 @@ class Trail:
         update_temp_list(): Updates the sprite list similar to add point but uses a temporary trail 
             that will be reset on the next update of the trail (this is to create the trails that are actively being created by the lightbike)
     """
-    def __init__(self):
+    def __init__(self, sprite_image=constants.PLAYER_WALL_SPRITE):
         """The class constructor
         """
         self._point_list = []
         self._sprite_list = SpriteList(use_spatial_hash=True, is_static=True)
-        self._sprite_image = "assets/blue_wall.png"
+        self._sprite_image = sprite_image
         self._sprite_width = Sprite(self._sprite_image, constants.SPRITE_SCALING).width
         self._sprite_height = Sprite(self._sprite_image, constants.SPRITE_SCALING).height
         self._temp_list = False

@@ -24,12 +24,13 @@ class Player(Lightbike):
     def __init__(
         self, 
         movement_speed = constants.MOVEMENT_SPEED,
-        keys = constants.DEFAULT_KEYS, 
+        keys = constants.DEFAULT_KEYS,
+        wall_sprite=constants.PLAYER_WALL_SPRITE
         ):
         """
         Class constructor, initializes private attributes
         """
-        super().__init__(movement_speed)
+        super().__init__(movement_speed, wall_sprite)
         self._orig_keys = keys
         self._keys = keys.copy()
         self._update_keys()

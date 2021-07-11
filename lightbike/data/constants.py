@@ -10,6 +10,10 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
 SPRITE_SCALING = 1
+AI_SPRITE = "assets/orange_player.png"
+AI_WALL_SPRITE = "assets/orange_wall.png"
+PLAYER_SPRITE = "assets/blue_player.png"
+PLAYER_WALL_SPRITE = "assets/blue_wall.png"
 
 MOVEMENT_SPEED = 100
 DEFAULT_KEYS = {
@@ -20,7 +24,7 @@ DEFAULT_KEYS = {
 }
 
 NUM_PLAYERS = 1
-NUM_AI = 1
+NUM_AI = 100
 
 AI_RANGE = 5
 AI_BLINDSPOT_RANGE = 3
@@ -29,13 +33,15 @@ AI_TURN_COOLDOWN = 0.5
 SOUND_BACKGROUND = Sound("assets/Sci-Fi-Dramatic-Theme.wav")
 SOUND_COLLISION = Sound("assets/mi_explosion_03_hpx.wav")
 
+BACKGROUND_COLOR = color.BLACK
+
 __corner = "assets/wall_3.png"
 __parallel = "assets/wall_4.png"
 __one = "assets/wall_5.png"
 __three = "assets/wall_2.png"
 __wall = "assets/wall_6.png"
 
-DEFAULT_WALL = "assets/blue_wall.png"
+DEFAULT_WALL = "assets/wall_1.png"
 MAPX = 20
 MAPY = 15
 
@@ -161,4 +167,3 @@ MAP3 = [
     [(10, 6), __one, 270], #Right Side of Bottom Cross Arm
     [(10, 5), __corner, 270],    
 ]
-BACKGROUND_COLOR = color.BLACK

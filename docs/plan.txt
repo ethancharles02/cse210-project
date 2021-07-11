@@ -97,6 +97,7 @@ Tests:
 
 Week 4 (Stable):
 General improvements (optimizations)
+Make wall sprites more consistent with each other? (Miguel)
 Bugtesting
 Main menu
 Particle effects on collision?

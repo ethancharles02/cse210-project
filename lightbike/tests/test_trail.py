@@ -57,4 +57,4 @@ def test_update_temp_list():
     assert type(trail.get_sprite_list()) == SpriteList
     assert len(trail.get_sprite_list()) == 1
 
-pytest.main(["-v", "--tb=no", "test_trail.py"])
+# pytest.main(["-v", "--tb=no", "test_trail.py"])

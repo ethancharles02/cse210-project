@@ -1,6 +1,5 @@
 import pytest
 import arcade
-from data.point import Point
 from data.actor import Actor
 
 def test_get_sprite():
@@ -19,25 +18,26 @@ def test_get_position():
     actor = Actor()
     actor.set_sprite(arcade.Sprite("assets/blue_player.png", 1))
     
-    assert actor.get_position().get_x() == 0
-    assert actor.get_position().get_y() == 0
+    assert actor.get_position()[0] == 0
+    assert actor.get_position()[1] == 0
 
 def test_set_position():
     actor = Actor()
     actor.set_sprite(arcade.Sprite("assets/blue_player.png", 1))
-    actor.set_position(Point(5, 5))
-    assert actor.get_position().get_x() == 5
-    assert actor.get_position().get_y() == 5
+    actor.set_position((5, 5))
+    assert actor.get_position()[0] == 5
+    assert actor.get_position()[1] == 5
 
 def test_get_velocity():
     actor = Actor()
-    assert actor.get_velocity().get_x() == 0
-    assert actor.get_velocity().get_y() == 0
+    assert actor.get_velocity()[0] == 0
+    assert actor.get_velocity()[1] == 0
 
 def test_set_velocity():
     actor = Actor()
-    actor.set_velocity(Point(5, 5))
-    assert actor.get_velocity().get_x() == 5
-    assert actor.get_velocity().get_y() == 5
+    actor.set_sprite(arcade.Sprite("assets/blue_player.png", 1))
+    actor.set_velocity((5, 5))
+    assert actor.get_velocity()[0] == 5
+    assert actor.get_velocity()[1] == 5
 
-pytest.main(["-v", "--tb=no", "test_actor.py"])
+# pytest.main(["-v", "--tb=no", "test_actor.py"])

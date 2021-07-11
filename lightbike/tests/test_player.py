@@ -63,4 +63,4 @@ def test_set_keys():
         key.DOWN: (0, -1)
     }
 
-pytest.main(["-v", "--tb=no", "test_player.py"])
+# pytest.main(["-v", "--tb=no", "test_player.py"])

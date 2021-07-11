@@ -82,8 +82,8 @@ class Game(arcade.Window):
             # if i == 1:
             #     self._cast["players"].append(Player(keys=player2_keys))
             # else:
-            self._cast["players"].append(Player())
-            self._cast["players"][i].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
+            self._cast["players"].append(Player(wall_sprite=constants.PLAYER_WALL_SPRITE))
+            self._cast["players"][i].set_sprite(arcade.Sprite(constants.PLAYER_SPRITE, constants.SPRITE_SCALING))
             # self._cast["players"][i].set_name("player")
             # self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.25))
             self._cast["players"][i].set_velocity((0, 1 * self._cast["players"][i].get_movement_speed()))
@@ -106,8 +106,8 @@ class Game(arcade.Window):
         self._cast["ai"] = []
 
         for i in range(constants.NUM_AI):
-            self._cast["ai"].append(Ai())
-            self._cast["ai"][i].set_sprite(arcade.Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
+            self._cast["ai"].append(Ai(wall_sprite=constants.AI_WALL_SPRITE))
+            self._cast["ai"][i].set_sprite(arcade.Sprite(constants.AI_SPRITE, constants.SPRITE_SCALING))
             # self._cast["ai"][i].set_position((constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.75))
             self._cast["ai"][i].set_velocity((0, -1))
             # self._cast["ai"][i].get_trail().add_point(self._cast["ai"][i].get_position())

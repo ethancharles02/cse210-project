@@ -15,8 +15,8 @@ def test_check_ai_collisions():
     ai.set_position((constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2))
 
     trail_sprite_list = SpriteList()
-    trail_sprite_list.append(Sprite("assets/blue_player.png", constants.SPRITE_SCALING))
-    trail_sprite_list[0].position = (constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2)
+    trail_sprite_list.append(Sprite("assets/blue_wall.png", constants.SPRITE_SCALING))
+    trail_sprite_list[0].position = (constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2 + 5)
 
     sprite_list = {
         ai: trail_sprite_list
@@ -71,4 +71,4 @@ def test_update_cooldown():
 
     assert ai.cur_turn_cooldown == pytest.approx(3, 0.01)
 
-pytest.main(["-v", "--tb=no", "test_ai.py"])
+# pytest.main(["-v", "--tb=no", "test_ai.py"])
