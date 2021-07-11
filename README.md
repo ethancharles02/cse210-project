@@ -33,10 +33,17 @@ root                    (project root folder)
     +-- blue_power.png
     +-- blue_wall.png
     +-- floor_mosaic.png
+    +-- mi_explosion_03_hpx.wav
     +-- orange_player.png
     +-- orange_power.png
     +-- orange_wall.png
-    +-- wall.png
+    +-- Sci-Fi-Dramatic-Theme.wav
+    +-- wall_1.png
+    +-- wall_2.png
+    +-- wall_3.png
+    +-- wall_4.png
+    +-- wall_5.png
+    +-- wall_6.png
   +-- data              (program data files)
     +-- __init__.py
     +-- action.py
@@ -52,11 +59,12 @@ root                    (project root folder)
     +-- move_actors_action.py
     +-- output_service.py
     +-- player.py
-    +-- point.py
-    +-- score.py
     +-- trail.py
   +-- tests             (program test files)
     +-- test_actor.py
+    +-- test_ai.py
+    +-- test_lightbike.py
+    +-- test_map.py
     +-- test_player.py
     +-- test_point.py
   +-- __init__.py       (python package file)
