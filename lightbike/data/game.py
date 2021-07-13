@@ -29,6 +29,7 @@ from data.output_service import OutputService
 from data.player import Player
 from data.ai import Ai
 from data.map import Map
+from data.button import Button
 
 
 class Game(arcade.Window):

@@ -19,9 +19,10 @@ class MoveActorsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         for group in cast:
-            for actor in cast[group]:
-                if not (actor.get_velocity()[0] == 0 and actor.get_velocity()[1] == 0):
-                    self._move_actor(actor,  delta_time)
+            if group != "buttons":
+                for actor in cast[group]:
+                    if not (actor.get_velocity()[0] == 0 and actor.get_velocity()[1] == 0):
+                        self._move_actor(actor,  delta_time)
 
     def _move_actor(self, actor, delta_time):
         """Moves the given actor to its next position according to its 

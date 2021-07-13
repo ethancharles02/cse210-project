@@ -104,6 +104,7 @@ Bugtesting
 Main menu (Hunter and Miguel) (https://arcade.academy/examples/view_instructions_and_game_over.html)
     Create main menu loosely based on the plan in assets (feel free to come up with your own ideas for how it looks)
     Connect button code to editing the variables for cur_map, num_players, and num_ai
+    Create button (Ethan)
 
 Move game over to game_view, adjust game.py to work with both screens (Ethan)
 Particle effects on collision (Ethan and Rich) (https://arcade.academy/examples/particle_systems.html)

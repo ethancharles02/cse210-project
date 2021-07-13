@@ -18,10 +18,14 @@ class MainMenuView(arcade.View):
         self.cur_map = constants.MAP0
         self.num_players = 1
         self.num_ai = 1
+        self._cast = {}
 
     def on_show(self):
         """
         """
+        self._cast["buttons"] = []
+        self._cast["buttons"].append(Button(text="test", text_color="black", font="arial", selectable=True, selected=False))
+        self._cast["buttons"][0].position = (50, 100)
         # set your background image (find that code to do that)
         arcade.set_background_color(arcade.color.WHITE)
 
