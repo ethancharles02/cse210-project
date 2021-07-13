@@ -108,6 +108,7 @@ Main menu (Hunter and Miguel) (https://arcade.academy/examples/view_instructions
 
 Move game over to game_view, adjust game.py to work with both screens (Ethan)
 Particle effects on collision (Ethan and Rich) (https://arcade.academy/examples/particle_systems.html)
+Add particle docstrings (Rich)
 
 
 

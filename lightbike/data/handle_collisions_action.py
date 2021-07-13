@@ -5,7 +5,6 @@ import arcade
 
 from data import constants
 from data.action import Action
-
 from data.particles import Particle, Smoke
 
 class HandleCollisionsAction(Action):
@@ -15,7 +14,7 @@ class HandleCollisionsAction(Action):
         Controller
     """
 
-    def execute(self, cast):
+    def execute(self, cast, explosions_list=arcade.SpriteList()):
         """Executes the action using the given actors. Checks for collisions between walls and trails
 
         Args:
@@ -38,14 +37,25 @@ class HandleCollisionsAction(Action):
             if not player.is_dead():
                 if player.check_collision(trail_sprite_lists, map_sprite_list):
                     constants.SOUND_COLLISION.play(0.2)
+                    append_explosion(explosions_list, player.get_position())
                     player.kill()
 
         for ai in ai_characters:
             if not ai.is_dead():
                 if ai.check_collision(trail_sprite_lists, map_sprite_list):
                     constants.SOUND_COLLISION.play(0.2)
+                    append_explosion(explosions_list, ai.get_position())
                     ai.kill()
                 else:
                     ai.check_ai_collisions(trail_sprite_lists)
                     ai.check_ai_collisions(map_sprite_list)
 
+def append_explosion(explosions_list, position):
+    for _ in range(constants.PARTICLE_COUNT):
+        particle = Particle(explosions_list)
+        particle.position = position
+        explosions_list.append(particle)
+
+    smoke = Smoke(50)
+    smoke.position = position
+    explosions_list.append(smoke)

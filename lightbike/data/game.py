@@ -132,7 +132,7 @@ class Game(arcade.Window):
         self.explosions_list = arcade.SpriteList() # Initialize Explosions list
 
         self._cast["map"] = []
-        self._cast["map"].append(Map(constants.MAP3))
+        self._cast["map"].append(Map(constants.MAP0))
 
         constants.SOUND_BACKGROUND.play(volume=0.2, loop=True)
         arcade.set_background_color(constants.BACKGROUND_COLOR)
@@ -169,8 +169,9 @@ class Game(arcade.Window):
                 ai.update_cooldown(delta_time)
                 if randint(1, 100) == 1:
                     ai.turn()
-                    
-        self._handle_collisions_action.execute(self._cast)
+        
+        self.explosions_list.update()
+        self._handle_collisions_action.execute(self._cast, self.explosions_list)
 
         # self._time_elapsed = delta_time ** -1
         self._time_elapsed += delta_time

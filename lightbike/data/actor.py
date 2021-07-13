@@ -40,7 +40,7 @@ class Actor:
         Returns:
             Position: The sprites position.
         """
-        return (self._sprite.center_x, self._sprite.center_y)
+        return self._sprite.position
 
     def set_position(self, position):
         """

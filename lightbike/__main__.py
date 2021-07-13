@@ -5,7 +5,6 @@ import arcade
 
 from data.game import Game
 from data import constants
-from particles import Particle
 
 
 def main():

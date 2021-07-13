@@ -1,3 +1,5 @@
+"""
+"""
 import random
 import math
 import arcade
@@ -5,8 +7,11 @@ from data import constants
 
 
 class Particle(arcade.SpriteCircle):
-    """ Explosion particle """
+    """
+    """
     def __init__(self, my_list):
+        """
+        """
         # Choose a random color
         color = random.choice(constants.PARTICLE_COLORS)
 
@@ -59,7 +64,8 @@ class Particle(arcade.SpriteCircle):
                 self.my_list.append(smoke)
 
 class Smoke(arcade.SpriteCircle):
-    """ This represents a puff of smoke """
+    """
+    """
     def __init__(self, size):
         super().__init__(size, arcade.color.LIGHT_GRAY, soft=True)
         self.change_y = constants.SMOKE_RISE_RATE
@@ -72,7 +78,11 @@ class Smoke(arcade.SpriteCircle):
             self.remove_from_sprite_lists()
         else:
             # Update values
-            self.alpha -= constants.SMOKE_FADE_RATE
+            if self.alpha - constants.SMOKE_FADE_RATE < 0:
+                self.alpha = 0
+            else:
+                self.alpha -= constants.SMOKE_FADE_RATE
+
             self.center_x += self.change_x
             self.center_y += self.change_y
             self.scale += constants.SMOKE_EXPANSION_RATE

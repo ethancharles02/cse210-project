@@ -23,59 +23,46 @@ DEFAULT_KEYS = {
     key.S: (0, -1)  # s
 }
 
-NUM_PLAYERS = 1
-NUM_AI = 1
+
+NUM_PLAYERS = 4
+NUM_AI = 4
+
 
 AI_RANGE = 5
 AI_BLINDSPOT_RANGE = 3
 AI_TURN_COOLDOWN = 0.5
 
+
 SOUND_BACKGROUND = Sound("assets/Sci-Fi-Dramatic-Theme.wav")
 SOUND_COLLISION = Sound("assets/mi_explosion_03_hpx.wav")
 
-# --- Explosion Particles Related
 
-# How fast the particle will accelerate down. Make 0 if not desired
-PARTICLE_GRAVITY = 0.05
-
-# How fast to fade the particle
-PARTICLE_FADE_RATE = 8
-
-# How fast the particle moves. Range is from 2.5 <--> 5 with 2.5 and 2.5 set.
+# Particle constants
+PARTICLE_GRAVITY = 0
+PARTICLE_FADE_RATE = 7
 PARTICLE_MIN_SPEED = 2.5
 PARTICLE_SPEED_RANGE = 2.5
-
-# How many particles per explosion
 PARTICLE_COUNT = 20
-
-# How big the particle
 PARTICLE_RADIUS = 3
-
-# Possible particle colors
-PARTICLE_COLORS = [color.ALIZARIN_CRIMSON,
-                   color.COQUELICOT,
-                   color.LAVA,
-                   color.KU_CRIMSON,
-                   color.DARK_TANGERINE]
-
-# Chance we'll flip the texture to white and make it 'sparkle'
+PARTICLE_COLORS = [
+    color.ALIZARIN_CRIMSON,
+    color.COQUELICOT,
+    color.LAVA,
+    color.KU_CRIMSON,
+    color.DARK_TANGERINE,
+    # Blue color variants
+    (0, 16, 100),
+    (14, 30, 132),
+    (0, 32, 78),
+    (0, 0, 165)
+]
 PARTICLE_SPARKLE_CHANCE = 0.02
-
-# --- Smoke
-# Note: Adding smoke trails makes for a lot of sprites and can slow things
-# down. If you want a lot, it will be necessary to move processing to GPU
-# using transform feedback. If to slow, just get rid of smoke.
-
-# Start scale of smoke, and how fast is scales up
 SMOKE_START_SCALE = 0.25
 SMOKE_EXPANSION_RATE = 0.03
-
-# Rate smoke fades, and rises
 SMOKE_FADE_RATE = 7
 SMOKE_RISE_RATE = 0.5
-
-# Chance we leave smoke trail
 SMOKE_CHANCE = 0.25
+
 
 BACKGROUND_COLOR = color.BLACK
 
