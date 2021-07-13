@@ -30,6 +30,8 @@ from data.player import Player
 from data.ai import Ai
 from data.map import Map
 from data.button import Button
+# from data.particles import Particle, Smoke
+
 
 
 class Game(arcade.Window):
@@ -65,6 +67,8 @@ class Game(arcade.Window):
 
         self._handle_collisions_action = HandleCollisionsAction()
         self._time_elapsed = 0
+
+        self.explosions_list = None #Explosions
 
     def setup(self):
         """
@@ -125,11 +129,14 @@ class Game(arcade.Window):
             ai.get_trail().add_point(ai.get_position())
             i += 1
 
+        self.explosions_list = arcade.SpriteList() # Initialize Explosions list
+
         self._cast["map"] = []
         self._cast["map"].append(Map(constants.MAP3))
 
         constants.SOUND_BACKGROUND.play(volume=0.2, loop=True)
         arcade.set_background_color(constants.BACKGROUND_COLOR)
+
 
     def on_draw(self):
         """
@@ -137,6 +144,8 @@ class Game(arcade.Window):
         """
         
         arcade.start_render()
+
+        self.explosions_list.draw() # Explosions
 
         self._draw_actors_action.execute(self._cast)
         arcade.draw_text(f"Time: {self._time_elapsed:.2f}", 0, constants.SCREEN_HEIGHT, arcade.color.WHITE, anchor_x="left", anchor_y="top")

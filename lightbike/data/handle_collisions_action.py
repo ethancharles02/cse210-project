@@ -6,6 +6,8 @@ import arcade
 from data import constants
 from data.action import Action
 
+from data.particles import Particle, Smoke
+
 class HandleCollisionsAction(Action):
     """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
     
@@ -46,3 +48,4 @@ class HandleCollisionsAction(Action):
                 else:
                     ai.check_ai_collisions(trail_sprite_lists)
                     ai.check_ai_collisions(map_sprite_list)
+
