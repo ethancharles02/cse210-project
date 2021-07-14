@@ -51,7 +51,7 @@ class ControlActorsAction(Action):
         """
 
         if key == 65307:
-            game.close()
+            game.window.close()
         
         # if key == arcade_key.X:
         #     player.set_movement_speed(player.get_movement_speed() * 2)

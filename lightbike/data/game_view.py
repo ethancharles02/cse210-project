@@ -1,5 +1,7 @@
-# Move game over here
 """
+The GameView module combines all of the modules to create the 
+frame of the game, deciding where everything goes. It comes 
+from arcade.View and overrides methods to draw the game, update it, etc.
 """
 
 import arcade
@@ -14,11 +16,11 @@ from data.output_service import OutputService
 from data.player import Player
 from data.ai import Ai
 from data.map import Map
+from data.button import Button
 from data.main_menu_view import MainMenuView
-# from data.button import Button
 
 
-class Game(arcade.View):
+class GameView(arcade.View):
     """
     The game is in charge of bringing everything together and putting it into the arcade window
 
@@ -51,6 +53,8 @@ class Game(arcade.View):
 
         self._handle_collisions_action = HandleCollisionsAction()
         self._time_elapsed = 0
+
+        self.explosions_list = None #Explosions
 
     def on_show(self):
         """
@@ -110,6 +114,8 @@ class Game(arcade.View):
             ai.set_position((screen_dx * (i + 1), constants.SCREEN_HEIGHT * 0.95))
             ai.get_trail().add_point(ai.get_position())
             i += 1
+        
+        self.explosions_list = arcade.SpriteList()
 
         self._cast["map"] = []
         self._cast["map"].append(Map(constants.MAP3))
@@ -125,6 +131,8 @@ class Game(arcade.View):
         arcade.start_render()
 
         self._draw_actors_action.execute(self._cast)
+        
+        self.explosions_list.draw()
         arcade.draw_text(f"Time: {self._time_elapsed:.2f}", 0, constants.SCREEN_HEIGHT, arcade.color.WHITE, anchor_x="left", anchor_y="top")
 
     def on_key_press(self, key, modifiers):
@@ -157,11 +165,12 @@ class Game(arcade.View):
             if not ai.is_dead():
                 all_characters_dead = False
         
-        if all_characters_dead:
-            main_menu_view = MainMenuView()
-            self.window.show_view(main_menu_view)
+        # if all_characters_dead:
+        #     main_menu_view = MainMenuView()
+        #     self.window.show_view(main_menu_view)
 
-        self._handle_collisions_action.execute(self._cast)
+        self._handle_collisions_action.execute(self._cast, self.explosions_list)
+        self.explosions_list.update()
 
         # self._time_elapsed = delta_time ** -1
         self._time_elapsed += delta_time

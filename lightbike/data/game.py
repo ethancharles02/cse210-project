@@ -30,6 +30,8 @@ from data.player import Player
 from data.ai import Ai
 from data.map import Map
 from data.button import Button
+from data.game_view import GameView
+from data.main_menu_view import MainMenuView
 # from data.particles import Particle, Smoke
 
 
