@@ -167,7 +167,11 @@ class GameView(arcade.View):
         
         # if all_characters_dead:
         #     main_menu_view = MainMenuView()
+        #     self.window.set_mouse_visible(True)
         #     self.window.show_view(main_menu_view)
+            # game_view = GameView(self.window)
+            # self.window.set_mouse_visible(False)
+            # self.window.show_view(game_view)
 
         self._handle_collisions_action.execute(self._cast, self.explosions_list)
         self.explosions_list.update()
