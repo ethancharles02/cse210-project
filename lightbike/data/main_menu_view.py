@@ -79,25 +79,62 @@ class MainMenuView(arcade.View):
             self.num_player_button4.select()
             self.num_players = 4
 
-        if ():
+        if self.num_ai_button0.coords_in_hitbox(_x, _y):
+            self.num_ai_button1.unselect()
+            self.num_ai_button2.unselect()
+            self.num_ai_button3.unselect()
+            self.num_ai_button4.unselect()
+            self.num_ai_button0.select()
             self.num_ai = 0
-        elif ():
+        elif self.num_ai_button1.coords_in_hitbox(_x, _y):
+            self.num_ai_button0.unselect()
+            self.num_ai_button2.unselect()
+            self.num_ai_button3.unselect()
+            self.num_ai_button4.unselect()
+            self.num_ai_button1.select()
             self.num_ai = 1
-        elif ():
+        elif self.num_ai_button2.coords_in_hitbox(_x, _y):
+            self.num_ai_button0.unselect()
+            self.num_ai_button1.unselect()
+            self.num_ai_button3.unselect()
+            self.num_ai_button4.unselect()
+            self.num_ai_button2.select()
             self.num_ai = 2
-        elif ():
+        elif self.num_ai_button3.coords_in_hitbox(_x, _y):
+            self.num_ai_button0.unselect()
+            self.num_ai_button1.unselect()
+            self.num_ai_button2.unselect()
+            self.num_ai_button4.unselect()
+            self.num_ai_button3.select()
             self.num_ai = 3
-        elif ():
-            self.num_ai = 4
+        elif self.num_ai_button4.coords_in_hitbox(_x, _y):
+            self.num_ai_button0.unselect()
+            self.num_ai_button1.unselect()
+            self.num_ai_button2.unselect()
+            self.num_ai_button3.unselect()
+            self.num_ai_button4.select()
+            self.num_ai = 4 
 
-        if ():
+        if self.map_button0.coords_in_hitbox(_x, _y):
+            self.num_ai_button1.unselect()
+            self.num_ai_button2.unselect()
+            self.num_ai_button3.unselect()
             self.cur_map = constants.MAP0
-        elif ():
+        elif self.map_button1.coords_in_hitbox(_x, _y):
+            self.num_ai_button0.unselect()
+            self.num_ai_button2.unselect()
+            self.num_ai_button3.unselect()
             self.cur_map = constants.MAP1
-        elif ():
+        elif self.map_button2.coords_in_hitbox(_x, _y):
+            self.num_ai_button0.unselect()
+            self.num_ai_button1.unselect()
+            self.num_ai_button3.unselect()
             self.cur_map = constants.MAP2
-        elif ():
-            self.cur_map = constants.MAP3
-        
+        elif self.map_button3.coords_in_hitbox(_x, _y):
+            self.num_ai_button0.unselect()
+            self.num_ai_button1.unselect()
+            self.num_ai_button2.unselect()
+            self.cur_map = constants.MAP3     
+            
         # self.window.show_view(instructions_view)
         # instructions_view = InstructionView()
