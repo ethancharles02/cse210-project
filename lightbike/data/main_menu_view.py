@@ -7,6 +7,7 @@
 import arcade
 from data.button import Button
 from data import constants
+from data.game_view import GameView
 
 class MainMenuView(arcade.View):
     """
@@ -20,10 +21,12 @@ class MainMenuView(arcade.View):
         self.num_players = 1
         self.num_ai = 1
         self._cast = {}
+        self.window = window
 
     def on_show(self):
         """
         """
+        self.play_button = Button("assets/play_button.png")
         self._cast["buttons"] = []
         self._cast["buttons"].append(Button(text="test", text_color="black", font="arial", selectable=True, selected=False))
         self._cast["buttons"][0].position = (50, 100)
@@ -46,18 +49,35 @@ class MainMenuView(arcade.View):
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         """
         """
-        play_button = Button("assets/play_button.png")
-        if play_button.coords_in_hitbox(_x, _y):
-            play_button.select()
+        if self.play_button.coords_in_hitbox(_x, _y):
+            self.play_button.select()
+            game_view = GameView(self.window)
+            self.window.show_view(game_view)
 
-        if (self.window._mouse_x and self.window._mouse_y):
+        if self.num_player_button1.coords_in_hitbox(_x, _y):
+            self.num_player_button2.unselect()
+            self.num_player_button3.unselect()
+            self.num_player_button4.unselect()
+            self.num_player_button1.select()
             self.num_players = 1
-        elif ():
+        elif self.num_player_button2.coords_in_hitbox(_x, _y):
+            self.num_player_button1.unselect()
+            self.num_player_button3.unselect()
+            self.num_player_button4.unselect()
+            self.num_player_button2.select()
             self.num_players = 2
-        # elif ():
-        #     self.num_players = 3
-        # elif ():
-        #     self.num_players = 4
+        elif self.num_player_button3.coords_in_hitbox(_x, _y):
+            self.num_player_button1.unselect()
+            self.num_player_button2.unselect()
+            self.num_player_button4.unselect()
+            self.num_player_button3.select()
+            self.num_players = 3
+        elif self.num_player_button4.coords_in_hitbox(_x, _y):
+            self.num_player_button1.unselect()
+            self.num_player_button2.unselect()
+            self.num_player_button3.unselect()
+            self.num_player_button4.select()
+            self.num_players = 4
 
         if ():
             self.num_ai = 0

@@ -4,6 +4,22 @@ frame of the game, deciding where everything goes. It comes
 from arcade.View and overrides methods to draw the game, update it, etc.
 """
 
+from time import time
+def updateTime():
+    global old_time
+    old_time = time()
+
+def dTime():
+    global old_time
+    return time() - old_time
+
+# def displayTime():
+#     global old_time
+#     print(time() - old_time)
+
+# updateTime()
+# displayTime()
+
 import arcade
 # import os
 from random import randint
@@ -55,6 +71,12 @@ class GameView(arcade.View):
         self._time_elapsed = 0
 
         self.explosions_list = None #Explosions
+
+        # temporary code for optimization
+        # self.draw_time = 0
+        # self.update_time = 0
+        # self.total_time = 0
+        # 
 
     def on_show(self):
         """
@@ -127,13 +149,21 @@ class GameView(arcade.View):
         """
         Render the screen.
         """
-        
+        # temp code for optimization
+        # updateTime()
+        # 
+
         arcade.start_render()
 
         self._draw_actors_action.execute(self._cast)
         
         self.explosions_list.draw()
         arcade.draw_text(f"Time: {self._time_elapsed:.2f}", 0, constants.SCREEN_HEIGHT, arcade.color.WHITE, anchor_x="left", anchor_y="top")
+        
+        # temp code for optimization
+        # self.draw_time += dTime()
+        # self.total_time += dTime()
+        # 
 
     def on_key_press(self, key, modifiers):
         """
@@ -146,6 +176,10 @@ class GameView(arcade.View):
         """
         Movement and game logic
         """
+
+        # temp code for optimization
+        # updateTime()
+        # 
 
         self._move_actors_action.execute(self._cast, delta_time)
 
@@ -178,3 +212,8 @@ class GameView(arcade.View):
 
         # self._time_elapsed = delta_time ** -1
         self._time_elapsed += delta_time
+
+        # temp code for optimization
+        # self.update_time += dTime()
+        # self.total_time += dTime()
+        # 
