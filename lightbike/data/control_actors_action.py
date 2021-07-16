@@ -51,6 +51,7 @@ class ControlActorsAction(Action):
         """
 
         if key == 65307:
+            print(game.draw_time / game.total_time, game.update_time / game.total_time, game.key_time / game.total_time)
             game.window.close()
         
         # if key == arcade_key.X:
