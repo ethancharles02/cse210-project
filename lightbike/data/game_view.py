@@ -77,6 +77,7 @@ class GameView(arcade.View):
         self._num_ai = num_ai
         self._map = map
 
+        self.game_over = False
         # temporary code for optimization
         # self.draw_time = 0
         # self.update_time = 0
@@ -169,6 +170,16 @@ class GameView(arcade.View):
         
         self._explosions_list.draw()
         arcade.draw_text(f"Time: {self._time_elapsed:.2f}", 0, constants.SCREEN_HEIGHT, arcade.color.WHITE, anchor_x="left", anchor_y="top")
+
+        if self.game_over:
+            arcade.draw_text("Game Over!", constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2 + 25,
+                arcade.color.WHITE, font_size=50, anchor_x="center")
+            arcade.draw_text(f"Time: {self._time_elapsed:.2f}", constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2 - 25,
+                arcade.color.GRAY, font_size=25, anchor_x="center")
+            arcade.draw_text("Click: Restart", constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2 - 50,
+                arcade.color.WHITE, font_size=15, anchor_x="center")
+            arcade.draw_text("ESC: Return to Menu", constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2 - 65,
+                arcade.color.WHITE, font_size=15, anchor_x="center")
         
         # temp code for optimization
         # self.draw_time += dTime()
@@ -182,6 +193,10 @@ class GameView(arcade.View):
 
         self._control_actors_action.execute(self, self._cast, key, self._main_menu)
 
+    def on_mouse_press(self, _x, _y, _button, _modifiers):
+        if self.game_over:
+            self.window.show_view(GameView(self._main_menu.window, self._main_menu, self._main_menu.num_players, self._main_menu.num_ai, self._main_menu.cur_map))
+
     def on_update(self, delta_time):
         """
         Movement and game logic
@@ -190,38 +205,40 @@ class GameView(arcade.View):
         # temp code for optimization
         # updateTime()
         # 
+        if not self.game_over:
+            self._move_actors_action.execute(self._cast, delta_time)
 
-        self._move_actors_action.execute(self._cast, delta_time)
+            for ai in self._cast["ai"]:
+                if not ai.is_dead():
+                    ai.update_cooldown(delta_time)
+                    if randint(1, 400) == 1:
+                        ai.turn()
+            
+            self.game_over = True
 
-        for ai in self._cast["ai"]:
-            if not ai.is_dead():
-                ai.update_cooldown(delta_time)
-                if randint(1, 400) == 1:
-                    ai.turn()
-        
-        all_characters_dead = True
+            for player in self._cast["players"]:
+                if not player.is_dead():
+                    self.game_over = False
+            
+            for ai in self._cast["ai"]:
+                if not ai.is_dead():
+                    self.game_over = False
+            
+            if self.game_over:
+                constants.SOUND_BACKGROUND.stop(self.background_music)
+            # if all_characters_dead:
+            #     main_menu_view = MainMenuView()
+            #     self.window.set_mouse_visible(True)
+            #     self.window.show_view(main_menu_view)
+                # game_view = GameView(self.window)
+                # self.window.set_mouse_visible(False)
+                # self.window.show_view(game_view)
 
-        for player in self._cast["players"]:
-            if not player.is_dead():
-                all_characters_dead = False
-        
-        for ai in self._cast["ai"]:
-            if not ai.is_dead():
-                all_characters_dead = False
-        
-        # if all_characters_dead:
-        #     main_menu_view = MainMenuView()
-        #     self.window.set_mouse_visible(True)
-        #     self.window.show_view(main_menu_view)
-            # game_view = GameView(self.window)
-            # self.window.set_mouse_visible(False)
-            # self.window.show_view(game_view)
+            self._handle_collisions_action.execute(self._cast, self._explosions_list)
 
-        self._handle_collisions_action.execute(self._cast, self._explosions_list)
+            # self._time_elapsed = delta_time ** -1
+            self._time_elapsed += delta_time
         self._explosions_list.update()
-
-        # self._time_elapsed = delta_time ** -1
-        self._time_elapsed += delta_time
 
         # temp code for optimization
         # self.update_time += dTime()
