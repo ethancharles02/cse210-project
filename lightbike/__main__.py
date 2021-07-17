@@ -14,11 +14,7 @@ from data.main_menu_view import MainMenuView
 
 def main():
     """ Main method """
-    # window = Game(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
     window = arcade.Window(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
-    # window.setup()
-    # game_view = GameView(window)
-    # window.show_view(game_view)
     main_menu_view = MainMenuView(window)
     window.show_view(main_menu_view)
     arcade.run()

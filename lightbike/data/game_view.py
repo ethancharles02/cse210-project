@@ -4,22 +4,6 @@ frame of the game, deciding where everything goes. It comes
 from arcade.View and overrides methods to draw the game, update it, etc.
 """
 
-from time import time
-def updateTime():
-    global old_time
-    old_time = time()
-
-def dTime():
-    global old_time
-    return time() - old_time
-
-# def displayTime():
-#     global old_time
-#     print(time() - old_time)
-
-# updateTime()
-# displayTime()
-
 import arcade
 # import os
 from random import randint
@@ -32,7 +16,6 @@ from data.output_service import OutputService
 from data.player import Player
 from data.ai import Ai
 from data.map import Map
-from data.button import Button
 
 
 class GameView(arcade.View):
@@ -78,46 +61,22 @@ class GameView(arcade.View):
         self._map = map
 
         self.game_over = False
-        # temporary code for optimization
-        # self.draw_time = 0
-        # self.update_time = 0
-        # self.total_time = 0
-        # 
 
     def on_show(self):
         """
         Set up the game and initialize the variables.
         """
-        
-        # player2_keys = {
-        #     arcade.key.LEFT: (-1, 0),
-        #     arcade.key.RIGHT: (1, 0),
-        #     arcade.key.UP: (0, 1),
-        #     arcade.key.DOWN: (0, -1)
-        # }
-
-        # self._cast["buttons"] = []
-        # self._cast["buttons"].append(Button(text="Play", text_color=(1, 92, 226), font="arial", color="black", selectable=True, selected=False, selected_color=(102, 102, 102)))
-        # self._cast["buttons"][0].position = (400, 100)
 
         self._cast["players"] = []
         for i in range(self._num_players):
-            # if i == 1:
-            #     self._cast["players"].append(Player(keys=player2_keys))
-            # else:
             self._cast["players"].append(Player(wall_sprite=constants.PLAYER_WALL_SPRITE, keys=constants.DEFAULT_KEYS[i]))
             self._cast["players"][i].set_sprite(arcade.Sprite(constants.PLAYER_SPRITE, constants.SPRITE_SCALING))
-            # self._cast["players"][i].set_name("player")
-            # self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.25))
             self._cast["players"][i].set_velocity((0, 1 * self._cast["players"][i].get_movement_speed()))
 
             # Hitbox adjustment to half of the players sprite
             orig_width = self._cast["players"][i].get_sprite().width * constants.SPRITE_SCALING**-1
             hitbox = self._cast["players"][i].get_sprite().get_hit_box()
-            # print(hitbox)
             self._cast["players"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 2 + orig_width / 2, x[1] / 3) if x[0] < 0 else (x[0], x[1] / 3), hitbox)))
-            # self._cast["players"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0], x[1] / 2))))
-        # self._cast["players"].append(Player(keys=player2_keys))
         
         screen_dx = constants.SCREEN_WIDTH / (len(self._cast["players"]) + 1)
         i = 0
@@ -131,9 +90,7 @@ class GameView(arcade.View):
         for i in range(self._num_ai):
             self._cast["ai"].append(Ai(wall_sprite=constants.AI_WALL_SPRITE))
             self._cast["ai"][i].set_sprite(arcade.Sprite(constants.AI_SPRITE, constants.SPRITE_SCALING))
-            # self._cast["ai"][i].set_position((constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.75))
             self._cast["ai"][i].set_velocity((0, -1))
-            # self._cast["ai"][i].get_trail().add_point(self._cast["ai"][i].get_position())
 
             # Hitbox adjustment
             orig_width = self._cast["ai"][i].get_sprite().width * constants.SPRITE_SCALING**-1
@@ -160,9 +117,6 @@ class GameView(arcade.View):
         """
         Render the screen.
         """
-        # temp code for optimization
-        # updateTime()
-        # 
 
         arcade.start_render()
 
@@ -180,11 +134,6 @@ class GameView(arcade.View):
                 arcade.color.WHITE, font_size=15, anchor_x="center")
             arcade.draw_text("ESC: Return to Menu", constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2 - 65,
                 arcade.color.WHITE, font_size=15, anchor_x="center")
-        
-        # temp code for optimization
-        # self.draw_time += dTime()
-        # self.total_time += dTime()
-        # 
 
     def on_key_press(self, key, modifiers):
         """
@@ -194,6 +143,9 @@ class GameView(arcade.View):
         self._control_actors_action.execute(self, self._cast, key, self._main_menu)
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
+        """
+        Called whenever a mouse key is pressed
+        """
         if self.game_over:
             self.window.show_view(GameView(self._main_menu.window, self._main_menu, self._main_menu.num_players, self._main_menu.num_ai, self._main_menu.cur_map))
 
@@ -202,9 +154,6 @@ class GameView(arcade.View):
         Movement and game logic
         """
 
-        # temp code for optimization
-        # updateTime()
-        # 
         if not self.game_over:
             self._move_actors_action.execute(self._cast, delta_time)
 
@@ -226,21 +175,9 @@ class GameView(arcade.View):
             
             if self.game_over:
                 constants.SOUND_BACKGROUND.stop(self.background_music)
-            # if all_characters_dead:
-            #     main_menu_view = MainMenuView()
-            #     self.window.set_mouse_visible(True)
-            #     self.window.show_view(main_menu_view)
-                # game_view = GameView(self.window)
-                # self.window.set_mouse_visible(False)
-                # self.window.show_view(game_view)
 
             self._handle_collisions_action.execute(self._cast, self._explosions_list)
 
             # self._time_elapsed = delta_time ** -1
             self._time_elapsed += delta_time
         self._explosions_list.update()
-
-        # temp code for optimization
-        # self.update_time += dTime()
-        # self.total_time += dTime()
-        # 
