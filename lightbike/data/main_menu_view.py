@@ -5,6 +5,7 @@
 """
 
 import arcade
+from random import random
 from data.button import Button
 from data import constants
 from data.game_view import GameView
@@ -21,7 +22,7 @@ class MainMenuView(arcade.View):
         self.num_players = constants.NUM_PLAYERS
         self.num_ai = constants.NUM_AI
         self.cur_map = constants.DEFAULT_MAP
-        
+
         self.window = window
 
     def on_show(self):
@@ -33,13 +34,18 @@ class MainMenuView(arcade.View):
         self.play_button.position = (400, 350)
         
         self.num_players_buttons = arcade.SpriteList(use_spatial_hash=True, is_static=True)
+        
         self.num_players_buttons.append(Button(text="1 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
-        # self.num_players_buttons[0].position = ()
+        self.num_players_buttons[0].position = (400, 250)
         self.num_players_buttons.append(Button(text="2 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
-        
+        self.num_players_buttons[1].position = (400, 150)
         self.num_players_buttons.append(Button(text="3 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
+        self.num_players_buttons[2].position = (400, 50)
+        # self.num_players_buttons.append(Button(text="2 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
         
-        self.num_players_buttons.append(Button(text="4 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
+        # self.num_players_buttons.append(Button(text="3 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
+        
+        # self.num_players_buttons.append(Button(text="4 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
         # self._cast["buttons"] = []
         # self._cast["buttons"].append(Button(text="test", text_color="black", font="arial", selectable=True, selected=False))
         # self._cast["buttons"][0].position = (50, 100)
@@ -56,8 +62,8 @@ class MainMenuView(arcade.View):
         self.view_screen.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
 
         self.play_button.draw()
-        self.num_players_buttons.draw()
 
+        self.num_players_buttons.draw()
         
         # arcade.draw_text("Menu Screen", constants.SCREEN_WIDTH/2, constants.SCREEN_HEIGHT/2,
         #                  arcade.color.BLACK, font_size=50, anchor_x="center")
@@ -77,6 +83,7 @@ class MainMenuView(arcade.View):
                 button.unselect()
 
             self.num_players_buttons[0].select()
+            # self.num_players_buttons[0].texture.name = str(random())
             self.num_players = 1
 
         elif self.num_players_buttons[1].coords_in_hitbox(_x, _y):
@@ -93,12 +100,12 @@ class MainMenuView(arcade.View):
             self.num_players_buttons[2].select()
             self.num_players = 3
 
-        elif self.num_players_buttons[3].coords_in_hitbox(_x, _y):
-            for button in self.num_players_buttons:
-                button.unselect()
+        # elif self.num_players_buttons[3].coords_in_hitbox(_x, _y):
+        #     for button in self.num_players_buttons:
+        #         button.unselect()
 
-            self.num_players_buttons[3].select()
-            self.num_players = 4
+        #     self.num_players_buttons[3].select()
+        #     self.num_players = 4
 
         # if self.num_ai_button0.coords_in_hitbox(_x, _y):
         #     self.num_ai_button1.unselect()
