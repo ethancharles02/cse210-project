@@ -25,7 +25,7 @@ DEFAULT_KEYS = {
 
 
 NUM_PLAYERS = 1
-NUM_AI = 25
+NUM_AI = 4
 
 
 AI_RANGE = 5

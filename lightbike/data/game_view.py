@@ -33,7 +33,7 @@ from data.player import Player
 from data.ai import Ai
 from data.map import Map
 from data.button import Button
-from data.main_menu_view import MainMenuView
+# from data.main_menu_view import MainMenuView
 
 
 class GameView(arcade.View):
@@ -89,6 +89,10 @@ class GameView(arcade.View):
         #     arcade.key.UP: (0, 1),
         #     arcade.key.DOWN: (0, -1)
         # }
+
+        # self._cast["buttons"] = []
+        # self._cast["buttons"].append(Button(text="Play", text_color=(1, 92, 226), font="arial", color="black", selectable=True, selected=False, selected_color=(102, 102, 102)))
+        # self._cast["buttons"][0].position = (400, 100)
 
         self._cast["players"] = []
         for i in range(constants.NUM_PLAYERS):
