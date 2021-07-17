@@ -29,17 +29,17 @@ class MainMenuView(arcade.View):
         """
         # Screen width is 800
         # Screen height is 600
-        self.play_button = Button(text="PLAY", text_color=(1, 93, 229), font="arial", color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=False)
+        self.play_button = Button(text="PLAY", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=False)
         self.play_button.position = (400, 350)
         
         self.num_players_buttons = arcade.SpriteList(use_spatial_hash=True, is_static=True)
-        self.num_players_buttons.append(Button(text="1 PLAYER", text_color=(1, 93, 229), font="arial", color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
+        self.num_players_buttons.append(Button(text="1 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
         # self.num_players_buttons[0].position = ()
-        self.num_players_buttons.append(Button(text="2 PLAYER", text_color=(1, 93, 229), font="arial", color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
+        self.num_players_buttons.append(Button(text="2 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
         
-        self.num_players_buttons.append(Button(text="3 PLAYER", text_color=(1, 93, 229), font="arial", color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
+        self.num_players_buttons.append(Button(text="3 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
         
-        self.num_players_buttons.append(Button(text="4 PLAYER", text_color=(1, 93, 229), font="arial", color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
+        self.num_players_buttons.append(Button(text="4 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
         # self._cast["buttons"] = []
         # self._cast["buttons"].append(Button(text="test", text_color="black", font="arial", selectable=True, selected=False))
         # self._cast["buttons"][0].position = (50, 100)
