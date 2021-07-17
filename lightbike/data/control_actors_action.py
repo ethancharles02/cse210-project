@@ -4,6 +4,7 @@ the actor and also will close the game if the escape key is pressed
 """
 from arcade import key as arcade_key
 from data.action import Action
+from data import constants
 
 class ControlActorsAction(Action):
     """A code template for controlling actors. The responsibility of this
@@ -18,7 +19,7 @@ class ControlActorsAction(Action):
         """
         pass
 
-    def execute(self, game, cast, key):
+    def execute(self, game, cast, key, main_menu):
         """Executes the action using the given actors.
 
         Args:
@@ -28,7 +29,7 @@ class ControlActorsAction(Action):
         """
 
         for player in cast["players"]:
-            direction = self._get_direction(game, player, key)
+            direction = self._get_direction(game, player, key, main_menu)
             if not player.is_dead():
 
                 # checks if a direction was returned since it will return None if invalid key
@@ -42,7 +43,7 @@ class ControlActorsAction(Action):
                         player.get_trail().add_point(player.get_position())
                         # player.get_sprite().angle = direction_angle
         
-    def _get_direction(self, game, player, key):
+    def _get_direction(self, game, player, key, main_menu):
         """Gets the selected direction for the given player.
 
         Returns:
@@ -50,9 +51,11 @@ class ControlActorsAction(Action):
             None: If there was an invalid key inputted
         """
 
-        if key == 65307:
+        if key == constants.ESCAPE_KEY:
             # print(game.draw_time / game.total_time, game.update_time / game.total_time, game.key_time / game.total_time)
-            game.window.close()
+            # game.window.close()
+            constants.SOUND_BACKGROUND.stop(game.background_music)
+            game.window.show_view(main_menu)
         
         # if key == arcade_key.X:
         #     player.set_movement_speed(player.get_movement_speed() * 2)

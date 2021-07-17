@@ -20,15 +20,35 @@ AI_SPRITE = "assets/orange_player.png"
 AI_WALL_SPRITE = "assets/orange_wall.png"
 PLAYER_SPRITE = "assets/blue_player.png"
 PLAYER_WALL_SPRITE = "assets/blue_wall.png"
+MAIN_MENU = "assets/main_menu_edited.png"
 
 MOVEMENT_SPEED = 100
-DEFAULT_KEYS = {
-    key.A: (-1, 0), # a
-    key.D: (1, 0),  # d
-    key.W: (0, 1),  # w
-    key.S: (0, -1)  # s
+DEFAULT_KEYS = [{
+    key.W: (0, 1),
+    key.A: (-1, 0),
+    key.S: (0, -1),
+    key.D: (1, 0)
+},
+{
+    key.UP: (0, 1),
+    key.LEFT: (-1, 0),
+    key.DOWN: (0, -1),
+    key.RIGHT: (1, 0)
+},
+{
+    key.I: (0, 1),
+    key.J: (-1, 0),
+    key.K: (0, -1),
+    key.L: (1, 0)
+},
+{
+    key.W: (0, 1),
+    key.A: (-1, 0),
+    key.S: (0, -1),
+    key.D: (1, 0)
 }
-
+]
+ESCAPE_KEY = key.ESCAPE
 
 NUM_PLAYERS = 1
 NUM_AI = 4

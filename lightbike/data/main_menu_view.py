@@ -1,6 +1,3 @@
-# Main menu will be built here
-# https://arcade.academy/examples/view_instructions_and_game_over.html
-# It will be an arcade.View
 """
 """
 
@@ -17,7 +14,7 @@ class MainMenuView(arcade.View):
         """
         """
         super().__init__(window=window)
-        self.view_screen = arcade.load_texture('assets/main_menu.png')
+        self.view_screen = arcade.load_texture(constants.MAIN_MENU)
 
         self.num_players = constants.NUM_PLAYERS
         self.num_ai = constants.NUM_AI
@@ -34,7 +31,7 @@ class MainMenuView(arcade.View):
         self.play_button.position = (400, 450)
         
         self.num_players_buttons = arcade.SpriteList(use_spatial_hash=True, is_static=True)
-        self.num_players_buttons.append(Button(text="1 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=5, selectable=True, selected=False, selected_color=(12, 255, 255)))
+        self.num_players_buttons.append(Button(text="1 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=5, selectable=True, selected=True, selected_color=(12, 255, 255)))
         self.num_players_buttons[0].position = (300, 385)
         self.num_players_buttons.append(Button(text="2 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=5, selectable=True, selected=False, selected_color=(12, 255, 255)))
         self.num_players_buttons[1].position = (500, 385)
@@ -52,11 +49,11 @@ class MainMenuView(arcade.View):
         self.num_ai_buttons[2].position = (400, 235)
         self.num_ai_buttons.append(Button(text="3 AI", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=5, selectable=True, selected=False, selected_color=(12, 255, 255)))
         self.num_ai_buttons[3].position = (525, 235)
-        self.num_ai_buttons.append(Button(text="4 AI", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=5, selectable=True, selected=False, selected_color=(12, 255, 255)))
+        self.num_ai_buttons.append(Button(text="4 AI", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=5, selectable=True, selected=True, selected_color=(12, 255, 255)))
         self.num_ai_buttons[4].position = (650, 235)
 
         self.map_buttons = arcade.SpriteList(use_spatial_hash=True, is_static=True)
-        self.map_buttons.append(Button(text="Map 1", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=5, selectable=True, selected=False, selected_color=(12, 255, 255)))
+        self.map_buttons.append(Button(text="Map 1", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=5, selectable=True, selected=True, selected_color=(12, 255, 255)))
         self.map_buttons[0].position = (175, 160)
         self.map_buttons.append(Button(text="Map 2", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=5, selectable=True, selected=False, selected_color=(12, 255, 255)))
         self.map_buttons[1].position = (325, 160)
@@ -94,12 +91,19 @@ class MainMenuView(arcade.View):
         # arcade.draw_text("Click to advance", constants.SCREEN_WIDTH/2, constants.SCREEN_HEIGHT/2-75,
         #                  arcade.color.GRAY, font_size=20, anchor_x="center")
 
+    def on_key_press(self, key, modifiers):
+        """
+        Called whenever a key is pressed
+        """
+        if key == constants.ESCAPE_KEY:
+            self.window.close()
+
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         """
         """
         if self.play_button.coords_in_hitbox(_x, _y):
             # self.play_button.select()
-            game_view = GameView(self.window, self.num_players, self.num_ai, self.cur_map)
+            game_view = GameView(self.window, self, self.num_players, self.num_ai, self.cur_map)
             self.window.show_view(game_view)
 
         if self.num_players_buttons[0].coords_in_hitbox(_x, _y):
