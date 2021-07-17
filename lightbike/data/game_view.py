@@ -104,7 +104,7 @@ class GameView(arcade.View):
             # if i == 1:
             #     self._cast["players"].append(Player(keys=player2_keys))
             # else:
-            self._cast["players"].append(Player(wall_sprite=constants.PLAYER_WALL_SPRITE))
+            self._cast["players"].append(Player(wall_sprite=constants.PLAYER_WALL_SPRITE, keys=constants.DEFAULT_KEYS[i]))
             self._cast["players"][i].set_sprite(arcade.Sprite(constants.PLAYER_SPRITE, constants.SPRITE_SCALING))
             # self._cast["players"][i].set_name("player")
             # self._cast["players"][0].set_position(Point(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.25))

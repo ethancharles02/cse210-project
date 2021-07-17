@@ -42,10 +42,10 @@ DEFAULT_KEYS = [{
     key.L: (1, 0)
 },
 {
-    key.W: (0, 1),
-    key.A: (-1, 0),
-    key.S: (0, -1),
-    key.D: (1, 0)
+    key.NUM_8: (0, 1),
+    key.NUM_4: (-1, 0),
+    key.NUM_2: (0, -1),
+    key.NUM_6: (1, 0)
 }
 ]
 ESCAPE_KEY = key.ESCAPE
