@@ -114,8 +114,8 @@ class GameView(arcade.View):
             orig_width = self._cast["players"][i].get_sprite().width * constants.SPRITE_SCALING**-1
             hitbox = self._cast["players"][i].get_sprite().get_hit_box()
             # print(hitbox)
-            self._cast["players"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 2 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
-
+            self._cast["players"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 2 + orig_width / 2, x[1] / 3) if x[0] < 0 else (x[0], x[1] / 3), hitbox)))
+            # self._cast["players"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0], x[1] / 2))))
         # self._cast["players"].append(Player(keys=player2_keys))
         
         screen_dx = constants.SCREEN_WIDTH / (len(self._cast["players"]) + 1)
@@ -137,7 +137,7 @@ class GameView(arcade.View):
             # Hitbox adjustment
             orig_width = self._cast["ai"][i].get_sprite().width * constants.SPRITE_SCALING**-1
             hitbox = self._cast["ai"][i].get_sprite().get_hit_box()
-            self._cast["ai"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 2 + orig_width / 2, x[1]) if x[0] < 0 else (x[0], x[1]), hitbox)))
+            self._cast["ai"][i].get_sprite().set_hit_box(tuple(map(lambda x: (x[0] + 2 + orig_width / 2, x[1] / 3) if x[0] < 0 else (x[0], x[1] / 3), hitbox)))
         
         screen_dx = constants.SCREEN_WIDTH / (len(self._cast["ai"]) + 1)
         i = 0
@@ -151,7 +151,7 @@ class GameView(arcade.View):
         self._cast["map"] = []
         self._cast["map"].append(Map(self._map))
 
-        self.background_music = constants.SOUND_BACKGROUND.play(volume=0.2, loop=True)
+        self.background_music = constants.SOUND_BACKGROUND.play(volume=0.1, loop=True)
 
         arcade.set_background_color(constants.BACKGROUND_COLOR)
 
@@ -196,7 +196,7 @@ class GameView(arcade.View):
         for ai in self._cast["ai"]:
             if not ai.is_dead():
                 ai.update_cooldown(delta_time)
-                if randint(1, 100) == 1:
+                if randint(1, 400) == 1:
                     ai.turn()
         
         all_characters_dead = True
