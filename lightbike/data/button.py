@@ -11,7 +11,7 @@ num_buttons = -1
 class Button(Sprite):
     """
     """
-    def __init__(self, text="PLAY", text_color=(1, 93, 229), font=constants.DEFAULT_FONT, color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, font_size = 50, selectable=True, selected=False, selected_color=(12, 255, 255)):
+    def __init__(self, text="PLAY", text_color=(1, 93, 229), font=constants.DEFAULT_FONT, color="black", margin_width = 40, margin_height = 25, button_fill="black", outline="white", edge_thickness=5, font_size = 30, selectable=True, selected=False, selected_color=(12, 255, 255)):
         super().__init__()
         self.append_texture(create_button(text=text, text_color=text_color, font=font, color=color, margin_width = margin_width, margin_height = margin_height, button_fill=button_fill, outline=outline, edge_thickness=edge_thickness, font_size = font_size))
         if selectable:
