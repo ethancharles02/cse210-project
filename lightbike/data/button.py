@@ -2,11 +2,12 @@
 """
 from arcade import Sprite, Texture
 from PIL import Image, ImageFont, ImageDraw
+from data import constants
 
 class Button(Sprite):
     """
     """
-    def __init__(self, text="PLAY", text_color=(1, 93, 229), font="/Library/Fonts/Arial.ttf", color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, font_size = 50, selectable=True, selected=False, selected_color=(12, 255, 255)):
+    def __init__(self, text="PLAY", text_color=(1, 93, 229), font=constants.DEFAULT_FONT, color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, font_size = 50, selectable=True, selected=False, selected_color=(12, 255, 255)):
         super().__init__()
         self.texture = create_button(text=text, text_color=text_color, font=font, color=color, margin_width = margin_width, margin_height = margin_height, button_fill=button_fill, outline=outline, edge_thickness=edge_thickness, font_size = font_size)
         self.selectable = selectable
@@ -46,7 +47,7 @@ class Button(Sprite):
         if self.selectable:
             return self.selected
 
-def create_button(text="PLAY", text_color=(1, 93, 229), font="/Library/Fonts/Arial.ttf", color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, font_size = 50):
+def create_button(text="PLAY", text_color=(1, 93, 229), font=constants.DEFAULT_FONT, color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, font_size = 50):
     font = ImageFont.truetype(font, size=font_size)
 
     # get text size

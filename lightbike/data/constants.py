@@ -4,6 +4,12 @@ The constants module holds global variables for the lightbike game
 from arcade import color
 from arcade import key
 from arcade import Sound
+from sys import platform
+
+if platform == "darwin":
+    DEFAULT_FONT = "/Library/Fonts/Arial.ttf"
+else:
+    DEFAULT_FONT = "arial"
 
 SCREEN_TITLE = "Lightbike"
 SCREEN_WIDTH = 800
