@@ -53,7 +53,7 @@ class GameView(arcade.View):
         _time_elapsed (float): Value for how much time has passed since the start of the program in seconds
     """
 
-    def __init__(self, window: arcade.Window):
+    def __init__(self, window: arcade.Window, num_players = constants.NUM_PLAYERS, num_ai = constants.NUM_AI, map = constants.DEFAULT_MAP):
         """
         The class constructor
         """
@@ -71,6 +71,10 @@ class GameView(arcade.View):
         self._time_elapsed = 0
 
         self.explosions_list = None #Explosions
+
+        self._num_players = num_players
+        self._num_ai = num_ai
+        self._map = map
 
         # temporary code for optimization
         # self.draw_time = 0
@@ -95,7 +99,7 @@ class GameView(arcade.View):
         # self._cast["buttons"][0].position = (400, 100)
 
         self._cast["players"] = []
-        for i in range(constants.NUM_PLAYERS):
+        for i in range(self._num_players):
             # if i == 1:
             #     self._cast["players"].append(Player(keys=player2_keys))
             # else:
@@ -122,7 +126,7 @@ class GameView(arcade.View):
 
         self._cast["ai"] = []
 
-        for i in range(constants.NUM_AI):
+        for i in range(self._num_ai):
             self._cast["ai"].append(Ai(wall_sprite=constants.AI_WALL_SPRITE))
             self._cast["ai"][i].set_sprite(arcade.Sprite(constants.AI_SPRITE, constants.SPRITE_SCALING))
             # self._cast["ai"][i].set_position((constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT * 0.75))
@@ -144,7 +148,7 @@ class GameView(arcade.View):
         self.explosions_list = arcade.SpriteList()
 
         self._cast["map"] = []
-        self._cast["map"].append(Map(constants.MAP3))
+        self._cast["map"].append(Map(self._map))
 
         constants.SOUND_BACKGROUND.play(volume=0.2, loop=True)
         arcade.set_background_color(constants.BACKGROUND_COLOR)

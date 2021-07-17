@@ -16,10 +16,12 @@ class MainMenuView(arcade.View):
         """
         """
         super().__init__(window=window)
-        self.cur_map = constants.MAP0
         self.view_screen = arcade.load_texture('assets/main_menu.png')
-        self.num_players = 1
-        self.num_ai = 1
+
+        self.num_players = constants.NUM_PLAYERS
+        self.num_ai = constants.NUM_AI
+        self.cur_map = constants.DEFAULT_MAP
+        
         self.window = window
 
     def on_show(self):
@@ -67,7 +69,7 @@ class MainMenuView(arcade.View):
         """
         if self.play_button.coords_in_hitbox(_x, _y):
             # self.play_button.select()
-            game_view = GameView(self.window)
+            game_view = GameView(self.window, self.num_players, self.num_ai, self.cur_map)
             self.window.show_view(game_view)
 
         if self.num_players_buttons[0].coords_in_hitbox(_x, _y):

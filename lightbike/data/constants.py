@@ -200,3 +200,5 @@ MAP3 = [
     [(10, 6), __one, 270], #Right Side of Bottom Cross Arm
     [(10, 5), __corner, 270],    
 ]
+
+DEFAULT_MAP = MAP0
