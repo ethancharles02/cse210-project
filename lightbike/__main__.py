@@ -8,7 +8,6 @@ file_path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(file_path)
 
 from data import constants
-from data.game_view import GameView
 from data.main_menu_view import MainMenuView
 
 def main():

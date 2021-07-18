@@ -5,11 +5,14 @@ to crash into the wall! First one to crash loses!
 
 ## Getting Started
 ---
-Make sure you have Python 3.8.0 or newer and arcade 2.5.7 or newer installed 
+Make sure you have Python 3.8.0 or newer, arcade 2.5.7 or newer, pillow 8.2.0 or newer installed 
 and running on your machine. You can install arcade by opening a terminal 
 and running the following command.
 ```
 python3 -m pip install arcade
+python3 -m pip install pillow
+or if pillow already installed
+python3 -m pip install --upgrade pillow
 ```
 After you've installed the required libraries, open a terminal and browse to the 
 project's root folder. Start the program by running either of these commands (depending 
@@ -32,12 +35,11 @@ root                    (project root folder)
   +-- assets            (program asset files)
     +-- __init__.py
     +-- blue_player.png
-    +-- blue_power.png
     +-- blue_wall.png
-    +-- floor_mosaic.png
+    +-- main_menu_edited.png
+    +-- main_menu_plan1.png
     +-- mi_explosion_03_hpx.wav
     +-- orange_player.png
-    +-- orange_power.png
     +-- orange_wall.png
     +-- Sci-Fi-Dramatic-Theme.wav
     +-- wall_1.png
@@ -51,22 +53,27 @@ root                    (project root folder)
     +-- action.py
     +-- actor.py
     +-- ai.py
+    +-- button.py
     +-- constants.py
     +-- control_actors_action.py
     +-- draw_actors_action.py
     +-- game.py
     +-- handle_collisions_action.py
     +-- lightbike.py
+    +-- main_menu_view.py
     +-- map.py
     +-- move_actors_action.py
     +-- output_service.py
+    +-- particles.py
     +-- player.py
     +-- trail.py
   +-- tests             (program test files)
     +-- test_actor.py
     +-- test_ai.py
+    +-- test_button.py
     +-- test_lightbike.py
     +-- test_map.py
+    +-- test_particles.py
     +-- test_player.py
     +-- test_point.py
   +-- __init__.py       (python package file)
@@ -77,8 +84,9 @@ root                    (project root folder)
 
 ## Required Technologies
 ---
-* Python 3.8.0
-* arcade 2.5.7
+* Python 3.8.0 or later
+* arcade 2.5.7 or later
+* pillow 8.2.0 or later
 
 ## Authors
 ---
