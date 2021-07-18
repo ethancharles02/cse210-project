@@ -58,13 +58,6 @@ class Ai(Lightbike):
         on_collision_course = False
         if self.check_collision(trail_sprite_list):
             on_collision_course = True
-        # for key in trail_sprite_list:
-        #     if on_collision_course:
-        #         break
-        #     for sprite in trail_sprite_list[key]:
-        #         if self._sprite.collides_with_sprite(sprite):
-        #             on_collision_course = True
-        #             break
         
         self._sprite.center_x -= aidx
         self._sprite.center_y -= aidy

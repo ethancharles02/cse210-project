@@ -18,10 +18,10 @@ class MainMenuView(arcade.View):
 
     Methods:
         __init__(): Assigns attributes
-        on_show():
-        on_draw():
-        on_key_press():
-        on_mouse_press():
+        on_show(): This runs every time that the View is shown. It is used for placing objects on the screen. Overridden from arcade.View
+        on_draw(): Draws the objects on the screen. Overridden from arcade.View
+        on_key_press(): Whenever a key is pressed, this is run. It checks for the key to exit the game. Overridden from arcade.View
+        on_mouse_press(): Runs when a mouse button is pressed, used for clicking buttons. Overridden from arcade.View
     """
     def __init__(self, window: arcade.Window):
         """
@@ -76,24 +76,11 @@ class MainMenuView(arcade.View):
         self.map_buttons[2].position = (475, 160)
         self.map_buttons.append(Button(text="Map 4", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=5, selectable=True, selected=True if self.cur_map == constants.MAP3 else False, selected_color=(12, 255, 255)))
         self.map_buttons[3].position = (625, 160)
-        
-        # self.num_players_buttons.append(Button(text="2 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
-        
-        # self.num_players_buttons.append(Button(text="3 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
-        
-        # self.num_players_buttons.append(Button(text="4 PLAYER", text_color=(1, 93, 229), color="black", margin_width = 40, margin_height = 20, button_fill="black", outline="white", edge_thickness=10, selectable=True, selected=False, selected_color=(12, 255, 255)))
-        # self._cast["buttons"] = []
-        # self._cast["buttons"].append(Button(text="test", text_color="black", font="arial", selectable=True, selected=False))
-        # self._cast["buttons"][0].position = (50, 100)
-        
-        # set your background image (find that code to do that)
-        #arcade.set_background_color(arcade.color.WHITE)
 
     def on_draw(self):
         """
         Displays the buttons on the main menu
         """
-        # Look at game.py or game_view.py for some of the code to use
         arcade.start_render()
 
         self.view_screen.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
@@ -101,10 +88,6 @@ class MainMenuView(arcade.View):
         self.num_players_buttons.draw()
         self.num_ai_buttons.draw()
         self.map_buttons.draw()
-        
-        # arcade.draw_text("Menu Screen", constants.SCREEN_WIDTH/2, constants.SCREEN_HEIGHT/2,
-        #                  arcade.color.BLACK, font_size=50, anchor_x="center")
-        
 
     def on_key_press(self, key, modifiers):
         """
@@ -126,7 +109,6 @@ class MainMenuView(arcade.View):
             _button: Conditions created from button press
         """
         if self.play_button.coords_in_hitbox(_x, _y):
-            # self.play_button.select()
             game_view = GameView(self.window, self, self.num_players, self.num_ai, self.cur_map)
             self.window.show_view(game_view)
 
@@ -134,7 +116,6 @@ class MainMenuView(arcade.View):
             for button in self.num_players_buttons:
                 button.unselect()
             self.num_players_buttons[0].select()
-            # self.num_players_buttons[0].texture.name = str(random())
             self.num_players = 1
         elif self.num_players_buttons[1].coords_in_hitbox(_x, _y):
             for button in self.num_players_buttons:
@@ -198,5 +179,3 @@ class MainMenuView(arcade.View):
                 button.unselect()
             self.map_buttons[3].select()
             self.cur_map = constants.MAP3
-        # self.window.show_view(instructions_view)
-        # instructions_view = InstructionView()

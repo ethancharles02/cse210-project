@@ -51,6 +51,9 @@ class HandleCollisionsAction(Action):
                     ai.check_ai_collisions(map_sprite_list)
 
 def append_explosion(explosions_list, position):
+    """
+    Adds an explosion to the given list, this pulls from both Particle and Smoke to create it
+    """
     for _ in range(constants.PARTICLE_COUNT):
         particle = Particle(explosions_list)
         particle.position = position

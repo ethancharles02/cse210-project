@@ -1,4 +1,5 @@
 """
+The particles module holds the classes for creating the explosions in Lightbike: Particle and Smoke
 """
 import random
 import math
@@ -9,9 +10,21 @@ from data import constants
 
 class Particle(arcade.SpriteCircle):
     """
+    The Particle class creates circles with random speeds and colors (based on a color list)
+
+    Stereotype:
+        Information Holder
+
+    Methods: 
+        __init__(): initializes the parent class, assigns attributes
+        update(): overridden method that updates the position based on velocity (and has a chance of creating additional particles)
     """
     def __init__(self, my_list):
         """
+        The class constructor
+
+        Args:
+            my_list (list): holds the particles
         """
         color = random.choice(constants.PARTICLE_COLORS)
 
@@ -31,7 +44,9 @@ class Particle(arcade.SpriteCircle):
         self.my_list = my_list
 
     def update(self):
-        """ Update the particle """
+        """
+        Updates the particle
+        """
         if self.my_alpha <= constants.PARTICLE_FADE_RATE:
             self.remove_from_sprite_lists()
         else:
@@ -54,14 +69,30 @@ class Particle(arcade.SpriteCircle):
 
 class Smoke(arcade.SpriteCircle):
     """
+    The Smoke class holds information for the smoke particles that are created in explosions
+
+    Stereotype:
+        Information Holder
+
+    Methods: 
+        __init__(): initializes the parent class, assigns attributes
+        update(): overridden method that updates the position based on velocity
     """
     def __init__(self, size):
+        """
+        The class constructor
+
+        Args:
+            size (float): sets the size of the smoke particle
+        """
         super().__init__(size, arcade.color.LIGHT_GRAY, soft=True)
         self.change_y = constants.SMOKE_RISE_RATE
         self.scale = constants.SMOKE_START_SCALE
 
     def update(self):
-        """ Update this particle """
+        """
+        Updates the particle
+        """
         if self.alpha <= constants.PARTICLE_FADE_RATE:
             self.remove_from_sprite_lists()
         else:

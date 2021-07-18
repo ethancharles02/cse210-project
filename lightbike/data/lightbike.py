@@ -133,21 +133,5 @@ class Lightbike(Actor):
         else:
             for sprite_list in sprite_lists:
                 for sprite in sprite_list:
-                    # if self._dead:
-                    #     break
-                    # collision_list = self._sprite.collides_with_list(trail_sprite_list[key])
-                    # if self._name == "player":
-                    #     if collision_list != []:
-                    #         print(collision_list[0].width)
                     if self._sprite.collides_with_list(sprite_list[sprite]):
-                        # self._dead = True
-                        # self.dead_sprite()
-                        # if self._name == "player":
-                        #     print("test")
                         return True
-
-                # for sprite in trail_sprite_list[key]:
-                #     if self._sprite.collides_with_sprite(sprite):
-                #         self._dead = True
-                #         self.dead_sprite()
-                #         break
