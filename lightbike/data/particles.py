@@ -1,4 +1,5 @@
 """
+The particles module contains classes and methods so that particles are generated when a lightbike crashes
 """
 import random
 import math
@@ -8,7 +9,10 @@ from data import constants
 # Pulled from https://arcade.academy/examples/sprite_explosion_particles.html#sprite-explosion-particles
 
 class Particle(arcade.SpriteCircle):
-    """
+    """The responsibility of this class is to create particles that appear as an explosion when a lightbike hits a wall or trail.
+    
+    Stereotype:
+        Controller
     """
     def __init__(self, my_list):
         """
@@ -53,8 +57,7 @@ class Particle(arcade.SpriteCircle):
                 self.my_list.append(smoke)
 
 class Smoke(arcade.SpriteCircle):
-    """
-    """
+    """Creates the smoke affect for the Particles"""
     def __init__(self, size):
         super().__init__(size, arcade.color.LIGHT_GRAY, soft=True)
         self.change_y = constants.SMOKE_RISE_RATE
