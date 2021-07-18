@@ -6,8 +6,6 @@ import math
 import arcade
 from data import constants
 
-# Pulled from https://arcade.academy/examples/sprite_explosion_particles.html#sprite-explosion-particles
-
 class Particle(arcade.SpriteCircle):
     """
     The Particle class creates circles with random speeds and colors (based on a color list)
