@@ -1,4 +1,6 @@
 """
+The main menu view module holds the GUI for the games main menu.
+It uses the button module to be able to create bottons for the player to customize the game mode.
 """
 
 import arcade
@@ -9,9 +11,21 @@ from data.game_view import GameView
 
 class MainMenuView(arcade.View):
     """
+    The Main Menu View is used to create and display the buttons and background of the main menu in the game.
+
+    Stereotype:
+        Service Provider
+
+    Methods:
+        __init__(): Assigns attributes
+        on_show():
+        on_draw():
+        on_key_press():
+        on_mouse_press():
     """
     def __init__(self, window: arcade.Window):
         """
+        The class constructor
         """
         super().__init__(window=window)
         self.view_screen = arcade.load_texture(constants.MAIN_MENU)
@@ -24,6 +38,7 @@ class MainMenuView(arcade.View):
 
     def on_show(self):
         """
+        Designs the buttons for the main menu
         """
         # Screen width is 800
         # Screen height is 600
@@ -76,6 +91,7 @@ class MainMenuView(arcade.View):
 
     def on_draw(self):
         """
+        Displays the buttons on the main menu
         """
         # Look at game.py or game_view.py for some of the code to use
         arcade.start_render()
@@ -93,12 +109,21 @@ class MainMenuView(arcade.View):
     def on_key_press(self, key, modifiers):
         """
         Called whenever a key is pressed
+
+        Args:
+            key: Library used in the constant module
         """
         if key == constants.ESCAPE_KEY:
             self.window.close()
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         """
+        Determine the active conditions on the constants of the game when a botton is selected
+        
+        Args:
+            _x: x axis position of the mouse press
+            _y: y axis position of the mouse press
+            _button: Conditions created from button press
         """
         if self.play_button.coords_in_hitbox(_x, _y):
             # self.play_button.select()
