@@ -1,0 +1,9 @@
+Ideas:
+Dinosaur game (from Google)
+Pac man (simplified)
+Space invaders (Galaga version)
+Pong
+Lightbike (simplified)
+
+Our decision:
+Lightbike (simplified)

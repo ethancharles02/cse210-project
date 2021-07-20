@@ -1,0 +1,162 @@
+Requirements:
+The program may be any type of game or interactive simulation.
+The program should use classes and objects.
+The program should use the four principles of object-oriented programming.
+The program should use the libraries chosen in the course.
+The program should be delivered through a distributed version control system.
+The program should be able to be run from the command line.
+The program should be entered in the end-of-course contest.
+
+
+
+See README file for technologies required
+
+
+
+Features:
+2D top-down
+Singleplayer (to start)
+As the bike moves, it leaves a trail that can't be crossed
+Movement: Up, down, left, right (WASD)
+
+Optional Features:
+Draw our own sprites? (Alternative of turtle)
+Maps with obstacles?
+Two-player?
+Powerups?
+    Slow down
+    Speed up
+    Temporary invincibility
+    Score multiplier?
+
+
+
+Classes:
+player
+draw_trail
+game
+director
+handle_collisions
+score/timer
+actor
+input_service
+output_service
+constants
+point
+action
+
+Optional Feature Classes:
+map
+powerup
+
+
+
+Four Principles:
+Polymorphism
+Inheritance
+Abstraction
+Classes and Objects
+
+
+
+Timeline: 4 weeks of coding
+
+Week 1 (Alpha): Meet on the 23rd, Wednesday 7 PM MST (Backup: 1 PM MST)
+No sprites yet
+Learn arcade module
+Singleplayer (square sprite)
+Movement works
+Dies from hitting wall
+
+Week 2 (Beta):
+General improvements
+Implement trails
+Trail can be collided with
+ai
+module docstrings
+
+Week 3 (Release):
+General improvements
+Miguel Sprites:
+    Resize sprites to actual size? (they are currently 3 times too large)
+    Resize wall.png to a square (40px sides)
+    Create 6 total version (full border, one side missing, two corner sides missing, 3 sides missing, all sides missing, 2 opposite sides missing)
+Convert wall lists into spritelists, (use_spatial_hash and is_static for non-moving objects) (Ethan)
+Two Player (Ethan)
+Fix ai collision (Ethan)
+Maps (Rich and Ethan)
+Add map collision checking (Rich and Ethan)
+Sounds (Hunter and Avery)
+    Collision with walls
+    General background (music)
+Tests:
+    trail (Miguel)
+    player (Avery)
+    lightbike (Rich)
+    ai (Ethan)
+
+
+Week 4 (Stable):
+General improvements (optimizations)
+Make wall sprites more consistent with each other (Miguel)
+Bugtesting
+
+Main menu (Hunter and Miguel) (https://arcade.academy/examples/view_instructions_and_game_over.html)
+    Create main menu loosely based on the plan in assets (feel free to come up with your own ideas for how it looks)
+    Connect button code to editing the variables for cur_map, num_players, and num_ai
+    Create button (Ethan)
+
+Move game over to game_view, adjust game.py to work with both screens (Ethan)
+Particle effects on collision (Ethan and Rich) (https://arcade.academy/examples/particle_systems.html)
+Add particle docstrings (Rich)
+
+
+
+Responsibilities:
+
+Submissions:
+Rich Abbott
+Ethan Charles
+Avery Crowson
+Hunter Dunlap
+Miguel Marin
+
+Classes:
+sound? (Week 3)
+
+Ethan:
+director (removed)
+game
+output_service
+draw_actors_action
+
+draw_trail (Week 2, turned into a method for output_service)
+update control_actors_action for 2 players(week 2, merge input_service with control_actors_action)
+score/timer (Week 2)
+Update ai set_movement_speed to update the current velocity when set
+
+
+Miguel:
+sprites (wall, player, ai(basically just player))
+Update sprites to smaller file sizes (Week 2)
+Rotate to face right (0 degrees)
+Center Sprites, remove excess area
+Make new wall sprites?
+trail (Week 2 together with Ethan)
+handle_collisions_action (Week 2, add collisions with walls)
+
+Avery:
+control_actors_action
+player
+constants
+
+Rich:
+move_actors_action
+plan out some maps (Week 2)
+input_service (update week 3 for two players)
+implement maps (Week 3)
+
+Hunter:
+actor
+point
+ai (Week 2)
