@@ -23,7 +23,7 @@ class OutputService:
             # actor.get_sprite().draw_hit_box(color.WHITE)
             # for sprite_list in actor.get_trail().get_sprite_list():
             #     sprite_list.draw()
-                # sprite_list.draw_hit_box(color.WHITE)
+            #     sprite_list.draw_hit_box(color.WHITE)
         if group == "buttons":
             actor.draw()
 
